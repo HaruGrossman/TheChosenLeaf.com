@@ -19,7 +19,7 @@
 // arrow function returnNavigate returns to search list
 
 // arrow function storeNavigate takes user to maps/nearme page
-// ***Q will this onClick need to store params to be exported to the maps page?
+// ***STRETCHGOAL will this onClick need to store params to be exported to the maps page?
 
 // arrow function createReview returns a popup window to create a review
 // ***Q will this need to be added to the plant API to save the review under each plant? 
