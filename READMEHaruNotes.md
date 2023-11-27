@@ -7,6 +7,10 @@ Things we want our project to do/ have
             1. Create logo from “The Chosen Plant” “TheChosenPlant.com”
         2. Search box
             1. When clicked empty or filled will lead to search page
+                TESTing
+                    1. If a none english word is entered in search field => lead to search page with message saying "We couldn't find any plants with that information. Please try again or use out sorting features for ideas".
+                    2. If exact plant name is entered => lead to search page with all plants with entered name showing on page with message "This is what we found"
+                    3. If nothing is entered 
         3. Home button
             1. Takes user to home page with plant slideshow
         4. Login/logout button
@@ -42,8 +46,12 @@ Things we want our project to do/ have
         2. Discretion
             1. When plant card is selected it will take user to plant detail page
     4. Footer
+
 2. Login/ Register page (“/login”)
-    1. 
+    1. Navbar
+    2. 
+    3. Footer
+
 3. Plant detail page (GET “/species/:id” returns plant by specific id ) (“/search/:id”)
     1. Navbar
     2. body
@@ -66,6 +74,7 @@ Things we want our project to do/ have
         3. Section 3 
             1. Reviews in list format from newest to oldest
     3. Footer
+
 4. User Account page (“/account”)
     1. Navbar
     2. Body
@@ -98,6 +107,7 @@ Things we want our project to do/ have
                     2. Hours
                     3. Location  
     3. Footer
+
 5. Google maps page (“/nearme”)
     1. Navbar
     2. Body
