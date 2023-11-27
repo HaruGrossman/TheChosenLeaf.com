@@ -26,4 +26,6 @@
 
 //--2. Result
 //Result section first displays what's clicked on the Homepage
+//or search result for what's entered in the seach box
+//Or display everything when nothing is entered into the search box
 //When user clicks on the 'Apply filter button' the result section will display the results.
