@@ -10,6 +10,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
+//We would like to have the following keys from the API:
+//latin, commonName, category, tempmax, tempmin
+//ideallight, toleratedlight, watering, image
+
+//We also need keys to store: myPlants, notes, reviews, stores
+//And maybe to have one or two spare keys for later use
+
+//All of our keys are stored as string, except for the autoincrement Id
+
 model User {
   id       Int    @id @default(autoincrement())
   username String @unique
