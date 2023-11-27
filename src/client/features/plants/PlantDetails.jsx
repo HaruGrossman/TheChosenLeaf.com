@@ -30,7 +30,6 @@
 // image
 // Common Name : common name
 // Latin Name : latin
-// Family : family
 // Ideal Light : ideallight
 // Tolerated Light : toleratedlight
 // Watering : watering
