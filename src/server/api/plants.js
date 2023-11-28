@@ -179,6 +179,8 @@ router.get("/stores", async (req, res, next) => {
     }
 });
 
+// get all favorite stores
+
 // update store as favorite
 router.post("/account/favorite", async (req, res, next) => {
     try {
