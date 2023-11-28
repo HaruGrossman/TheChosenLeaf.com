@@ -123,10 +123,25 @@ router.post("/account/mynotes", async (req, res, next) => {
     }
 });
 
-
 // puts an edit on a note in the account page
-// validates user is logged in
-// requires an id and user info
+router.put("/account/mynotes/:id", async (req, res, next) => {
+    try {
+        const id = +req.params.id;
+        const { description } = req.body;
+        // validates user is logged in
+        // requires an id and user info
+        const note = await prisma.notes.findUnique({ where: { id }});
+        validateNotes(res.locals.user, note);
+
+        const updatedNote = await prisma.notes.update({
+            where: { id }, 
+            data: { description },
+        });
+        res.json(updatedNote);
+    } catch (err) {
+        next (err);
+    }
+});
 
 // deletes a note in account page
 // validates user is logged in
