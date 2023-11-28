@@ -80,6 +80,19 @@ router.get("/account/favorite", async (req, res, next) => {
 // adds a plant to favorites
 
 // removes a plant from favorites
+router.delete("/account/favorite/:plantId", async (req, res, next) => {
+    try {
+        const plantId = +req.params.plantId;
+
+        const favoritePlant = await prisma.favorite.findUnique({ where: { plantId } });
+        validateFavorites(res.locals.user, favoritePlant);
+
+        await prisma.task.delete({ where: { plantId }});
+        res.sendStatus(204);
+    } catch (err) {
+        next (err);
+    }
+});
 
 // validates if notes exist and assigned to user
 const validateNotes = ( user, notes ) => {
