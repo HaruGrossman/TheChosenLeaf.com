@@ -179,7 +179,20 @@ router.get("/stores", async (req, res, next) => {
     }
 });
 
-// get all favorite stores
+// send all favorite stores
+router.get("/account/favorite", async (req, res, next) => {
+    try {
+        // finds many where user exists and favorite true exists
+        // validates user is logged in 
+        const stores = await prisma.favorite.findMany({
+            where: { userId: res.locals.user.id, storeId }
+        });
+        validateFavorites(res.locals.user, favorite)
+        res.json(stores);
+    } catch (err) {
+        next(err);
+    }
+});
 
 // update store as favorite
 router.post("/account/favorite", async (req, res, next) => {
