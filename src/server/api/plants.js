@@ -144,8 +144,21 @@ router.put("/account/mynotes/:id", async (req, res, next) => {
 });
 
 // deletes a note in account page
-// validates user is logged in
-// finds unique where id exists and user info
+router.delete("/account/mynotes/:id", async (req, res, next) => {
+    try {
+        // validates user is logged in
+        // finds unique where id exists and user info
+        const id = +req.params.id;
+
+        const note = await prisma.notes.fnidUnique({ where: { id} });
+        validateNotes(res.locals.user, note);
+
+        await prisma.notes.delete({ where: { id }});
+        res.sendStatus(204);
+    } catch (err) {
+        next (err);
+    }
+});
 
 // gets all stores
 // requires zip
