@@ -29,15 +29,23 @@ router.get("/:id", async (req, res, next) => {
 
 // must be logged in to access reviews/notes
 // validates that user is logged in
+router.use((req, res, next) => {
+    if (!res.locals.user) {
+        return next(new ServerError(401, "Please log in to proceed."))
+    }
+    next();
+});
 
 // puts a new review within a plant and sends it
 // validates that user is logged in
 // modifies a plant based on id to add the review
 
 // sends all favorited plants
+// validates user is logged in 
 // finds many where user exists and favorite true exists
 
 // sends all notes
+// validates user is logged in
 // finds many notes
 
 // creates a new note in the account page
