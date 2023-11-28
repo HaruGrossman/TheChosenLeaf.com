@@ -2,6 +2,7 @@
 //import user query result from authentication slice
 //import useSelector
 //import selectToken from authentication slice
+import Notes from "./Note"
 
 //write a component function for account profile
 //deconstruct data, isLoading, isError from userXXXprofileQuery for later use
@@ -24,3 +25,12 @@
 //--display 'Delete' button to the left of the Stores
 
 //export the component function
+
+export default function Account(){
+    return (
+    <div>
+        <h1>User Account Page</h1>
+        <Notes />
+        </div>)
+
+};

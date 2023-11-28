@@ -29,3 +29,7 @@
 //or search result for what's entered in the seach box
 //Or display everything when nothing is entered into the search box
 //When user clicks on the 'Apply filter button' the result section will display the results.
+
+export default function Search(){
+    return (<h1>Search All Plants</h1>)
+};

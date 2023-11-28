@@ -26,3 +26,12 @@
 // <h3> If you cannot find a store near you, here are online stores that will deliver. </h3>
 // <li> store 1 made a link </li>
 // <li> store 2 made a link </li> 
+
+export default function Stores(){
+    return (
+    <div>
+        <h3>Stores Near You</h3>
+            <ul>Store 1</ul>
+            <ul>Store 2</ul>
+    </div>)
+};
