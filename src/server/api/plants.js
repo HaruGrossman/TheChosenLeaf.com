@@ -1,10 +1,19 @@
-// set { ServerError } = require ("../errors");
-// set prisma to require prisma
-// set router a require ("express").Router()
-// module.exports = router
+const { ServerError } = require ("../errors");
+const prisma = require("../prisma");
+
+const router = require("express").Router();
+module.exports = router;
 
 // sends all plants 
-// finds many plants 
+router.get("/", async (req, res, next) => {
+    try {
+        // finds many plants 
+        const plants = await prisma.plant.findMany
+        res.json(plants);
+    } catch (err) {
+        next (err);
+    }
+});
 
 // send a single plant
 // finds a unique plant where the params match the plant id
