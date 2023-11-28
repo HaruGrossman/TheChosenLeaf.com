@@ -77,6 +77,10 @@ router.get("/account/myplant", async (req, res, next) => {
     }
 });
 
+// adds a plant to favorites
+
+// removes a plant from favorites
+
 // validates if notes exist and assigned to user
 const validateNotes = ( user, notes ) => {
     if (!notes) {
@@ -161,4 +165,20 @@ router.delete("/account/mynotes/:id", async (req, res, next) => {
 });
 
 // gets all stores
-// requires zip
+router.get("/stores", async (req, res, next) => {
+    try {
+        // requires zip
+        const { zipcode } = req.body;
+
+        const stores = await prisma.stores.findMany({
+            where: { zipcode: zipcode},
+        });
+        res.json(stores);
+    } catch (err) {
+        next (err);
+    }
+});
+
+// save store as favorite
+
+// remove store as favorite
