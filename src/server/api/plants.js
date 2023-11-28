@@ -88,7 +88,7 @@ const validateNotes = ( user, notes ) => {
 
 // sends all notes
 router.get("/account/mynotes", async (req, res, next) => {
-    try{
+    try {
         // validates user is logged in
         // finds many notes
         const notes = await prisma.notes.findMany({
@@ -102,8 +102,27 @@ router.get("/account/mynotes", async (req, res, next) => {
 });
 
 // creates a new note in the account page
-// validates user is logged in
-// requires a id and user info
+router.post("/account/mynotes", async (req, res, next) => {
+    try {
+        // validates user is logged in
+        // requires an id and user info
+        const { description } = req.body;
+        if (!description) {
+            throw new ServerError(400, "Description required.");
+        }
+        const note = await prisma.notes.create({
+            data: {
+                id,
+                description, 
+                user: { connect: { id: res.locals.user.id }},
+            },
+        });
+        res.json(note);
+    } catch (err) {
+        next (err);
+    }
+});
+
 
 // puts an edit on a note in the account page
 // validates user is logged in
