@@ -65,11 +65,12 @@ const validateFavorites = ( user, favorite ) => {
 // sends all favorited plants
 router.get("/account/myplant", async (req, res, next) => {
     try {
-// finds many where user exists and favorite true exists
-// validates user is logged in 
+        // finds many where user exists and favorite true exists
+        // validates user is logged in 
         const plants = await prisma.myPlant.findMany({
             where: { userId: res.locals.user.id, favorite: true }
         });
+        validateFavorites(res.locals.user, favorite)
         res.json(plants);
     } catch (err) {
         next(err);
@@ -77,17 +78,28 @@ router.get("/account/myplant", async (req, res, next) => {
 });
 
 // validates if notes exist and assigned to user
-const validateNotes = ( user, note ) => {
-    if (!note) {
+const validateNotes = ( user, notes ) => {
+    if (!notes) {
         throw new ServerError(404, "Notes not found.");
-    } if (note.userId !== user.id) {
+    } if (notes.userId !== user.id) {
         throw new ServerError(403, "No notes for this user.")
     }
 };
 
 // sends all notes
-// validates user is logged in
-// finds many notes
+router.get("/account/mynotes", async (req, res, next) => {
+    try{
+        // validates user is logged in
+        // finds many notes
+        const notes = await prisma.notes.findMany({
+            where: { userId: res.locals.user.id }
+        });
+        validateNotes(res.locals.user, notes);
+        res.json(notes)
+    } catch (err) {
+        next (err);
+    }
+});
 
 // creates a new note in the account page
 // validates user is logged in
