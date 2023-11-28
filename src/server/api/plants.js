@@ -37,14 +37,13 @@ router.use((req, res, next) => {
 });
 
 // puts a new review within a plant and sends it
-// validates that user is logged in -- needed??
-router.put("/:id", async (req, res, next) => {
+router.post("/:id", async (req, res, next) => {
     try {
         // modifies a plant based on id to add the review
-        const id = +req.params.id;
+        const id = +req.params.plantId;
         const { review } = req.body;
-        const addReview = await prisma.plant.update({
-            where: {id},
+        const addReview = await prisma.review.create({
+            where: { plantId: id},
             data: { review },
         });
         res.json(addReview);
@@ -57,7 +56,7 @@ router.put("/:id", async (req, res, next) => {
 const validateFavorites = ( user, favorite ) => {
     if (!favorite) {
         throw new ServerError(404, "Favorites not found."); 
-    } if (myPlant.userId !== user.id) {
+    } if (favorite.userId !== user.id) {
         throw new ServerError(403, "No favorites for this user. ")
     }
 };
