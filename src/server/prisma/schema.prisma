@@ -35,8 +35,8 @@ model Plant {
   name            String
   latin           String
   category        String
-  tempmax         String
-  tempmin         String
+  tempmax         Float
+  tempmin         Float
   ideallight      String
   toleratedlight  String
   watering        String
