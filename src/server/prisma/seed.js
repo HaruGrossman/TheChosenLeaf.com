@@ -26,6 +26,7 @@ const seed = async () => {
         toleratedlight: data1[i].toleratedlight,
         watering: data1[i].watering,
         image: data1[i].image,
+        favorite: false,
       };
       await prisma.plant.create({
         data,

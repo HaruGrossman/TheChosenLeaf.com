@@ -17,7 +17,6 @@ model User {
   username String @unique
   password String
   notes    Note[]
-  plants   Plant[]
   stores   Store[]
   favorites    Favorite[]
 }
@@ -44,9 +43,6 @@ model Plant {
   favorite        Boolean @default(false)
   reviews         Review[]
   favorites       Favorite[]
-
-  userId          Int
-  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Favorite {
