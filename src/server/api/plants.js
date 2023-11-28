@@ -16,7 +16,16 @@ router.get("/", async (req, res, next) => {
 });
 
 // send a single plant
-// finds a unique plant where the params match the plant id
+router.get("/:id", async (req, res, next) => {
+    try {
+    // finds a unique plant where the params match the plant id
+        const id = +req.params.id;
+        const plant = await prisma.plant.findUnique({ where: { id }});
+        res.json(plant);
+    } catch (err){
+        next (err);
+    }
+});
 
 // must be logged in to access reviews/notes
 // validates that user is logged in
