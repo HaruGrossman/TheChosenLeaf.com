@@ -1,10 +1,11 @@
 // import react
-// import userSelector
+// import {userSelector} from "react-redux";
 // import css
 
-//// header will be added in our roots
 
 //// Main Body
+// export default function Carousel(){return ()}
+
 // https://getbootstrap.com/docs/4.0/components/carousel/
 
 // install into files -> "$ npm install @glidejs/glide"
@@ -26,4 +27,3 @@
 // image(little water plant) with links to search page
 //caption Looking for desert, little to no water plants
 
-//// footer will be added in our roots
