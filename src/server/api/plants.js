@@ -78,6 +78,23 @@ router.get("/account/favorite", async (req, res, next) => {
 });
 
 // adds a plant to favorites
+router.post("/account/favorite", async (req, res, next) => {
+    try {
+        const { plantId, myplant } = req.body;
+        if (!plantId || !myplant ) {
+            throw new ServerError(400, "Plant info required.");
+        }
+        const favoritePlant = await prisma.favorite.create({
+            data: {
+                plantId, myplant, 
+                user: { connect: { id: res.locals.user.id }},
+            },
+        });
+        res.json(favoritePlant);
+    } catch (err) {
+        next (err);
+    }
+});
 
 // removes a plant from favorites
 router.delete("/account/favorite/:plantId", async (req, res, next) => {
