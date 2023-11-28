@@ -2,7 +2,7 @@ const prisma = require("../prisma");
 //import the csv file
 
 /** Seeds the database with a user*/
-const seed = async () => {
+// const seed = async () => {
   //loop through the csv file for each item
 
   //create plant data with looped items
