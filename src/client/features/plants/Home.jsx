@@ -4,7 +4,9 @@
 
 
 //// Main Body
-// export default function Carousel(){return ()}
+export default function Carousel(){
+    return (<h1>The Chosen Plant</h1>)
+};
 
 // https://getbootstrap.com/docs/4.0/components/carousel/
 

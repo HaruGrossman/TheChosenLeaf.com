@@ -1,7 +1,6 @@
 //import react
 //import useState
 
-
 //~ function for rendering our createNoteForm
 // window to pop up on screen
 
@@ -36,3 +35,12 @@
 //onclick createNoteBTN(createNoteForm)
 //getElement by id editBTN
 //onclick editBTN(editNoteForm)
+
+export default function Notes(){
+    return (
+    <div>
+        <h3>User Notes</h3>
+            <ul>Note 1</ul>
+            <ul>Note 2</ul>
+    </div>)
+};

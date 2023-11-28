@@ -19,3 +19,12 @@
 // required
 
 // button to post review
+
+export default function Reviews(){
+    return (
+    <div>
+        <h3>Plant Review</h3>
+            <ul>Review 1</ul>
+            <ul>Review 2</ul>
+    </div>)
+};
