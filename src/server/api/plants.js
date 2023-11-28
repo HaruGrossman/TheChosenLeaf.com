@@ -201,3 +201,16 @@ router.post("/account/favorite", async (req, res, next) => {
 });
 
 // update store as not favorite
+router.delete("/account/favorite/:storeId", async (req, res, next) => {
+    try {
+        const storeId = +req.params.storeId;
+
+        const favoriteStore = await prisma.favorite.findUnique({ where: { storeId } });
+        validateFavorites(res.locals.user, favoriteStore);
+
+        await prisma.task.delete({ where: { storeId }});
+        res.sendStatus(204);
+    } catch (err) {
+        next (err);
+    }
+});
