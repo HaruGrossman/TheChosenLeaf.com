@@ -4,8 +4,16 @@
 // import userParams and useNavigate from react router dom
 // import useState from react
 // import css
+import Reviews from "./Review";
 
-// export default function PlantDetails()
+export default function Details(){
+    return (
+    <div>
+        <h1>The Chosen Plant's Plant Details</h1>
+        <Reviews />
+    </div>)
+}
+
 
 // set navigate as useNavigate
 // set id as useParams
