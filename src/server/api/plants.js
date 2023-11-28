@@ -184,7 +184,7 @@ router.delete("/account/mynotes/:id", async (req, res, next) => {
         // finds unique where id exists and user info
         const id = +req.params.id;
 
-        const note = await prisma.notes.fnidUnique({ where: { id} });
+        const note = await prisma.notes.findUnique({ where: { id} });
         validateNotes(res.locals.user, note);
 
         await prisma.notes.delete({ where: { id }});
