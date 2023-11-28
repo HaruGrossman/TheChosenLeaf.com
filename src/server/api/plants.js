@@ -63,12 +63,12 @@ const validateFavorites = ( user, favorite ) => {
 };
 
 // sends all favorited plants
-router.get("/account/myplant", async (req, res, next) => {
+router.get("/account/favorite", async (req, res, next) => {
     try {
         // finds many where user exists and favorite true exists
         // validates user is logged in 
-        const plants = await prisma.myPlant.findMany({
-            where: { userId: res.locals.user.id, favorite: true }
+        const plants = await prisma.favorite.findMany({
+            where: { userId: res.locals.user.id, plantId }
         });
         validateFavorites(res.locals.user, favorite)
         res.json(plants);
@@ -164,14 +164,14 @@ router.delete("/account/mynotes/:id", async (req, res, next) => {
     }
 });
 
-// gets all stores
+// sends all stores
 router.get("/stores", async (req, res, next) => {
     try {
-        // requires zip
-        const { zipcode } = req.body;
+        // requires zipcode
+        const { zip } = req.body;
 
         const stores = await prisma.stores.findMany({
-            where: { zipcode: zipcode},
+            where: { zip: zip},
         });
         res.json(stores);
     } catch (err) {
@@ -179,6 +179,23 @@ router.get("/stores", async (req, res, next) => {
     }
 });
 
-// save store as favorite
+// update store as favorite
+router.post("/account/favorite", async (req, res, next) => {
+    try {
+        const { storeId, mystore } = req.body;
+        if (!storeId || !mystore ) {
+            throw new ServerError(400, "Store info required.");
+        }
+        const favoriteStore = await prisma.favorite.create({
+            data: {
+                storeId, mystore, 
+                user: { connect: { id: res.locals.user.id }},
+            },
+        });
+        res.json(favoriteStore);
+    } catch (err) {
+        next (err);
+    }
+});
 
-// remove store as favorite
+// update store as not favorite
