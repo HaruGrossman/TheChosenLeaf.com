@@ -1,4 +1,4 @@
-import { useSaveCreatedNoteMutation, useSaveChangedNoteMutation } from "/store"    //create slice
+// import { useSaveCreatedNoteMutation, useSaveChangedNoteMutation } from "/store"    //create slice
 
 
 //~ function for rendering our createNoteForm  // window to pop up on screen
@@ -54,7 +54,7 @@ function editNoteForm() {
             </form>
         </>
     )
-
+};
 
 
 //getElement by id createNoteBTN
@@ -62,11 +62,11 @@ function editNoteForm() {
 //getElement by id editBTN
 //onclick editBTN(editNoteForm)
 
-// export default function Notes(){
-//     return (
-//     <div>
-//         <h3>User Notes</h3>
-//             <ul>Note 1</ul>
-//             <ul>Note 2</ul>
-//     </div>)
-// };
+export default function Notes(){
+    return (
+    <div>
+        <h3>User Notes</h3>
+            <ul>Note 1</ul>
+            <ul>Note 2</ul>
+    </div>)
+};

@@ -8,7 +8,7 @@ module.exports = router;
 router.get("/", async (req, res, next) => {
     try {
         // finds many plants 
-        const plants = await prisma.plant.findMany
+        const plants = await prisma.plant.findMany();
         res.json(plants);
     } catch (err) {
         next (err);
