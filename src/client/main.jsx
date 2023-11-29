@@ -12,7 +12,7 @@ import Carousel from "./features/plants/Home.jsx"; //for home page
 //import Footer from "./layout/Footer.jsx";
 import Search from "./features/plants/Search.jsx";
 import Account from "./features/plants/Account.jsx";
-// import LoginRegister from "./features/plants";  //Waiting from login-register page file
+import AuthForm from "../client/features/auth/AuthForm.jsx"
 import Maps from "./features/plants/Maps.jsx";
 import Details from "./features/plants/PlantDetails.jsx";
 import Root from "./layout/Root.jsx";
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Carousel /> },
       { path: "/Search", element: <Search /> },
       { path: "/Account", element: <Account /> },
-      // { path: "/LoginRegister", element: <LoginRegister /> },
+      { path: "/Login", element: <AuthForm /> },
       { path: "/Maps", element: <Maps /> },
       { path: "/PlantDetails/:id", element: <Details /> }
     ],
@@ -37,9 +37,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <Navbar />
       <RouterProvider router={router} />
-      {/* <Footer /> */}
     </Provider>
   </React.StrictMode>
 );
