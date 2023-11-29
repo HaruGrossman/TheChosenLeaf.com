@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useLoginMutation, useRegisterMutation } from "./authSlice";
+import { useLoginMutation, useRegisterMutation } from "../../authSlice";
 
 /** This form allows users to register or log in. */
 export default function AuthForm() {
