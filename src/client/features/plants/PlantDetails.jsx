@@ -1,15 +1,37 @@
-// import everything needed
-
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+// import { selectToken } from authslice
 // useGetPlantQuery from plantSlice
-// import userParams and useNavigate from react router dom
-// import useState from react
 // import css
 import Reviews from "./Review";
 
+
 export default function Details(){
-    return (
-    <div>
-        <h1>The Chosen Plant's Plant Details</h1>
+
+    const token = useSelector(selectToken);
+    const navigate = useNavigate();
+
+    const { id } = useParams();
+    const { data: plant, isLoading } = useGetPlantQuery(id);
+
+    const [favoritePlant, { isLoading: isFavoriting }] = useFavoritePlantMutation();
+    tryFavoritePlant = async (evt) => {
+        evt.preventDefault();
+        await favoritePlant(plant.id);
+    };
+
+    const [reviewPlant, { isLoading: isReviewing }] = usePlantReviewMutation();
+    tryReviewPlant = async (evt) => {
+        evt.preventDefault();
+        await reviewPlant(plant.id);
+    }
+
+    return isLoading ? (
+    <p>Loading...</p>
+    ) : (
+    <main className="plant-details">
+        <h1>{plant.common}</h1>
+        
         <Reviews />
     </div>)
 }
