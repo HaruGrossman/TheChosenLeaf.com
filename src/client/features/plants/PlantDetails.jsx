@@ -13,6 +13,10 @@ export default function Details(){
 
     const navigate = useNavigate();
 
+    const onNavigate = () => {
+        navigate("/search");
+    }
+
     const { id } = useParams();
     const { data: plant, isLoading } = useGetPlantQuery(id);
 
@@ -57,7 +61,11 @@ export default function Details(){
                 </form>
             ))
         };
+        <form onSubmit={tryReviewPlant}>
+            <button>{isReviewing ? "Hang tight..." : "Thank you!" }</button>
+        </form>
         <Reviews />
+        <button className="return-btn" onClick={onNavigate}>Back to Search</button>
     </main>)
 }
 
@@ -69,9 +77,4 @@ export default function Details(){
 // arrow function createReview returns a popup window to create a review
 // ***Q will this need to be added to the plant API to save the review under each plant? 
 
-// Reviews : <li> list of ReviewCard(s) (review and rating) </li>
-
-// add to favorite button onClick = 
 // store near me button onClick = storeNavigate
-// return button onClick = returnNavigate
-// review button onClick = createReview
