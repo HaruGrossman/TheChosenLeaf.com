@@ -3,11 +3,11 @@ import { api } from './api';
 const PlantEndpoints = api.injectEndpoints({
     endpoints: (builder) => ({
         getAllPlants: builder.query({
-            query: () => "/Search/plants",
+            query: () => "/",
             providesTags: ["AllPlants"],
         }),
         getPlant: builder.query({
-            query: () => `/Search/${Id}`,
+            query: () => `/${Id}`,
             providesTags: ["Plant"],
         }),
     })
