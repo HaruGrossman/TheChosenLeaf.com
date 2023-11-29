@@ -1,7 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { useGetAllPlantsQuery, useGetPlantQuery } from "./plantSlice";
-import { useGetLoginQuery, useGetRegisterQuery } from "./authSlice";
-import { useGetCreateNoteQuery, useGetEditNoteQuery, useDeleteNoteQuery } from "./Notes";
+
 /**
  * Empty central API slice.
  * Endpoints should be injected in their own slices.
@@ -18,15 +16,7 @@ const api = createApi({
       return headers;
     },
   }),
-  endpoints: () => ({
-    useGetAllPlantsQuery,
-    useGetPlantQuery,
-    useGetLoginQuery,
-    useGetRegisterQuery,
-    useGetCreateNoteQuery,
-    useGetEditNoteQuery,
-    useDeleteNoteQuery
-  }),
+  endpoints: () => ({ }),
 });
 
 export default api;
