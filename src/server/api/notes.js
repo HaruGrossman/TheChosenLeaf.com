@@ -4,7 +4,7 @@ const prisma = require("../prisma");
 const router = require("express").Router();
 module.exports = router;
 
-/** User must be logged in to access tasks. */
+/** User must be logged in to access notes. */
 router.use((req, res, next) => {
   if (!res.locals.user) {
     return next(new ServerError(401, "You must be logged in."));
@@ -12,17 +12,23 @@ router.use((req, res, next) => {
   next();
 });
 
-/** Sends all tasks */
+/** Sends all notes */
 router.get("/", async (req, res, next) => {
   try {
-    const tasks = await prisma.task.findMany({
+    const notes = await prisma.note.findMany({
       where: { userId: res.locals.user.id },
     });
-    res.json(tasks);
+    res.json(notes);
   } catch (err) {
     next(err);
   }
 });
+
+
+
+
+
+
 
 /** Creates new task and sends it */
 router.post("/", async (req, res, next) => {
