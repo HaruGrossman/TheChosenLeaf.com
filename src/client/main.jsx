@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       { path: "/Account", element: <Account /> },
       { path: "/Login", element: <AuthForm /> },
       { path: "/Maps", element: <Maps /> },
-      { path: "/PlantDetails/:id", element: <Details /> }
+      { path: "/Search/:id", element: <Details /> }
     ],
   },
 ]);

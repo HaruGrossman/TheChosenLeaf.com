@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 // import { selectToken } from authslice
 import { useGetPlantQuery } from "./plantSlice";
@@ -9,7 +9,7 @@ import Reviews from "./Review";
 export default function Details(){
 
     // validate login
-    const token = useSelector(selectToken);
+    // const token = useSelector(selectToken);
 
     const navigate = useNavigate();
 
@@ -28,7 +28,7 @@ export default function Details(){
     // ***STRETCHGOAL will this onClick need to store params to be exported to the maps page?
 
     const { id } = useParams();
-    const { data: plant, isLoading } = useGetPlantQuery(id);
+    const { data, isLoading } = useGetPlantQuery(id);
 
     // favorite a plant
     // const [favoritePlant, { isLoading: isFavoriting }] = useFavoritePlantMutation();
@@ -50,13 +50,14 @@ export default function Details(){
     //     evt.preventDefault();
     //     await reviewPlant(plant.id);
     // }
+console.log(data);
 
     return isLoading ? (
     <p>Loading...</p>
     ) : (
     <main className="plant-details">
-        <img src={plant.image} />
-        <h1>Common Name:{plant.common}</h1>
+        {/* <img src={plant.image} /> */}
+        <h1>Common Name:{data.common}</h1>
         <h2>Latin Name:{plant.latin}</h2>
         <h2>Ideal Light:{plant.ideallight}</h2>
         <h2>Tolerated Light:{plant.toleratedlight}</h2>

@@ -1,13 +1,13 @@
-import { api } from './api'
+import api from '../../store/api'
 
 const PlantEndpoints = api.injectEndpoints({
     endpoints: (builder) => ({
         getAllPlants: builder.query({
-            query: () => "/search/plants",
+            query: () => "/plants",
             providesTags: ["AllPlants"],
         }),
         getPlant: builder.query({
-            query: () => `/Search/${Id}`,
+            query: (id) => `/plants/${id}`,
             providesTags: ["Plant"],
         }),
     })
