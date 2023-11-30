@@ -1,4 +1,11 @@
-import { useGetNoteQuery, useGetNotesQuery, useCreateNoteMutation, useEditNoteMutation, useDeleteNoteMutation } from "../../store/Notes";
+import { useGetNoteQuery, 
+    useGetNotesQuery, 
+    useCreateNoteMutation, 
+    useEditNoteMutation, 
+    useDeleteNoteMutation } from "../../store/Notes";
+
+import { useSelector } from "react-redux";
+import { selectToken } from "../auth/authSlice";
 
 //~ function for rendering our createNoteForm  // window to pop up on screen
 function createNoteForm({ note }) {
@@ -62,9 +69,27 @@ function editNoteForm() {
 //onclick editBTN(editNoteForm)
 
 export default function Notes(){
+const token = useSelector(selectToken);
+const { data: notes, isLoading } = useGetNotesQuery();
+
+console.log(notes);
+
+if (!token) {
+    return <p>You must be logged in to see your tasks.</p>;
+};
+
+
     return (
-    <div>
-            <ul>Note 1</ul>
-            <ul>Note 2</ul>
-    </div>)
+    <div className="notes">
+        <h2>My Plant Notes</h2>
+        {isLoading && <p>Loading notes...</p>}
+        {notes && (
+            <ul>
+                {notes.map((note) => (
+                    <Notes key={note.id} note={note} />
+                ))}
+            </ul>
+        )}
+    </div>
+    );
 };

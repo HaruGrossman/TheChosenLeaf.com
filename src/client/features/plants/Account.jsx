@@ -38,7 +38,19 @@ export default function Account(){
     ) : (
     <div>
         {/* <h1>{user?.username}'s Account Page</h1> */}
-        <Notes />
-        </div>)
+        <h2>My Plants</h2>
+        <section className="myplants">
+
+        </section>
+        <h2>My Notes</h2>
+        <section className="mynotes">
+            <Notes />
+        </section>
+        <h2>My Stores</h2>
+        <section className="mystores">
+
+        </section>
+    </div>
+    )
 
 };
