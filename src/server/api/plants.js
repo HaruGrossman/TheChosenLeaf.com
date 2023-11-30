@@ -20,7 +20,7 @@ router.get("/:id", async (req, res, next) => {
     try {
     // finds a unique plant where the params match the plant id
         const id = +req.params.id;
-        const plant = await prisma.plant.findUnique({ where: { id }});
+        const plant = await prisma.plant.findUnique({ where: { id: id}});
         res.json(plant);
     } catch (err){
         next (err);
