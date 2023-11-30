@@ -8,30 +8,43 @@ import Reviews from "./Review";
 
 export default function Details(){
 
-// validate login
+    // validate login
     const token = useSelector(selectToken);
 
     const navigate = useNavigate();
 
-    const onNavigate = () => {
+    // arrow function returnNavigate returns to search list
+    const returnNavigate = () => {
         navigate("/search");
-    }
+    };
+
+    // arrow function createReview returns a popup window to create a review
+    // ***Q will this need to be added to the plant API to save the review under each plant? 
+
+    // arrow function storeNavigate takes user to maps/nearme page
+    const storeNavigate = () =>{
+        navigate("/maps");
+    };
+    // ***STRETCHGOAL will this onClick need to store params to be exported to the maps page?
 
     const { id } = useParams();
     const { data: plant, isLoading } = useGetPlantQuery(id);
 
+    // favorite a plant
     const [favoritePlant, { isLoading: isFavoriting }] = useFavoritePlantMutation();
     tryFavoritePlant = async (evt) => {
         evt.preventDefault();
         await favoritePlant(plant.id);
     };
 
+    // unfavorite a favorited plant
     const [unfavoritePlant, { isLoading: isUnfavoriting }] = useUnfavoritePlantMutation();
     tryUnfavoritePlant = async (evt) => {
         evt.preventDefault();
         await unfavoritePlant(plant.id);
     }
 
+    // review a plant
     const [reviewPlant, { isLoading: isReviewing }] = usePlantReviewMutation();
     tryReviewPlant = async (evt) => {
         evt.preventDefault();
@@ -50,6 +63,7 @@ export default function Details(){
         <h2>Watering:{plant.watering}</h2>
         <h2>Temperature:{plant.tempmin}-{plant.tempmax}</h2>
         <h2>Category:{plant.category} </h2>
+        <button className="store-near-me" onClick={storeNavigate}>Stores Near Me</button>
         { token &&
             (book.favorite === false ? (
                 <form onSubmit={tryFavoritePlant}>
@@ -65,16 +79,6 @@ export default function Details(){
             <button>{isReviewing ? "Hang tight..." : "Thank you!" }</button>
         </form>
         <Reviews />
-        <button className="return-btn" onClick={onNavigate}>Back to Search</button>
+        <button className="return-btn" onClick={returnNavigate}>Back to Search</button>
     </main>)
 }
-
-// arrow function returnNavigate returns to search list
-
-// arrow function storeNavigate takes user to maps/nearme page
-// ***STRETCHGOAL will this onClick need to store params to be exported to the maps page?
-
-// arrow function createReview returns a popup window to create a review
-// ***Q will this need to be added to the plant API to save the review under each plant? 
-
-// store near me button onClick = storeNavigate
