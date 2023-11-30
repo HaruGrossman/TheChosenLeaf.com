@@ -35,7 +35,7 @@ export default function Account(){
         <p>Loading...</p>
     ) : (
     <div>
-        {/* <h1>{user?.username}'s Account Page</h1> */}
+        <h1>{user?.username}'s Account Page</h1>
         <h2>My Plants</h2>
         <section className="myplants">
 

@@ -2,14 +2,37 @@ import { useState } from "react";
 import { useEditNoteMutation, useDeleteNoteMutation } from "../../store/Notes";
 
 
-export default function Note ({ note }){
+export default function Note ( { note }){
+    const [editNote] = useEditNoteMutation();
+    const [deleteNote] = useDeleteNoteMutation();
 
+    const [description, setDescription]= useState(note.description);
 
+    // save edited note
+    const save = async (evt) => {
+        evt.preventDefault();
+        editNote({ ...note, description});
+    }
+
+    const onDelete = async (evt) => {
+        evt.preventDefault();
+        deleteNote(note.id);
+    };
+
+    return (
+        <li>
+            <form onSubmit={save}>
+                <input type="text" value={description} 
+                onChange={(e) => setNote(e.target.value)} 
+                required />
+                <button>Save</button>
+                <button onClick={onDelete}> 🞪 </button>
+            </form>
+        </li>
+    );
 
 //~ function for rendering our editNoteForm  // window to pop up on screen
 // function editNoteForm() {
-//     //use the hooks to create the mutation functions we will use
-//     //const [saveChangedNote] = useSaveChangedNoteMutation()
 
 //     const closePopupWindow = () => {  // "x" button for closing window
 //         ///onclick close window
