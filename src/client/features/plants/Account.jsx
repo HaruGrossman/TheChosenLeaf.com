@@ -1,16 +1,11 @@
-//import react
-//import user query result from authentication slice
-//import useSelector
-//import selectToken from authentication slice
-import Notes from "./Note"
+import react from 'react';
+import Notes from "./Note";
+import { useMeQuery, selectToken } from "../auth/authSlice";
+import { useSelector } from "react-redux";
 
-//write a component function for account profile
-//deconstruct data, isLoading, isError from userXXXprofileQuery for later use
-//define variable 'token' and assign selectToken(from useSelector) to it
 //error checking: isLoading return Loading...
 //error checking: isError return 'something went wrong'
 
-//return the information and output to the webpage
 //Welcome the user
 //There are three sections: My Plants, My Notes, Saved Stores
 //Display My Plants for the plants that are saved by the user
@@ -24,12 +19,25 @@ import Notes from "./Note"
 //Display Saved Stored for the stores that are saved by the user
 //--display 'Delete' button to the left of the Stores
 
-//export the component function
-
+//write a component function for account profile
 export default function Account(){
-    return (
+
+    //deconstruct data, isLoading, isError from userXXXprofileQuery for later use
+    const { data: me, isLoading, error } = useMeQuery();
+
+    //define variable 'token' and assign selectToken(from useSelector) to it
+    // const token = selectToken(useSelector);
+
+    console.log(me);
+
+    if (error) return <div>Please log in or register for an account.</div>
+    
+    //return the information and output to the webpage
+    return isLoading ? (
+        <p>Loading...</p>
+    ) : (
     <div>
-        <h1>User Account Page</h1>
+        <h1>{me?.username}'s Account Page</h1>
         <Notes />
         </div>)
 
