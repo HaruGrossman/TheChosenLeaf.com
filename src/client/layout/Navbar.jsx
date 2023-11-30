@@ -27,16 +27,18 @@ export default function Navbar() {
           <NavLink to="/">Home</NavLink>
         </li>
         <li>
-        <NavLink to="/search">Search Plants</NavLink>
+          <NavLink to="/search" input type="text" placeholder="Search">
+            🔍 <input type="text" placeholder="Search Plants" />
+          </NavLink>
         </li>
         {token ? (
           <>
-          <li>
-            <NavLink to="/account">Account</NavLink>
-          </li>
-          <li>
-            <a onClick={handleLogout}>Log Out</a>
-          </li>
+            <li>
+              <NavLink to="/account">Account</NavLink>
+            </li>
+            <li>
+              <a onClick={handleLogout}>Log Out</a>
+            </li>
           </>
         ) : (
           <li>
@@ -44,6 +46,6 @@ export default function Navbar() {
           </li>
         )}
       </menu>
-    </nav>
+    </nav >
   );
 }
