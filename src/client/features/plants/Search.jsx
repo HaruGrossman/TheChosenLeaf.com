@@ -2,6 +2,18 @@
 //import useState from react
 //import useXXXQuery from slice
 //import css file
+// import { useSelector } from "react-redux";
+// import { selectToken } from "../auth/authSlice";
+import { useGetAllPlantsQuery } from "./plantSlice";
+
+export default function Plants() {
+    const { data } = useGetAllPlantsQuery();
+
+    console.log(useGetAllPlantsQuery());
+    return(
+        <h1>Plants</h1>
+    )
+}
 
 //create compenent function
 //deconstruct data, isLoading, isError from useXXXQuery slice
@@ -30,6 +42,6 @@
 //Or display everything when nothing is entered into the search box
 //When user clicks on the 'Apply filter button' the result section will display the results.
 
-export default function Search(){
-    return (<h1>Search All Plants</h1>)
-};
+// export default function Search(){
+//     return (<h1>Search All Plants</h1>)
+// };

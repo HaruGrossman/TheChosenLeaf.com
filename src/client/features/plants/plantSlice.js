@@ -1,18 +1,18 @@
 import api from '../../store/api'
 
-const PlantEndpoints = api.injectEndpoints({
+const plantsApi = api.injectEndpoints({
     endpoints: (builder) => ({
         getAllPlants: builder.query({
-            query: () => "/plants",
+            query: () => "/",
             providesTags: ["AllPlants"],
         }),
         getPlant: builder.query({
-            query: (id) => `/plants/${id}`,
+            query: (id) => `/${id}`,
             providesTags: ["Plant"],
         }),
     })
 })
-export const { useGetAllPlantsQuery, useGetPlantQuery } = PlantEndpoints
+export const { useGetAllPlantsQuery, useGetPlantQuery } = plantsApi
 
 // import { createSlice } from '@reduxjs/toolkit'
 
