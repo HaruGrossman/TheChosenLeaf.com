@@ -1,5 +1,4 @@
-// import { useSaveCreatedNoteMutation, useSaveChangedNoteMutation } from "/store"    //create slice
-
+import { useGetNoteQuery, useGetNotesQuery, useCreateNoteMutation, useEditNoteMutation, useDeleteNoteMutation } from "../../store/Notes";
 
 //~ function for rendering our createNoteForm  // window to pop up on screen
 function createNoteForm({ note }) {
@@ -65,7 +64,6 @@ function editNoteForm() {
 export default function Notes(){
     return (
     <div>
-        <h3>User Notes</h3>
             <ul>Note 1</ul>
             <ul>Note 2</ul>
     </div>)
