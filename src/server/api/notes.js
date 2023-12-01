@@ -24,6 +24,37 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+/** Checks if note exists and belongs to given user */
+const validateNote = (user, note) => {
+  if (!note) {
+    throw new ServerError(404, "Note not found.");
+  }
+
+  if (note.userId !== user.id) {
+    throw new ServerError(403, "This note does not belong to you.");
+  }
+};
+
+/** Updates single note by id */
+router.put("/:id", async (req, res, next) => {
+  try {
+    const id = +req.params.id;
+    const { note } = req.body;
+
+    const noteById = await prisma.task.findUnique({ where: { id } });
+    validateNote(res.locals.user, note);
+
+    const updatedNote = await prisma.task.update({
+      where: { id },
+      data: { note },
+    });
+    res.json(updatedNote);
+  } catch (err) {
+    next(err);
+  }
+});
+
+
 
 
 
@@ -51,16 +82,7 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-/** Checks if task exists and belongs to given user */
-const validateTask = (user, task) => {
-  if (!task) {
-    throw new ServerError(404, "Task not found.");
-  }
 
-  if (task.userId !== user.id) {
-    throw new ServerError(403, "This task does not belong to you.");
-  }
-};
 
 /** Sends single task by id */
 router.get("/:id", async (req, res, next) => {
@@ -76,24 +98,7 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-/** Updates single task by id */
-router.put("/:id", async (req, res, next) => {
-  try {
-    const id = +req.params.id;
-    const { description, done } = req.body;
 
-    const task = await prisma.task.findUnique({ where: { id } });
-    validateTask(res.locals.user, task);
-
-    const updatedTask = await prisma.task.update({
-      where: { id },
-      data: { description, done },
-    });
-    res.json(updatedTask);
-  } catch (err) {
-    next(err);
-  }
-});
 
 /** Deletes single task by id */
 router.delete("/:id", async (req, res, next) => {
