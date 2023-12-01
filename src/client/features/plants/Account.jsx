@@ -1,5 +1,5 @@
 // import react from 'react';
-import Notes from "./Note";
+import Notes from "./Notes";
 import { useMeQuery, selectToken } from "../auth/authSlice";
 import { useSelector } from "react-redux";
 
@@ -30,6 +30,7 @@ export default function Account(){
     if (!token) {
         return <div>Please log in or register to access your account.</div>
     }
+    
     //return the information and output to the webpage
     return isLoading ? (
         <p>Loading...</p>
@@ -40,7 +41,6 @@ export default function Account(){
         <section className="myplants">
 
         </section>
-        <h2>My Notes</h2>
         <section className="mynotes">
             <Notes />
         </section>
