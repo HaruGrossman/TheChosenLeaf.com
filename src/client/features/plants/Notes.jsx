@@ -7,7 +7,7 @@ import { useState } from "react";
 function NoteCard({ note }) {
 
     const [editNote] = useEditNoteMutation();
-    // const [deleteNote] = useDeleteNoteMutation();
+    const [deleteNote] = useDeleteNoteMutation();
 
     const [editedNote, setEditedNote]= useState(note.note);
 
@@ -38,7 +38,7 @@ function NoteCard({ note }) {
     // delete note
     const onDelete = async (evt) => {
         evt.preventDefault();
-        deleteNote(note.id);
+        deleteNote(note);
     };
 
     return (
