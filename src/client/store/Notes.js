@@ -12,7 +12,7 @@ const noteApi = api.injectEndpoints({
         }),
         createNote: builder.mutation({
             query: (note) => ({
-                url: "/notes",
+                url: `/notes`,
                 method: "POST",
                 body: note,
             }),
@@ -20,7 +20,7 @@ const noteApi = api.injectEndpoints({
         }),
         editNote: builder.mutation({
             query: (note) => ({
-                url: `/notes/${note.id}`,
+                url: `/notes/${id}`,
                 method: "PUT",
                 body: note,
             }),

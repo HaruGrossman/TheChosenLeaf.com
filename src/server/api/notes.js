@@ -41,11 +41,11 @@ router.put("/:id", async (req, res, next) => {
     const id = +req.params.id;
     const { note } = req.body;
 
-    const noteById = await prisma.task.findUnique({ where: { id } });
+    const noteById = await prisma.note.findUnique({ where: { id } });
     validateNote(res.locals.user, note);
 
-    const updatedNote = await prisma.task.update({
-      where: { id },
+    const updatedNote = await prisma.note.update({
+      where: { id : id },
       data: { note },
     });
     res.json(updatedNote);
@@ -55,62 +55,54 @@ router.put("/:id", async (req, res, next) => {
 });
 
 
-
-
-
-
-
-
-/** Creates new task and sends it */
+/** Creates new note and sends it */
 router.post("/", async (req, res, next) => {
   try {
-    const { description, done } = req.body;
-    if (!description) {
-      throw new ServerError(400, "Description required.");
+    const { note } = req.body;
+    if (!note) {
+      throw new ServerError(400, "Note required.");
     }
 
-    const task = await prisma.task.create({
+    const newNote = await prisma.note.create({
       data: {
         description,
         done: done ?? false,
         user: { connect: { id: res.locals.user.id } },
       },
     });
-    res.json(task);
+    res.json(newNote);
   } catch (err) {
     next(err);
   }
 });
 
 
-
-/** Sends single task by id */
+/** Sends single note by id */
 router.get("/:id", async (req, res, next) => {
   try {
     const id = +req.params.id;
 
-    const task = await prisma.task.findUnique({ where: { id } });
-    validateTask(res.locals.user, task);
+    const note = await prisma.note.findUnique({ where: { id } });
+    validateNote(res.locals.user, note);
 
-    res.json(task);
+    res.json(note);
   } catch (err) {
     next(err);
   }
 });
 
 
-
-/** Deletes single task by id */
+/** Deletes single note by id */
 router.delete("/:id", async (req, res, next) => {
   try {
     const id = +req.params.id;
 
-    const task = await prisma.task.findUnique({ where: { id } });
-    validateTask(res.locals.user, task);
+    const note = await prisma.note.findUnique({ where: { id : id } });
+    validateNote(res.locals.user, note);
 
-    await prisma.task.delete({ where: { id } });
+    await prisma.note.delete({ where: { id : id } });
     res.sendStatus(204);
   } catch (err) {
     next(err);
-  }
+  };
 });

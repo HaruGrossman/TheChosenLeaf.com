@@ -124,7 +124,7 @@ router.get("/account/mynotes", async (req, res, next) => {
     try {
         // validates user is logged in
         // finds many notes
-        const notes = await prisma.notes.findMany({
+        const notes = await prisma.note.findMany({
             where: { userId: res.locals.user.id }
         });
         validateNotes(res.locals.user, notes);
@@ -139,11 +139,11 @@ router.post("/account/mynotes", async (req, res, next) => {
     try {
         // validates user is logged in
         // requires an id and user info
-        const { description } = req.body;
+        const { note } = req.body;
         if (!description) {
             throw new ServerError(400, "Description required.");
         }
-        const note = await prisma.notes.create({
+        const note = await prisma.note.create({
             data: {
                 id,
                 description, 
@@ -160,15 +160,15 @@ router.post("/account/mynotes", async (req, res, next) => {
 router.put("/account/mynotes/:id", async (req, res, next) => {
     try {
         const id = +req.params.id;
-        const { description } = req.body;
+        const { note } = req.body;
         // validates user is logged in
         // requires an id and user info
-        const note = await prisma.notes.findUnique({ where: { id }});
+        const findNote = await prisma.note.findUnique({ where: { id }});
         validateNotes(res.locals.user, note);
 
-        const updatedNote = await prisma.notes.update({
+        const updatedNote = await prisma.note.update({
             where: { id }, 
-            data: { description },
+            data: { note },
         });
         res.json(updatedNote);
     } catch (err) {

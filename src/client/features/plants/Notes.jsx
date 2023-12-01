@@ -46,7 +46,7 @@ function NoteCard({ note }) {
             <form onSubmit={save}>
                 <h4>{note.id}</h4>
                 <h4>{note.note}</h4>
-                {/* <button onClick={toggleNote}>Update</button> */}
+                <button>Select</button>
                 <section className="hide">
                 <input 
                     type="text" 
@@ -58,7 +58,6 @@ function NoteCard({ note }) {
                 <button onClick={onDelete}> 
                 🞪 
                 </button>
-                {/* <button onClick={hideNote}>Close</button> */}
                 </section>
             </form>
         </li>
