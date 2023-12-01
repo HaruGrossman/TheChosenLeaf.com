@@ -12,24 +12,24 @@ export default function Plants() {
   const [filteredPlants, setFilteredPlants] = useState(data);
 
   const handleDropdown1Change = (e) => {
+    e.preventDefault();
     setDropdown1Value(e.target.value);
-    //filterPlants(dropdown1Value, data);
   };
   const handleDropdown2Change = (e) => {
+    e.preventDefault();
     setDropdown2Value(e.target.value);
-    //filterPlants(dropdown2Value, data);
   };
   const handleDropdown3Change = (e) => {
+    e.preventDefault();
     setDropdown3Value(e.target.value);
-    //filterPlants(dropdown3Value, data);
   };
   const handleDropdown4Change = (e) => {
+    e.preventDefault();
     setDropdown4Value(e.target.value);
-    //filterPlants(dropdown4Value, data);
   };
   const handleDropdown5Change = (e) => {
+    e.preventDefault();
     setDropdown5Value(e.target.value);
-    //filterPlants(dropdown5Value, data);
   };
 
   const handleSubmit = async (e) => {
@@ -45,6 +45,7 @@ export default function Plants() {
     console.log("Selected values: ", selectOption);
 
     const searchPlants = [];
+
     for (const plant of data) {
       if (
         plant.category === selectOption[0] &&
