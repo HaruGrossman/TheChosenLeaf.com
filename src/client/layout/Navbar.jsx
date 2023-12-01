@@ -20,23 +20,25 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="top">
+    <nav className="top" class="top">
       <h1>The Chosen Plant</h1>
       <menu>
         <li>
           <NavLink to="/">Home</NavLink>
         </li>
         <li>
-        <NavLink to="/search">Search Plants</NavLink>
+          <NavLink to="/search" input type="text" placeholder="Search">
+            🔍 <input type="text" placeholder="Search Plants" />
+          </NavLink>
         </li>
         {token ? (
           <>
-          <li>
-            <NavLink to="/account">Account</NavLink>
-          </li>
-          <li>
-            <a onClick={handleLogout}>Log Out</a>
-          </li>
+            <li>
+              <NavLink to="/account">Account</NavLink>
+            </li>
+            <li>
+              <a onClick={handleLogout}>Log Out</a>
+            </li>
           </>
         ) : (
           <li>
@@ -44,6 +46,6 @@ export default function Navbar() {
           </li>
         )}
       </menu>
-    </nav>
+    </nav >
   );
 }

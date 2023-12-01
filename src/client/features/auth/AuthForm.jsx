@@ -42,8 +42,8 @@ export default function AuthForm() {
   };
 
   return (
-    <>
-      <h1>{authAction}</h1>
+    <div class="LoginRegisterForm">
+      <h2>{authAction}</h2>
       <form onSubmit={attemptAuth}>
         <label>
           Username
@@ -54,6 +54,7 @@ export default function AuthForm() {
             autoComplete="username"
           />
         </label>
+        <br></br>
         <label>
           Password
           <input
@@ -63,13 +64,14 @@ export default function AuthForm() {
             autoComplete="current-password"
           />
         </label>
+        <br></br>
         <button>{authAction}</button>
       </form>
       <a onClick={() => setIsLogin(!isLogin)}>{altCopy}</a>
-
+      <br></br>
       {(loginLoading || registerLoading) && <p>Please wait...</p>}
       {loginError && <p role="alert">{loginError}</p>}
       {registerError && <p role="alert">{registerError}</p>}
-    </>
+    </div>
   );
 }
