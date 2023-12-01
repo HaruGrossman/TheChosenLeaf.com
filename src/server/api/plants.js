@@ -168,22 +168,22 @@ router.delete("/account/favorite/:plantId", async (req, res, next) => {
 //     }
 // });
 
-// deletes a note in account page
-router.delete("/account/mynotes/:id", async (req, res, next) => {
-    try {
-        // validates user is logged in
-        // finds unique where id exists and user info
-        const id = +req.params.id;
+// // deletes a note in account page
+// router.delete("/account/mynotes/:id", async (req, res, next) => {
+//     try {
+//         // validates user is logged in
+//         // finds unique where id exists and user info
+//         const id = +req.params.id;
 
-        const note = await prisma.notes.fnidUnique({ where: { id} });
-        validateNotes(res.locals.user, note);
+//         const note = await prisma.notes.fnidUnique({ where: { id} });
+//         validateNotes(res.locals.user, note);
 
-        await prisma.notes.delete({ where: { id }});
-        res.sendStatus(204);
-    } catch (err) {
-        next (err);
-    }
-});
+//         await prisma.notes.delete({ where: { id }});
+//         res.sendStatus(204);
+//     } catch (err) {
+//         next (err);
+//     }
+// });
 
 // sends all stores
 router.get("/stores", async (req, res, next) => {
