@@ -1,0 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+img {
+  width: 250px;
+  height: 250px;
+  padding: 15px;
+}
