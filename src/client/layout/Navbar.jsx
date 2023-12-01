@@ -20,7 +20,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="top">
+    <nav className="top" class="top">
       <h1>The Chosen Plant</h1>
       <menu>
         <li>
