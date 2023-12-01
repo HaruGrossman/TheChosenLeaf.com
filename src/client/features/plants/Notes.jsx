@@ -1,38 +1,66 @@
-import { useGetNotesQuery } from "../../store/Notes";
+import { useGetNotesQuery, useEditNoteMutation, useDeleteNoteMutation } from "../../store/Notes";
 import { useSelector } from "react-redux";
-import { selectToken, useMeQuery } from "../auth/authSlice";
+import { selectToken } from "../auth/authSlice";
+import { useState } from "react";
 
 //  function for rendering our createNoteForm  // window to pop up on screen
 function NoteCard({ note }) {
 
-    // const [editNote] = useEditNoteMutation();
+    const [editNote] = useEditNoteMutation();
     // const [deleteNote] = useDeleteNoteMutation();
 
-//     const [note, setNote]= useState(each.note);
+    const [editedNote, setEditedNote]= useState(note.note);
 
-    // // save edited note
-    // const save = async (evt) => {
-    //     evt.preventDefault();
-    //     editNote({ ...note, note});
+    console.log(note);
+
+    // const showNote = async (evt) => {
+    //     const hidden = evt.target.style.visibility = "hidden";
+    // ul.addEventListener("click", hide, false);
     // }
 
-    // // delete note
-    // const onDelete = async (evt) => {
-    //     evt.preventDefault();
-    //     deleteNote(note.id);
-    // };
+    // const hideNote = async (evt) => {
+    //     const visible = evt.target.style.visibility = "visible";
+    //     ul.addEventListener("click", hide, true);
+    // }
+
+    // function toggleNote(id){
+        // const target = document.getElementById(id),
+        // visibility = target.style.visibility;
+        // target.style.visibility = visibility && visibility == 'visibile' ? 'hidden' : 'visibile';
+    // }
+
+    // save edited note
+    const save = async (evt) => {
+        evt.preventDefault();
+        editNote({ ...note, editedNote});
+    }
+
+    // delete note
+    const onDelete = async (evt) => {
+        evt.preventDefault();
+        deleteNote(note.id);
+    };
 
     return (
         <li>
-            <h4>{note.id}</h4>
-            <h4>{note.note}</h4>
-             {/* <form onSubmit={save}>
-                 <input type="text" value={note} 
-                 onChange={(e) => setNote(e.target.value)} 
-                 required />
-                 <button>Save</button>
-                 <button onClick={onDelete}> 🞪 </button>
-             </form> */}
+            <form onSubmit={save}>
+                <h4>{note.id}</h4>
+                <h4>{note.note}</h4>
+                {/* <button onClick={toggleNote}>Update</button> */}
+                <section className="hide">
+                <input 
+                    type="text" 
+                    value={editedNote}
+                    onChange={(e) => setEditedNote(e.target.value)}
+                    required
+                />
+                <button>Save Changes</button>
+                <button onClick={onDelete}> 
+                🞪 
+                </button>
+                {/* <button onClick={hideNote}>Close</button> */}
+                </section>
+            </form>
         </li>
     )
 }
