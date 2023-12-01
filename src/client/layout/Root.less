@@ -1,5 +1,122 @@
-body {
-  max-width: 70ch;
-  margin: 0 auto;
-  padding: 0.5rem;
+.footer {
+  background-color: #21575A;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  // flexbox display spaced between
+}
+
+//Big Screens
+@media screen and (min-width:340px),
+(max-width:1350px) {
+  body {
+    // background-position: center;
+
+    background: #D0E4F5 url("https://images.unsplash.com/photo-1498612753354-772a30629934?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") no-repeat fixed 0px 0px;
+    // background: url("https://images.unsplash.com/photo-1506184155123-73f3a6dfc2fc?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")no-repeat 50% 50%;
+  }
+
+  .LoginRegisterForm {
+    display: flex;
+    flex-direction: column;
+    margin: 4vw 8vw;
+    align-items: center;
+    justify-content: center;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 25px;
+    letter-spacing: -0.8px;
+    word-spacing: 0.8px;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    border: 9px outset #21575A;
+    border-radius: 24px 0px 24px 0px;
+    background: #C8E4DF;
+    background: -moz-linear-gradient(-45deg, #C8E4DF 0%, #1C6EA4 28%, #21575A 100%);
+    background: -webkit-linear-gradient(-45deg, #C8E4DF 0%, #1C6EA4 28%, #21575A 100%);
+    background: linear-gradient(135deg, #C8E4DF 0%, #1C6EA4 28%, #21575A 100%);
+    -webkit-box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  }
+
+  .LoginRegisterForm>h2 {
+    display: flex;
+    align-self: flex-start;
+    padding-left: 10px;
+  }
+
+  label {
+    display: flex;
+    min-width: 35vw;
+    justify-content: space-between;
+    align-content: center;
+  }
+
+  form>button {
+    display: flex;
+    background-color: #C8E4DF;
+    color: black;
+    border: 3px double #A9C1BC;
+    padding: 2px;
+    border-radius: 8px;
+  }
+}
+
+//Small Screens
+@media screen and (max-width:340px) {
+  body {
+    background: #D0E4F5 url("https://images.unsplash.com/photo-1535242208474-9a2793260ca8?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") fixed 50% 50%;
+  }
+
+  .LoginRegisterForm {
+    display: flex;
+    flex-direction: column;
+    margin: 4vw 8vw;
+    align-items: center;
+    justify-content: center;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 25px;
+    letter-spacing: -0.8px;
+    word-spacing: 0.8px;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    border: 9px outset #21575A;
+    border-radius: 24px 0px 24px 0px;
+    background: #C8E4DF;
+    background: -moz-linear-gradient(-45deg, #C8E4DF 0%, #1C6EA4 28%, #21575A 100%);
+    background: -webkit-linear-gradient(-45deg, #C8E4DF 0%, #1C6EA4 28%, #21575A 100%);
+    background: linear-gradient(135deg, #C8E4DF 0%, #1C6EA4 28%, #21575A 100%);
+    -webkit-box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  }
+
+  .LoginRegisterForm>h2 {
+    display: flex;
+    align-self: flex-start;
+    padding-left: 10px;
+  }
+
+  label {
+    display: flex;
+    min-width: 35vw;
+    justify-content: space-between;
+    align-content: center;
+  }
+
+  form>button {
+    display: flex;
+    background-color: #C8E4DF;
+    color: black;
+    border: 3px double #A9C1BC;
+    padding: 2px;
+    border-radius: 8px;
+  }
 }
