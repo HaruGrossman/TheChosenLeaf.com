@@ -20,7 +20,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="top" class="top">
+    <nav className="top">
       <h1>The Chosen Plant</h1>
       <menu>
         <li>
@@ -46,6 +46,6 @@ export default function Navbar() {
           </li>
         )}
       </menu>
-    </nav >
+    </nav>
   );
 }
