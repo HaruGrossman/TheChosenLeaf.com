@@ -48,7 +48,7 @@ router.get("/", async (req, res, next) => {
 // };
 
 /** Updates single note by id */
-router.put("/:id", async (req, res, next) => {
+router.put("/update/:id", async (req, res, next) => {
   try {
     const id = +req.params.id;
     const { note } = req.body;
@@ -68,7 +68,7 @@ router.put("/:id", async (req, res, next) => {
 
 
 /** Creates new note and sends it */
-router.post("/", async (req, res, next) => {
+router.post("/create", async (req, res, next) => {
   try {
     const { note } = req.body;
     if (!note) {

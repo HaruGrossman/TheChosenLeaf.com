@@ -8,19 +8,20 @@ const noteApi = api.injectEndpoints({
         }),
         getNote: builder.query({
             query: (id) => `/notes/${id}`,
+            transformResponse: (response) => response.note,
             providesTags: ["Note"],
         }),
         createNote: builder.mutation({
-            query: (note) => ({
-                url: `/notes`,
+            query: (data) => ({
+                url: `/notes/create`,
                 method: "POST",
-                body: note,
+                body: data,
             }),
             invalidatesTags: ["Notes"],
         }),
         editNote: builder.mutation({
-            query: (note) => ({
-                url: `/notes/${id}`,
+            query: ({id, ...note}) => ({
+                url: `/notes/update/${id}`,
                 method: "PUT",
                 body: note,
             }),

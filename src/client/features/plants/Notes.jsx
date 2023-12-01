@@ -5,18 +5,23 @@ import { useState } from "react";
 
 //  function for rendering our createNoteForm  // window to pop up on screen
 function NoteCard({ note }) {
-    const { data } = useGetNoteQuery()
+    const { data } = useGetNoteQuery();
+
     const [editNote] = useEditNoteMutation();
     const [deleteNote] = useDeleteNoteMutation();
-
+    const [selectNote, setSelectNote] = useState(data);
+    
     const [editedNote, setEditedNote]= useState(note.note);
 
-    console.log(note.note);
+    console.log(note.id);
 
-    const select = async (evt) => {
-        evt.preventDefault();
+    const select = (e) => {
+        e.preventDefault();
+        const id = note.id;
+        selectNote({id});
+        console.log(selectedNote);
+    };
 
-    }
     // const showNote = async (evt) => {
     //     const hidden = evt.target.style.visibility = "hidden";
     // ul.addEventListener("click", hide, false);
