@@ -8,7 +8,7 @@ const noteApi = api.injectEndpoints({
         }),
         getNote: builder.query({
             query: (id) => `/notes/${id}`,
-            providesTags: ["Notes"],
+            providesTags: ["Note"],
         }),
         createNote: builder.mutation({
             query: (note) => ({
@@ -24,14 +24,14 @@ const noteApi = api.injectEndpoints({
                 method: "PUT",
                 body: note,
             }),
-            invalidatesTags: ["Notes"],
+            invalidatesTags: ["Note"],
         }),
         deleteNote: builder.mutation({
             query: (id) => ({
                 url: `/notes/${id}`,
                 method: "DELETE",
             }),
-            invalidatesTags: ["Notes"]
+            invalidatesTags: ["Note"]
         }),
     }),
 });

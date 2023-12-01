@@ -1,18 +1,22 @@
-import { useGetNotesQuery, useEditNoteMutation, useDeleteNoteMutation } from "../../store/Notes";
+import { useGetNoteQuery, useGetNotesQuery, useEditNoteMutation, useDeleteNoteMutation } from "../../store/Notes";
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 import { useState } from "react";
 
 //  function for rendering our createNoteForm  // window to pop up on screen
 function NoteCard({ note }) {
-
+    const { data } = useGetNoteQuery()
     const [editNote] = useEditNoteMutation();
     const [deleteNote] = useDeleteNoteMutation();
 
     const [editedNote, setEditedNote]= useState(note.note);
 
-    console.log(note);
+    console.log(note.note);
 
+    const select = async (evt) => {
+        evt.preventDefault();
+
+    }
     // const showNote = async (evt) => {
     //     const hidden = evt.target.style.visibility = "hidden";
     // ul.addEventListener("click", hide, false);
@@ -38,7 +42,7 @@ function NoteCard({ note }) {
     // delete note
     const onDelete = async (evt) => {
         evt.preventDefault();
-        deleteNote(note);
+        deleteNote(note.id);
     };
 
     return (
@@ -46,7 +50,7 @@ function NoteCard({ note }) {
             <form onSubmit={save}>
                 <h4>{note.id}</h4>
                 <h4>{note.note}</h4>
-                <button>Select</button>
+                <button onClick={select}>Select</button>
                 <section className="hide">
                 <input 
                     type="text" 

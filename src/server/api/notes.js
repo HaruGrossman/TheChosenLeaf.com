@@ -12,12 +12,24 @@ router.use((req, res, next) => {
   next();
 });
 
+// validates if notes exist and assigned to user
+const validateNotes = ( user, notes ) => {
+  if (!notes) {
+      throw new ServerError(404, "Notes not found.");
+  } if (notes.userId !== user.id) {
+      throw new ServerError(403, "No notes for this user.")
+  }
+};
+
 /** Sends all notes */
 router.get("/", async (req, res, next) => {
   try {
+      // validates user is logged in
+      // finds many notes
     const notes = await prisma.note.findMany({
       where: { userId: res.locals.user.id },
     });
+    validateNotes(res.locals.user, notes);
     res.json(notes);
   } catch (err) {
     next(err);
@@ -25,15 +37,15 @@ router.get("/", async (req, res, next) => {
 });
 
 /** Checks if note exists and belongs to given user */
-const validateNote = (user, note) => {
-  if (!note) {
-    throw new ServerError(404, "Note not found.");
-  }
+// const validateNote = (user, note) => {
+//   if (!note) {
+//     throw new ServerError(404, "Note not found.");
+//   }
 
-  if (note.userId !== user.id) {
-    throw new ServerError(403, "This note does not belong to you.");
-  }
-};
+//   if (note.userId !== user.id) {
+//     throw new ServerError(403, "This note does not belong to you.");
+//   }
+// };
 
 /** Updates single note by id */
 router.put("/:id", async (req, res, next) => {
@@ -41,8 +53,8 @@ router.put("/:id", async (req, res, next) => {
     const id = +req.params.id;
     const { note } = req.body;
 
-    const noteById = await prisma.note.findUnique({ where: { id } });
-    validateNote(res.locals.user, note);
+    const findNote = await prisma.note.findUnique({ where: { id : id} });
+    validateNotes(res.locals.user, note);
 
     const updatedNote = await prisma.note.update({
       where: { id : id },
@@ -65,8 +77,7 @@ router.post("/", async (req, res, next) => {
 
     const newNote = await prisma.note.create({
       data: {
-        description,
-        done: done ?? false,
+        note,
         user: { connect: { id: res.locals.user.id } },
       },
     });
@@ -82,8 +93,8 @@ router.get("/:id", async (req, res, next) => {
   try {
     const id = +req.params.id;
 
-    const note = await prisma.note.findUnique({ where: { id } });
-    validateNote(res.locals.user, note);
+    const note = await prisma.note.findUnique({ where: { id : id } });
+    validateNotes(res.locals.user, note);
 
     res.json(note);
   } catch (err) {
@@ -98,7 +109,7 @@ router.delete("/:id", async (req, res, next) => {
     const id = +req.params.id;
 
     const note = await prisma.note.findUnique({ where: { id : id } });
-    validateNote(res.locals.user, note);
+    validateNotes(res.locals.user, note);
 
     await prisma.note.delete({ where: { id : id } });
     res.sendStatus(204);
