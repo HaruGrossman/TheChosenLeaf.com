@@ -1,26 +1,76 @@
-@media screen (min-width:515px) {}
-
-nav.top {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 2px solid #1d4c4e;
-  padding-right: 8px;
-  padding-bottom: 3px;
-  padding-top: 3px;
-
-  menu {
+@media screen and (min-width:700px) {
+  nav.top {
     display: flex;
-    align-items: baseline;
-    gap: 1ch;
+    justify-content: space-between;
+    border-bottom: 2px solid #1d4c4e;
+    padding-right: 8px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    align-items: center;
+
+    menu {
+      display: flex;
+      align-items: baseline;
+      gap: 1ch;
+    }
+
+    img {
+      display: block;
+      width: 40vw;
+      height: 9vw;
+    }
+
+    .menubutton {
+      display: none;
+    }
+
+    .AltName {
+      display: none;
+    }
+
+    .slogan {
+      display: none;
+    }
   }
 }
 
-// nav.top {
-//   display: flex;
-//   // flex-direction: row;
-//   justify-content: space-between;
-//   background-color: #21575A;
-//   padding-top: 10px;
-//   padding-bottom: 10px;
+@media screen and (max-width:700px) {
+  .top {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    background-color: #21575A;
+    color: #6acdbb;
+    align-items: center;
+  }
 
-// }
+  .menubutton {
+    display: block;
+  }
+
+  img {
+    display: none;
+  }
+
+  .slogan {
+    display: contents;
+  }
+
+  .navbarmenu {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 5%;
+    background-color: #C8E4DF;
+    min-width: 30px;
+    z-index: 1;
+  }
+
+  .menubutton:hover {
+    background-color: #21575A;
+
+    .navbarmenu {
+      display: block;
+    }
+  }
+}

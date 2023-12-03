@@ -2,10 +2,50 @@
   background-color: #21575A;
   display: flex;
   justify-content: space-around;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  // flexbox display spaced between
+  padding-top: 5px;
+  padding-bottom: 5px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.contactDropdown {
+  display: none;
+  position: fixed;
+  bottom: 25px;
+  right: 10%;
+  background-color: #C8E4DF;
+  min-width: 30px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.contactDropdown a {
+  display: block;
+  color: black;
+  border-bottom: 5px black;
+  padding: 5px 5px;
+  text-decoration: none;
+  border: 1px black;
+}
+
+a:hover {
+  background-color: #21575A;
+}
+
+.dropdown:hover .contactDropdown {
+  display: block;
+}
+
+.dropdown:hover .dropbutton {
+  background-color: #28868a;
+}
+
 
 //Big Screens
 @media screen and (min-width:340px),
