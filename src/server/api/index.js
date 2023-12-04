@@ -27,5 +27,6 @@ router.use(async (req, res, next) => {
 });
 
 router.use("/auth", require("./auth"));
-router.use("/notes", require("./notes"));
+router.use("/stores", require("./stores"));
+router.use("/account/mynotes", require("./notes"));
 router.use("/", require("./plants"));
