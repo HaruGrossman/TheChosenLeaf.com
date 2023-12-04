@@ -1,31 +1,95 @@
-// import react
+import React from "react";
+import { useEffect } from "react";
+import Glide from "@glidejs/glide";
+//import mandatory core css file for glide
+import "@glidejs/glide/dist/css/glide.core.min.css";
+//import optional theme css file for glide
+import "@glidejs/glide/dist/css/glide.theme.min.css";
 // import {userSelector} from "react-redux";
-// import css
+import "@glidejs/glide/dist/glide.min.js";
+import "./plants.css";
+import Plants from "./Search";
 
+export default function Carousel() {
+  //config contains options for carousel
+  const config = {
+    type: "carousel",
+    perView: 3,
+    breakpoints: {
+      1024: {
+        perView: 2,
+      },
+      600: {
+        perView: 1,
+      },
+    },
+    gap: 10,
+    autoplay: 2000,
+    hoverpause: true,
+  };
+  //use useEffect to hold state from glide
+  useEffect(() => {
+    const glide = new Glide(".glide", config);
+    glide.mount();
+    //add event listener to the slides
+    // const plantImages = document.querySelectorAll(".glide__slide");
+    // plantImages.forEach((plantImage, indexOf) => {
+    //   plantImage.addEventListener("click", () => {
+    //     <Plants />;
+    //     console.log(`Slide ${indexOf} clicked`);
+    //   });
+    // });
+    return () => {
+      glide.destroy();
+    };
+  }, []);
 
-//// Main Body
-export default function Carousel(){
-    return (<h1>The Chosen Plant</h1>)
-};
-
-// https://getbootstrap.com/docs/4.0/components/carousel/
-
-// install into files -> "$ npm install @glidejs/glide"
-// https://glidejs.com/docs/setup#npm
-
-// for the clickable image slideshow with captions
-// click actions will lead to search page with one filter active upon render
-
-// image(large plant) with links to search page
-//caption Looking for large plants to fill your room or yard
-// image(small plant) with links to search page
-//caption Looking for small plants to sit on your nightstand or desk
-// image(low light plant) with links to search page
-//caption Looking for plants that thrive in low light conditions
-// image(full sun plant) with links to search page
-//caption Looking for plants that love lots of sunshine
-// image(water frequently plant) with links to search page
-//caption Looking for high moisture plants
-// image(little water plant) with links to search page
-//caption Looking for desert, little to no water plants
-
+  return (
+    <>
+      <div className="glide">
+        <div className="glide__track" data-glide-el="track">
+          <ul id="options-autoplay-input" className="glide__slides">
+            <li className="glide__slide">
+              <img src="/plantImages/ChamaedoreaMetallica1.jpg" />
+            </li>
+            <li className="glide__slide">
+              <img src="/plantImages/bougainvillea2.jpg" />
+            </li>
+            <li className="glide__slide">
+              <img src="/plantImages/ChamaedoreaElegans2.jpg" />
+            </li>
+            <li className="glide__slide">
+              <img src="/plantImages/CryptanthusRoseElaine1.jpg" />
+            </li>
+            <li className="glide__slide">
+              <img src="/plantImages/DidymochlaenaTruncatula1.jpg" />
+            </li>
+            <li className="glide__slide">
+              <img src="/plantImages/Lipstick1.jpg" />
+            </li>
+            <li className="glide__slide">
+              <img src="/plantImages/MaidenhairFern2.jpg" />
+            </li>
+            <li className="glide__slide">
+              <img src="/plantImages/bougainvillea3.jpg" />
+            </li>
+          </ul>
+        </div>
+        <div className="glide__arrows" data-glide-el="controls">
+          <button
+            className="glide__arrow glide__arrow--left arrow-left"
+            data-glide-dir="<"
+          >
+            &#60;
+          </button>
+          <button
+            className="glide__arrow glide__arrow--right arrow-right"
+            data-glide-dir=">"
+          >
+            &#62;
+          </button>
+        </div>
+      </div>
+    </>
+  );
+}
