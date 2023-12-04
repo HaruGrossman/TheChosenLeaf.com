@@ -21,7 +21,7 @@ const authApi = api.injectEndpoints({
       transformErrorResponse: (response) => response.data,
     }),
     me: builder.query({
-      query: () => "/auth/",
+      query: (id) => "/auth/:id",
       providesTags: ["Me"],
     }),
   }),
