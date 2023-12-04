@@ -1,5 +1,5 @@
 @media screen and (min-width:700px) {
-  nav.top {
+  .top {
     display: flex;
     justify-content: space-between;
     border-bottom: 2px solid #1d4c4e;
@@ -7,6 +7,7 @@
     padding-bottom: 3px;
     padding-top: 3px;
     align-items: center;
+    background-color: #C8E4DF;
 
     menu {
       display: flex;
@@ -20,15 +21,9 @@
       height: 9vw;
     }
 
+    .AltName,
+    .slogan,
     .menubutton {
-      display: none;
-    }
-
-    .AltName {
-      display: none;
-    }
-
-    .slogan {
       display: none;
     }
   }
@@ -57,20 +52,33 @@
   }
 
   .navbarmenu {
+    // list box
     display: none;
-    position: absolute;
-    top: 30px;
-    right: 5%;
+    position: fixed;
+    top: 25px;
+    right: 0;
     background-color: #C8E4DF;
+    color: black;
     min-width: 30px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
+  }
+
+  .navbarmenu li:hover {
+    // links in list
+    color: black;
+    border-bottom: 5px black;
+    text-decoration: none;
+    border: 1px black;
+    background-color: #21575A;
+  }
+
+  .menubutton:focus+.navbarmenu {
+    display: flex;
+    flex-direction: column;
   }
 
   .menubutton:hover {
     background-color: #21575A;
-
-    .navbarmenu {
-      display: block;
-    }
   }
 }
