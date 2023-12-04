@@ -74,7 +74,7 @@ router.post("/login", async (req, res, next) => {
 
 
 // THIS IS A BUG! WILL CONTINUOUSLY RUN AND CRASH THE SYSTEM
-router.get("/", async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const id = +req.headers.authorization;
 

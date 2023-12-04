@@ -37,7 +37,7 @@ router.use((req, res, next) => {
 });
 
 // puts a new review within a plant and sends it
-router.post("/:id", async (req, res, next) => {
+router.post("/review", async (req, res, next) => {
   try {
     // modifies a plant based on id to add the review
     const id = +req.params.plantId;
