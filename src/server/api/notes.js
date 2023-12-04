@@ -13,10 +13,10 @@ router.use((req, res, next) => {
 });
 
 // validates if notes exist and assigned to user
-const validateNotes = ( user, notes ) => {
-  if (!notes) {
+const validateNotes = ( user, note ) => {
+  if (!note) {
       throw new ServerError(404, "Notes not found.");
-  } if (notes.userId !== user.id) {
+  } if (note.userId !== user.id) {
       throw new ServerError(403, "No notes for this user.")
   }
 };
@@ -27,7 +27,7 @@ router.get("/", async (req, res, next) => {
       // validates user is logged in
       // finds many notes
     const notes = await prisma.note.findMany({
-      where: { userId: res.locals.user.id },
+      where: { userId : res.locals.user.id },
     });
     validateNotes(res.locals.user, notes);
     res.json(notes);

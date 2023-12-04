@@ -1,5 +1,5 @@
 // import react from 'react';
-import Notes from "./Notes";
+import Notes from "../notes/Notes";
 import { useMeQuery, selectToken } from "../auth/authSlice";
 import { useSelector } from "react-redux";
 
@@ -25,7 +25,7 @@ export default function Account(){
     const token = useSelector(selectToken);
 
     //deconstruct data, isLoading, isError from userXXXprofileQuery for later use
-    const { data: user, isLoading} = useMeQuery();
+    const { data: user, isLoading, isError} = useMeQuery();
 
     if (!token) {
         return <div>Please log in or register to access your account.</div>

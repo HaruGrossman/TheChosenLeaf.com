@@ -3,7 +3,8 @@ import api from './api';
 const noteApi = api.injectEndpoints({
     endpoints: (builder) => ({
         getNotes: builder.query({
-            query: () => "/notes",
+            query: () => `/notes`,
+            transformResponse: (response) => response.note,
             providesTags: ["Notes"],
         }),
         getNote: builder.query({
