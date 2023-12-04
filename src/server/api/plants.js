@@ -37,7 +37,7 @@ router.use((req, res, next) => {
 });
 
 // puts a new review within a plant and sends it
-router.post("/:id", async (req, res, next) => {
+router.post("/review", async (req, res, next) => {
   try {
     // modifies a plant based on id to add the review
     const id = +req.params.plantId;
@@ -107,96 +107,87 @@ router.delete("/account/favorite/:plantId", async (req, res, next) => {
     });
     validateFavorites(res.locals.user, favoritePlant);
 
-    await prisma.task.delete({ where: { plantId } });
-    res.sendStatus(204);
-  } catch (err) {
-    next(err);
-  }
+        await prisma.task.delete({ where: { plantId }});
+        res.sendStatus(204);
+    } catch (err) {
+        next (err);
+    }
 });
 
-// validates if notes exist and assigned to user
-const validateNotes = (user, notes) => {
-  if (!notes) {
-    throw new ServerError(404, "Notes not found.");
-  }
-  if (notes.userId !== user.id) {
-    throw new ServerError(403, "No notes for this user.");
-  }
-};
 
-// sends all notes
-router.get("/account/mynotes", async (req, res, next) => {
-  try {
-    // validates user is logged in
-    // finds many notes
-    const notes = await prisma.notes.findMany({
-      where: { userId: res.locals.user.id },
-    });
-    validateNotes(res.locals.user, notes);
-    res.json(notes);
-  } catch (err) {
-    next(err);
-  }
-});
+
+// // sends all notes
+// router.get("/account/mynotes", async (req, res, next) => {
+//     try {
+      
+//         const notes = await prisma.note.findMany({
+//             where: { userId: res.locals.user.id }
+//         });
+//         validateNotes(res.locals.user, notes);
+//         res.json(notes)
+//     } catch (err) {
+//         next (err);
+//     }
+// });
 
 // creates a new note in the account page
-router.post("/account/mynotes", async (req, res, next) => {
-  try {
-    // validates user is logged in
-    // requires an id and user info
-    const { description } = req.body;
-    if (!description) {
-      throw new ServerError(400, "Description required.");
-    }
-    const note = await prisma.notes.create({
-      data: {
-        id,
-        description,
-        user: { connect: { id: res.locals.user.id } },
-      },
-    });
-    res.json(note);
-  } catch (err) {
-    next(err);
-  }
-});
+// router.post("/account/mynotes", async (req, res, next) => {
+//     try {
+//         // validates user is logged in
+//         // requires an id and user info
+//         const { note } = req.body;
+//         if (!description) {
+//             throw new ServerError(400, "Description required.");
+//         }
+//         const newNote = await prisma.note.create({
+//             data: {
+//                 id,
+//                 description, 
+//                 user: { connect: { id: res.locals.user.id }},
+//             },
+//         });
+//         res.json(note);
+//     } catch (err) {
+//         next (err);
+//     }
+// });
 
 // puts an edit on a note in the account page
-router.put("/account/mynotes/:id", async (req, res, next) => {
-  try {
-    const id = +req.params.id;
-    const { description } = req.body;
-    // validates user is logged in
-    // requires an id and user info
-    const note = await prisma.notes.findUnique({ where: { id } });
-    validateNotes(res.locals.user, note);
+// router.put("/account/mynotes/:id", async (req, res, next) => {
+//     try {
+//         const id = +req.params.id;
+//         const { note } = req.body;
+//         // validates user is logged in
+//         // requires an id and user info
+//         const findNote = await prisma.note.findUnique({ where: { id }});
+//         validateNotes(res.locals.user, note);
 
-    const updatedNote = await prisma.notes.update({
-      where: { id },
-      data: { description },
-    });
-    res.json(updatedNote);
-  } catch (err) {
-    next(err);
-  }
-});
+//         const updatedNote = await prisma.note.update({
+//             where: { id }, 
+//             data: { note },
+//         });
+//         res.json(updatedNote);
+//     } catch (err) {
+//         next (err);
+//     }
+// });
 
-// deletes a note in account page
-router.delete("/account/mynotes/:id", async (req, res, next) => {
-  try {
-    // validates user is logged in
-    // finds unique where id exists and user info
-    const id = +req.params.id;
+// // deletes a note in account page
+// router.delete("/account/mynotes/:id", async (req, res, next) => {
+//     try {
+//         // validates user is logged in
+//         // finds unique where id exists and user info
+//         const id = +req.params.id;
 
-    const note = await prisma.notes.fnidUnique({ where: { id } });
-    validateNotes(res.locals.user, note);
+//         const note = await prisma.notes.fnidUnique({ where: { id} });
+//         validateNotes(res.locals.user, note);
 
-    await prisma.notes.delete({ where: { id } });
-    res.sendStatus(204);
-  } catch (err) {
-    next(err);
-  }
-});
+//         await prisma.notes.delete({ where: { id }});
+//         res.sendStatus(204);
+//     } catch (err) {
+//         next (err);
+//     }
+// });
 
 // sends all stores
 router.get("/stores", async (req, res, next) => {

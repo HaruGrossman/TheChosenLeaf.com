@@ -1,19 +1,46 @@
-import { api } from './api';
+import api from './api';
 
-const NoteEndpoints = api.injectEndpoints({
+const noteApi = api.injectEndpoints({
     endpoints: (builder) => ({
-        createNote: builder.query({
-            query: () => "/Account/notes",
-            providesTags: ["AccountNotes"],
+        getNotes: builder.query({
+            query: () => `/notes`,
+            // transformResponse: (response) => response.note,
+            providesTags: ["Notes"],
         }),
-        editNote: builder.query({
-            query: () => `/Account/notes/${Id}`,
-            providesTags: ["Plant"],
+        getNote: builder.query({
+            query: (id) => `/notes/${id}`,
+            transformResponse: (response) => response.note,
+            providesTags: ["Note"],
         }),
-        deleteNote: builder.query({
-            query: () => `/Account/notes/${Id}`,
-            providesTags: ["DeleteNote"]
-        })
-    })
-})
-export const { useGetCreateNoteQuery, useGetEditNoteQuery, useDeleteNoteQuery } = NoteEndpoints
+        createNote: builder.mutation({
+            query: (data) => ({
+                url: `/notes/create`,
+                method: "POST",
+                body: data,
+            }),
+            invalidatesTags: ["Notes"],
+        }),
+        editNote: builder.mutation({
+            query: ({id, ...note}) => ({
+                url: `/notes/${id}`,
+                method: "PUT",
+                body: note,
+            }),
+            invalidatesTags: ["Note"],
+        }),
+        deleteNote: builder.mutation({
+            query: (id) => ({
+                url: `/notes/${id}`,
+                method: "DELETE",
+            }),
+            invalidatesTags: ["Note"]
+        }),
+    }),
+});
+export const { 
+    useGetNotesQuery, 
+    useGetNoteQuery, 
+    useCreateNoteMutation, 
+    useEditNoteMutation, 
+    useDeleteNoteMutation,
+ } = noteApi

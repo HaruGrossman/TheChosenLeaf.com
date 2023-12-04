@@ -71,3 +71,24 @@ router.post("/login", async (req, res, next) => {
     next(err);
   }
 });
+
+
+// THIS IS A BUG! WILL CONTINUOUSLY RUN AND CRASH THE SYSTEM
+router.get("/:id", async (req, res, next) => {
+  try {
+    const id = +res.locals.user.id;
+
+    const user = await prisma.user.findUnique({
+      where: { id: id }
+    })
+
+    if (user) {
+      return res.json(user)
+    }
+
+    res.status(401).send('Invalid login session or session expired.')
+
+  } catch (err) {
+    next(err);
+  }
+});

@@ -5,7 +5,7 @@
 export default function FavoriteStore(){
     return (
     <div>
-        <h3>My Stores</h3>
+        <h2>My Stores</h2>
             <ul>Store 1</ul>
             <ul>Store 2</ul>
     </div>)

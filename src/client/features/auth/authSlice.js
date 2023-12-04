@@ -20,10 +20,14 @@ const authApi = api.injectEndpoints({
       }),
       transformErrorResponse: (response) => response.data,
     }),
+    me: builder.query({
+      query: (id) => "/auth/:id",
+      providesTags: ["Me"],
+    }),
   }),
 });
 
-export const { useRegisterMutation, useLoginMutation } = authApi;
+export const { useRegisterMutation, useLoginMutation, useMeQuery } = authApi;
 
 /** Session storage key for auth token */
 const TOKEN_KEY = "token";

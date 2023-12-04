@@ -5,7 +5,7 @@
 export default function FavoritePlant(){
     return (
     <div>
-        <h3>My Plants</h3>
+        <h2>My Plants</h2>
             <ul>Plant 1</ul>
             <ul>Plant 2</ul>
     </div>)

@@ -1,16 +1,13 @@
-//import react
-//import user query result from authentication slice
-//import useSelector
-//import selectToken from authentication slice
-import Notes from "./Note"
+// import react from 'react';
+import Notes from "../notes/Notes";
+import { useMeQuery, selectToken } from "../auth/authSlice";
+import { useSelector } from "react-redux";
+import FavoritePlant from "./components/FavoritePlant";
+import FavoriteStore from "./components/FavoriteStores";
 
-//write a component function for account profile
-//deconstruct data, isLoading, isError from userXXXprofileQuery for later use
-//define variable 'token' and assign selectToken(from useSelector) to it
 //error checking: isLoading return Loading...
 //error checking: isError return 'something went wrong'
 
-//return the information and output to the webpage
 //Welcome the user
 //There are three sections: My Plants, My Notes, Saved Stores
 //Display My Plants for the plants that are saved by the user
@@ -24,13 +21,36 @@ import Notes from "./Note"
 //Display Saved Stored for the stores that are saved by the user
 //--display 'Delete' button to the left of the Stores
 
-//export the component function
-
+//write a component function for account profile
 export default function Account(){
-    return (
+    //define variable 'token' and assign selectToken(from useSelector) to it
+    const token = useSelector(selectToken);
+
+    //deconstruct data, isLoading, isError from userXXXprofileQuery for later use
+    const { data: user, isLoading, isError} = useMeQuery();
+    
+console.log(user);
+
+    if (!token) {
+        return <div>Please log in or register to access your account.</div>
+    }
+    
+    //return the information and output to the webpage
+    return isLoading ? (
+        <p>Loading...</p>
+    ) : (
     <div>
-        <h1>User Account Page</h1>
-        <Notes />
-        </div>)
+        <h1>{user?.username}'s Account Page</h1>
+        <section className="myplants">
+            <FavoritePlant />
+        </section>
+        <section className="mynotes">
+            <Notes />
+        </section>
+        <section className="mystores">
+            <FavoriteStore />
+        </section>
+    </div>
+    )
 
 };
