@@ -13,13 +13,13 @@ router.use((req, res, next) => {
 });
 
 // validates if notes exist and assigned to user
-const validateNotes = ( user, note ) => {
-  if (!note) {
-      throw new ServerError(404, "Notes not found.");
-  } if (note.userId !== user.id) {
-      throw new ServerError(403, "No notes for this user.")
-  }
-};
+// const validateNotes = ( user, note ) => {
+//   if (!note) {
+//       throw new ServerError(404, "Notes not found.");
+//   } if (note.userId !== user.id) {
+//       throw new ServerError(403, "No notes for this user.")
+//   }
+// };
 
 /** Sends all notes */
 router.get("/", async (req, res, next) => {
@@ -29,7 +29,7 @@ router.get("/", async (req, res, next) => {
     const notes = await prisma.note.findMany({
       where: { userId : res.locals.user.id },
     });
-    validateNotes(res.locals.user, notes);
+    // validateNotes(res.locals.user, notes);
     res.json(notes);
   } catch (err) {
     next(err);
