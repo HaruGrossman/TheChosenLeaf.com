@@ -2,6 +2,8 @@
 import Notes from "../notes/Notes";
 import { useMeQuery, selectToken } from "../auth/authSlice";
 import { useSelector } from "react-redux";
+import FavoritePlant from "./components/FavoritePlant";
+import FavoriteStore from "./components/FavoriteStores";
 
 //error checking: isLoading return Loading...
 //error checking: isError return 'something went wrong'
@@ -37,16 +39,14 @@ export default function Account(){
     ) : (
     <div>
         <h1>{user?.username}'s Account Page</h1>
-        <h2>My Plants</h2>
         <section className="myplants">
-
+            <FavoritePlant />
         </section>
         <section className="mynotes">
             <Notes />
         </section>
-        <h2>My Stores</h2>
         <section className="mystores">
-
+            <FavoriteStore />
         </section>
     </div>
     )
