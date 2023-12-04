@@ -14,7 +14,7 @@ const noteApi = api.injectEndpoints({
         }),
         createNote: builder.mutation({
             query: (data) => ({
-                url: `/account/mynotes/create`,
+                url: `/notes/create`,
                 method: "POST",
                 body: data,
             }),

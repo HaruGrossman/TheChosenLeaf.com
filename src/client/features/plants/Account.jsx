@@ -29,6 +29,8 @@ export default function Account(){
     //deconstruct data, isLoading, isError from userXXXprofileQuery for later use
     const { data: user, isLoading, isError} = useMeQuery();
     
+    console.log(user);
+    
     if (!token) {
         return <div>Please log in or register to access your account.</div>
     }
