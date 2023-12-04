@@ -35,29 +35,29 @@ export default function Plants() {
   const handleSubmit = async (e) => {
     //this is for making sure we are getting the right value from user selection
     e.preventDefault();
-    const selectOption = [
-      dropdown1Value,
-      dropdown2Value,
-      dropdown3Value,
-      dropdown4Value,
-      dropdown5Value,
-    ];
-    console.log("Selected values: ", selectOption);
-
     const searchPlants = [];
 
     for (const plant of data) {
       if (
-        plant.category === selectOption[0] &&
-        plant.watering === selectOption[1] &&
-        plant.toleratedlight === selectOption[2] &&
-        plant.tempmax <= selectOption[3] &&
-        plant.tempmin >= selectOption[4]
+        (dropdown1Value === "all" ||
+          dropdown1Value === "" ||
+          plant.category === dropdown1Value) &&
+        (dropdown2Value === "all" ||
+          dropdown2Value === "" ||
+          plant.watering === dropdown2Value) &&
+        (dropdown3Value === "all" ||
+          dropdown3Value === "" ||
+          plant.toleratedlight === dropdown3Value) &&
+        (dropdown4Value === "all" ||
+          dropdown4Value === "" ||
+          plant.tempmax <= dropdown4Value) &&
+        (dropdown5Value === "all" ||
+          dropdown5Value === "" ||
+          plant.tempmin >= dropdown5Value)
       ) {
         searchPlants.push(plant);
       }
     }
-    console.log(searchPlants);
     setFilteredPlants(searchPlants);
   };
 
@@ -150,14 +150,12 @@ export default function Plants() {
 
         <div>
           <h1>Search Results</h1>
-          <ul className="searchResult">
-            {filteredPlants?.map((plant) => (
-              <li key={plant.id}>
-                <img src={plant.image} />
-                <h5>CommonName: {plant.name}</h5>
-              </li>
-            ))}
-          </ul>
+          {filteredPlants?.map((plant) => (
+            <li key={plant.id} className="searchResult">
+              <img src={plant.image} />
+              <h5>CommonName: {plant.name}</h5>
+            </li>
+          ))}
         </div>
       </main>
     </>

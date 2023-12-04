@@ -31,6 +31,5 @@ export default function Footer() {
                     <a href="https://www.linkedin.com/in/harugrossman/">Haru Grossman</a>
                 </div>
             </div>
-        </footer>
     )
 }
