@@ -22,7 +22,7 @@ const noteApi = api.injectEndpoints({
         }),
         editNote: builder.mutation({
             query: ({id, ...note}) => ({
-                url: `/notes/update/${id}`,
+                url: `/notes/${id}`,
                 method: "PUT",
                 body: note,
             }),
