@@ -8,6 +8,8 @@ export default function Notes(){
     const token = useSelector(selectToken);
     const { data: notes, isLoading } = useGetNotesQuery();
     
+console.log(notes);
+
     if (!token) {
         return <p>You must be logged in to see your tasks.</p>;
     };
@@ -21,7 +23,7 @@ export default function Notes(){
             {isLoading && <p>Loading notes...</p>}
             {notes && (
                 <ul className="notes-list">
-                    {notes?.map((note) => (
+                    {notes.map((note) => (
                         <Note key={note.id} note={note} /> 
                      ))} 
                 </ul>

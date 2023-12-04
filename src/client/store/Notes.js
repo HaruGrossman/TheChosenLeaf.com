@@ -3,18 +3,18 @@ import api from './api';
 const noteApi = api.injectEndpoints({
     endpoints: (builder) => ({
         getNotes: builder.query({
-            query: () => `/notes`,
-            transformResponse: (response) => response.note,
+            query: () => `/account/mynotes`,
+            // transformResponse: (response) => response.note,
             providesTags: ["Notes"],
         }),
         getNote: builder.query({
-            query: (id) => `/notes/${id}`,
+            query: (id) => `/account/mynotes/${id}`,
             transformResponse: (response) => response.note,
             providesTags: ["Note"],
         }),
         createNote: builder.mutation({
             query: (data) => ({
-                url: `/notes/create`,
+                url: `/account/mynotes/create`,
                 method: "POST",
                 body: data,
             }),
@@ -22,7 +22,7 @@ const noteApi = api.injectEndpoints({
         }),
         editNote: builder.mutation({
             query: ({id, ...note}) => ({
-                url: `/notes/update/${id}`,
+                url: `/account/mynotes/update/${id}`,
                 method: "PUT",
                 body: note,
             }),
