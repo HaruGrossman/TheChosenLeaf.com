@@ -20,9 +20,16 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="top" class="top">
-      <h1>The Chosen Plant</h1>
-      <menu>
+    <nav className="top">
+      <img src="../../../../public/LogoFolder/OriginalonTransparent.png" alt="The Chosen Plant" />
+      <h1 class="AltName">The Chosen Plant</h1>
+      <h3 class="slogan">Find your prefect plant!</h3>
+      <button class="menubutton">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+        </svg>
+      </button>
+      <menu class="navbarmenu">
         <li>
           <NavLink to="/">Home</NavLink>
         </li>
@@ -46,6 +53,6 @@ export default function Navbar() {
           </li>
         )}
       </menu>
-    </nav >
-  );
-}
+    </nav>
+  )
+};
