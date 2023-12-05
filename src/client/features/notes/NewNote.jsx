@@ -1,9 +1,14 @@
 import { useState } from "react";
 // import { useCreateTaskMutation } from "./taskSlice";
 import { useCreateNoteMutation } from "../../store/Notes";
+import $ from "jquery";
 
-/** Form for creating new tasks */
-export default function NewNote() {
+function closePopup() {
+$('#popup').hide();
+};
+
+/** Form for creating new notes */
+function NewNoteCard() {
   const [note, setNote] = useState("");
   const [createNote] = useCreateNoteMutation();
 
@@ -20,9 +25,26 @@ export default function NewNote() {
         onChange={(e) => setNote(e.target.value)}
         required
       />
-      <button>Create</button>
+      <button onClick={closePopup}> 🞪 </button>
     </form>
+
   );
+}
+
+function openPopup() {
+  $('#popup').show();
+  <NewNoteCard />
+}
+
+export default function NewNote() {
+
+  return (
+      <div class= "popup" id= "popup">
+        <div class="prompt">
+        </div>
+      <button onClick={openPopup}>Create New Note</button>
+      </div>
+  )
 }
 
 //     const closePopupWindow = () => {

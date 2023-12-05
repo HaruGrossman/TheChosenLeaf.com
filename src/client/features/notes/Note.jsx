@@ -6,8 +6,6 @@ export default function Note ({ note }) {
 
     const [editNote] = useEditNoteMutation();
     const [deleteNote] = useDeleteNoteMutation();
-
-    // const [selectNote, setSelectNote] = useState(data);
     
     const [editedNote, setEditedNote]= useState(note.note);
 
@@ -23,8 +21,11 @@ export default function Note ({ note }) {
         deleteNote(note.id);
     };
 
-    return (
-        <li>
+    const onDisplay = async (evt) => {
+        evt.preventDefault();
+        
+        return (
+            <li>
             <form onSubmit={save}>
                 <input 
                     type="text" 
@@ -38,6 +39,14 @@ export default function Note ({ note }) {
                 </button>
             </form>
         </li>
+        )
+    }
+
+    return (
+        <>
+        <h3>{note.note}</h3>
+        <button onClick={onDisplay}>Edit Note</button>
+        </>
     )
 }
 
