@@ -29,6 +29,7 @@ export default function Note ({ note }) {
             <h3>{note.note}</h3>
             <button onClick={() => setButtonPopup(true)}>Edit Note</button>
             <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+                <h4>Edit existing note: {note.note} </h4>
             <form onSubmit={save}>
                 <input 
                     type="text" 
