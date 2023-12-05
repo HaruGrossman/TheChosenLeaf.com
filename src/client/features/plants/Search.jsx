@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useGetAllPlantsQuery } from "./plantSlice";
+import { Link } from "react-router-dom";
 import "./plants.css";
 
 export default function Plants() {
@@ -152,8 +153,10 @@ export default function Plants() {
           <h1>Search Results</h1>
           {filteredPlants?.map((plant) => (
             <li key={plant.id} className="searchResult">
-              <img src={plant.image} />
-              <h5>CommonName: {plant.name}</h5>
+              <Link to={`/search/${plant.id}`}>
+                <img src={plant.image} />
+              </Link>
+              <h5 className="search-plantName">{plant.name}</h5>
             </li>
           ))}
         </div>
