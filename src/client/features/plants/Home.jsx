@@ -17,10 +17,10 @@ export default function Carousel() {
     type: "carousel",
     perView: 3,
     breakpoints: {
-      1024: {
-        perView: 3,
+      919: {
+        perView: 2,
       },
-      600: {
+      700: {
         perView: 1,
       },
     },
@@ -53,12 +53,11 @@ export default function Carousel() {
     <>
       <body className="homebody">
         <section id="intro">
-          <p>Struggling to find the right plant for your home or garden?</p>
-          <p>Hight light, low light, tall, small, low maintenance?</p>
+          <p>Struggling to find the right plant for your home or garden? High light, low light, tall, small, low maintenance?</p>
           <p>The Chosen Plant is here to help you find the plant that is just right for you!</p>
         </section>
-        <br />
-        <p>Need some ideas check out our slideshow, or head over to the search page</p>
+        {/* <br /> */}
+        <p>Need some ideas check out our slideshow <span id="arrowdown"> &#x21e3; </span> or head over to the search page</p>
         <div className="glide">
           <div className="glide__track" data-glide-el="track">
             <ul id="options-autoplay-input" className="glide__slides">
@@ -127,7 +126,10 @@ export default function Carousel() {
             </button>
           </div>
         </div>
-      </body>
+        <p>
+          Our goal is to connect beginning and experienced plant owners to a wide range of plants, and where to find them. We're continuously work to bring you that "It's Perfect!" flower, succulent, or plant for your house and home. Weather you're looking or just need some advice on what that houseplant special care and needs, stop by and we can help you!
+        </p>
+      </body >
     </>
   );
 }
