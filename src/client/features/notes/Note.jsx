@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDeleteNoteMutation, useEditNoteMutation } from "../../store/Notes";
 
 //  function for rendering our createNoteForm  // window to pop up on screen
-export default function Note({ note }) {
+export default function Note ({ note }) {
 
     const [editNote] = useEditNoteMutation();
     const [deleteNote] = useDeleteNoteMutation();
@@ -10,8 +10,6 @@ export default function Note({ note }) {
     // const [selectNote, setSelectNote] = useState(data);
     
     const [editedNote, setEditedNote]= useState(note.note);
-
-    console.log(note);
 
     // save edited note
     const save = async (evt) => {
@@ -36,7 +34,7 @@ export default function Note({ note }) {
                 />
                 <button>Save Changes</button>
                 <button onClick={onDelete}> 
-                🞪 
+                Delete 
                 </button>
             </form>
         </li>
