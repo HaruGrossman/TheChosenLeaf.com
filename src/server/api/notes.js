@@ -47,15 +47,15 @@ router.post("/create", async (req, res, next) => {
 });
 
 // validates if notes exist and assigned to user
-// const validateNotes = ( user, note ) => {
-//   if (!note) {
-//       throw new ServerError(404, "Notes not found.");
-//   } 
+const validateNotes = ( user, note ) => {
+  if (!note) {
+      throw new ServerError(404, "Notes not found.");
+  } 
   
-//   if (note.userId !== user.id) {
-//       throw new ServerError(403, "No notes for this user.")
-//   }
-// };
+  if (note.userId !== user.id) {
+      throw new ServerError(403, "No notes for this user.")
+  }
+};
 
 /** Sends single note by id */
 router.get("/:id", async (req, res, next) => {
@@ -63,7 +63,7 @@ router.get("/:id", async (req, res, next) => {
     const id = +req.params.id;
 
     const note = await prisma.note.findUnique({ where: { id : id } });
-    // validateNotes(res.locals.user, note);
+    validateNotes(res.locals.user, note);
 
     res.json(note);
   } catch (err) {
@@ -74,15 +74,29 @@ router.get("/:id", async (req, res, next) => {
 /** Updates single note by id */
 router.put("/:id", async (req, res, next) => {
   try {
-    const id = +req.params.id;
-    const { note } = req.body;
+    //identify params
+    const noteId = +req.params.id;
 
-    const findNote = await prisma.note.findUnique({ where: { id : id} });
-    // validateNotes(res.locals.user, findNote);
+    // identify post exists for user
+    const findNote = await prisma.note.findUnique({ where: { id : noteId } });
+    validateNotes(res.locals.user, findNote);
 
+    //error handling if it does not exist
+      if (!findNote) {
+        return next({
+            status: 404, 
+            message: `No note ${id} exists for the signed in user.`,
+        });
+    }
+
+    // identify req.body
+    const { id, note } = req.body;
+
+    // update note
     const updatedNote = await prisma.note.update({
-      where: { id : id },
-      data: { note },
+      where: { userId : res.locals.user.id, id : id },
+      data: { 
+        note: note, },
     });
     res.json(updatedNote);
   } catch (err) {
@@ -96,7 +110,7 @@ router.delete("/:id", async (req, res, next) => {
     const id = +req.params.id;
 
     const note = await prisma.note.findUnique({ where: { id : id } });
-    // validateNotes(res.locals.user, note);
+    validateNotes(res.locals.user, note);
 
     await prisma.note.delete({ where: { id : id } });
     res.sendStatus(204);

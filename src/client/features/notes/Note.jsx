@@ -1,22 +1,21 @@
 import { useState } from "react";
 import { useDeleteNoteMutation, useEditNoteMutation } from "../../store/Notes";
+import Popup from "../components/Popup";
 
 //  function for rendering our createNoteForm  // window to pop up on screen
-export default function Note({ note }) {
+export default function Note ({ note }) {
 
     const [editNote] = useEditNoteMutation();
     const [deleteNote] = useDeleteNoteMutation();
-
-    // const [selectNote, setSelectNote] = useState(data);
     
-    const [editedNote, setEditedNote]= useState(note.note);
-
-    console.log(note);
+    const [editedNote, setEditedNote] = useState(note.editedNote);
+    const [buttonPopup, setButtonPopup] = useState(false);
 
     // save edited note
     const save = async (evt) => {
+        id = note.id;
         evt.preventDefault();
-        editNote({ ...note, editedNote});
+        editNote({ ...id, editedNote });
     }
 
     // delete note
@@ -27,6 +26,10 @@ export default function Note({ note }) {
 
     return (
         <li>
+            <h3>{note.note}</h3>
+            <button onClick={() => setButtonPopup(true)}>Edit Note</button>
+            <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+                <h4>Edit existing note: {note.note} </h4>
             <form onSubmit={save}>
                 <input 
                     type="text" 
@@ -39,30 +42,8 @@ export default function Note({ note }) {
                 🞪 
                 </button>
             </form>
-        </li>
+            </Popup>
+    </li>
+
     )
 }
-
-
-    // const select = (e) => {
-    //     e.preventDefault();
-    //     const id = note.id;
-    //     selectNote({id});
-    //     console.log(selectedNote);
-    // };
-
-    // const showNote = async (evt) => {
-    //     const hidden = evt.target.style.visibility = "hidden";
-    // ul.addEventListener("click", hide, false);
-    // }
-
-    // const hideNote = async (evt) => {
-    //     const visible = evt.target.style.visibility = "visible";
-    //     ul.addEventListener("click", hide, true);
-    // }
-
-    // function toggleNote(id){
-        // const target = document.getElementById(id),
-        // visibility = target.style.visibility;
-        // target.style.visibility = visibility && visibility == 'visibile' ? 'hidden' : 'visibile';
-    // }
