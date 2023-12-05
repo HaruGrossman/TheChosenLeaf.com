@@ -74,15 +74,29 @@ router.get("/:id", async (req, res, next) => {
 /** Updates single note by id */
 router.put("/:id", async (req, res, next) => {
   try {
-    const id = +req.params.id;
-    const { note } = req.body;
+    //identify params
+    const noteId = +req.params.id;
 
-    const findNote = await prisma.note.findUnique({ where: { id : id} });
+    // identify post exists for user
+    const findNote = await prisma.note.findUnique({ where: { id : noteId } });
     validateNotes(res.locals.user, findNote);
 
+    //error handling if it does not exist
+      if (!findNote) {
+        return next({
+            status: 404, 
+            message: `No note ${id} exists for the signed in user.`,
+        });
+    }
+
+    // identify req.body
+    const { id, note } = req.body;
+
+    // update note
     const updatedNote = await prisma.note.update({
-      where: { id : id },
-      data: { note },
+      where: { userId : res.locals.user.id, id : id },
+      data: { 
+        note: note, },
     });
     res.json(updatedNote);
   } catch (err) {
