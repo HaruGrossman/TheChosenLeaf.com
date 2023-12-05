@@ -1,14 +1,12 @@
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 import NewNote from "./NewNote";
-import Note from "./Note";
 import { useGetNotesQuery } from "../../store/Notes";
+import Note from "./note";
 
 export default function Notes(){
     const token = useSelector(selectToken);
     const { data: notes, isLoading } = useGetNotesQuery();
-    
-console.log(notes);
 
     if (!token) {
         return <p>You must be logged in to see your tasks.</p>;
@@ -17,7 +15,6 @@ console.log(notes);
         return (
         <div className="notes">
             <h2>My Plant Notes</h2>
-            <h3>Add A New Note</h3>
             <NewNote />
             <h3>Your Notes</h3>
             {isLoading && <p>Loading notes...</p>}
