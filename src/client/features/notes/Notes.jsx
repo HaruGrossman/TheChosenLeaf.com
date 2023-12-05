@@ -3,10 +3,14 @@ import { selectToken } from "../auth/authSlice";
 import NewNote from "./NewNote";
 import { useGetNotesQuery } from "../../store/Notes";
 import Note from "./note";
+import Popup from "../components/Popup";
+import { useState } from 'react';
 
 export default function Notes(){
     const token = useSelector(selectToken);
     const { data: notes, isLoading } = useGetNotesQuery();
+
+    const [buttonPopup, setButtonPopup] = useState(false);
 
     if (!token) {
         return <p>You must be logged in to see your tasks.</p>;
@@ -15,8 +19,10 @@ export default function Notes(){
         return (
         <div className="notes">
             <h2>My Plant Notes</h2>
-            <NewNote />
-            <h3>Your Notes</h3>
+            <button onClick={() => setButtonPopup(true)}>Create Note</button>
+            <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+                <NewNote />
+            </Popup>
             {isLoading && <p>Loading notes...</p>}
             {notes && (
                 <ul className="notes-list">
