@@ -1,20 +1,50 @@
 .homebody {
-    padding-left: 10%;
-    padding-right: 10%;
     background: #9EC1BE;
-    //color-scheme: #9EC1BE;
-}
-
-.glide {
-    width: 90%;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    height: 350px;
-    align-items: flex-start;
-}
-
-.glide__track .glide__slide {
+    padding: 5px 10px;
+    margin-top: 0px;
+    margin-bottom: 33px;
+    margin-right: 10%;
+    margin-left: 10%;
+    border-right: 5px solid #1d4c4e;
+    border-left: 5px solid #1d4c4e;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
+
+.glide--swipeable {
+    display: flex;
+    width: 90%;
+    background: #759E9D;
+    justify-content: center;
+    padding: 0;
+    height: 250px;
+    align-items: flex-start;
+    border: 3px solid#1d4c4e;
+    align-items: center;
+
+    .glide__slide {
+        display: flex;
+        justify-content: center;
+        width: 200px;
+        height: 250px;
+    }
+
+    .glide__arrows {
+        align-content: space-between;
+    }
+
+    .glide__arrows button:hover {
+        background-color: #21575A;
+    }
+}
+
+#arrowdown {
+    font: 35px;
+}
+
+// .glide__arrows button {
+//     display: flex;
+//     justify-content: space-between;
+//     margin: 0;
+// }
