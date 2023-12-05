@@ -37,10 +37,8 @@ export default function Note ({ note }) {
                         onChange={(e) => setEditedNote(e.target.value)}
                         required
                     />
-                    <button onClick={save}>Save Changes</button>
-                    <button onClick={onDelete}> 
-                    🞪 
-                    </button>
+                    <button className="save-btn" onClick={save}>Save</button>
+                    <button className="delete-btn" onClick={onDelete}>Delete</button>
                 </form>
             </Popup>
     </li>
