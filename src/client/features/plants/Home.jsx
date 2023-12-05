@@ -84,31 +84,31 @@ export default function Carousel() {
                 className="glide__slide"
                 data-url="http://localhost:3000/search/29">
                 <img src="/plantImages/CryptanthusRoseElaine1.jpg" />
-                <caption>Heat tolerant plants</caption>
+                <caption>Ferns</caption>
               </li>
               <li
                 className="glide__slide"
                 data-url="http://localhost:3000/search/11">
                 <img src="/plantImages/DidymochlaenaTruncatula1.jpg" />
-                <caption>Cold tolerant plants</caption>
+                <caption>Palm plants</caption>
               </li>
               <li
                 className="glide__slide"
                 data-url="http://localhost:3000/search/1">
                 <img src="/plantImages/Lipstick1.jpg" />
-                <caption>Direct Sunlight, lots of bright sunlight</caption>
+                <caption>Cactus and Succulents</caption>
               </li>
               <li
                 className="glide__slide"
                 data-url="http://localhost:3000/search/9">
                 <img src="/plantImages/MaidenhairFern2.jpg" />
-                <caption>Partial shade, or low light conditions</caption>
+                <caption>Bormeliads</caption>
               </li>
               <li
                 className="glide__slide"
                 data-url="http://localhost:3000/search/2">
                 <img src="/plantImages/bougainvillea3.jpg" />
-                <caption>Frequent Watering plants</caption>
+                <caption>Foliage Plants</caption>
               </li>
             </ul>
           </div>
