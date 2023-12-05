@@ -2,8 +2,8 @@
 import Notes from "../notes/Notes";
 import { useMeQuery, selectToken } from "../auth/authSlice";
 import { useSelector } from "react-redux";
-import FavoritePlant from "./components/FavoritePlant";
-import FavoriteStore from "./components/FavoriteStores";
+import FavoritePlant from "../components/FavoritePlant";
+import FavoriteStore from "../components/FavoriteStores";
 
 //error checking: isLoading return Loading...
 //error checking: isError return 'something went wrong'
