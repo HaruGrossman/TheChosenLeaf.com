@@ -32,13 +32,17 @@ export default function Carousel() {
     const glide = new Glide(".glide", config);
     glide.mount();
     //add event listener to the slides
-    // const plantImages = document.querySelectorAll(".glide__slide");
-    // plantImages.forEach((plantImage, indexOf) => {
-    //   plantImage.addEventListener("click", () => {
-    //     <Plants />;
-    //     console.log(`Slide ${indexOf} clicked`);
-    //   });
-    // });
+    const plantImages = document.querySelectorAll(".glide__slide");
+    function handleImageClick(url) {
+      window.location.href = url;
+    }
+    plantImages.forEach((plantImage) => {
+      const imgUrl = plantImage.getAttribute("data-url");
+      plantImage.addEventListener("click", () => {
+        handleImageClick(imgUrl);
+        console.log(`Slide ${indexOf} clicked`);
+      });
+    });
     return () => {
       glide.destroy();
     };
@@ -49,28 +53,52 @@ export default function Carousel() {
       <div className="glide">
         <div className="glide__track" data-glide-el="track">
           <ul id="options-autoplay-input" className="glide__slides">
-            <li className="glide__slide">
+            <li
+              className="glide__slide"
+              data-url="http://localhost:3000/search/24"
+            >
               <img src="/plantImages/ChamaedoreaMetallica1.jpg" />
             </li>
-            <li className="glide__slide">
+            <li
+              className="glide__slide"
+              data-url="http://localhost:3000/search/16"
+            >
               <img src="/plantImages/bougainvillea2.jpg" />
             </li>
-            <li className="glide__slide">
+            <li
+              className="glide__slide"
+              data-url="http://localhost:3000/search/21"
+            >
               <img src="/plantImages/ChamaedoreaElegans2.jpg" />
             </li>
-            <li className="glide__slide">
+            <li
+              className="glide__slide"
+              data-url="http://localhost:3000/search/29"
+            >
               <img src="/plantImages/CryptanthusRoseElaine1.jpg" />
             </li>
-            <li className="glide__slide">
+            <li
+              className="glide__slide"
+              data-url="http://localhost:3000/search/11"
+            >
               <img src="/plantImages/DidymochlaenaTruncatula1.jpg" />
             </li>
-            <li className="glide__slide">
+            <li
+              className="glide__slide"
+              data-url="http://localhost:3000/search/1"
+            >
               <img src="/plantImages/Lipstick1.jpg" />
             </li>
-            <li className="glide__slide">
+            <li
+              className="glide__slide"
+              data-url="http://localhost:3000/search/9"
+            >
               <img src="/plantImages/MaidenhairFern2.jpg" />
             </li>
-            <li className="glide__slide">
+            <li
+              className="glide__slide"
+              data-url="http://localhost:3000/search/2"
+            >
               <img src="/plantImages/bougainvillea3.jpg" />
             </li>
           </ul>
