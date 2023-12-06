@@ -68,7 +68,7 @@ router.get("/account/favorite", async (req, res, next) => {
     // finds many where user exists and favorite true exists
     // validates user is logged in
     const plants = await prisma.favorite.findMany({
-      where: { userId: res.locals.user.id, plantId },
+      where: { userId: res.locals.user.id },
     });
     validateFavorites(res.locals.user, favorite);
     res.json(plants);
@@ -81,7 +81,7 @@ router.get("/account/favorite", async (req, res, next) => {
 router.post("/account/favorite", async (req, res, next) => {
   try {
     const { plantId, myplant } = req.body;
-    if (!plantId || !myplant) {
+    if (!plantId) {
       throw new ServerError(400, "Plant info required.");
     }
     const favoritePlant = await prisma.favorite.create({
