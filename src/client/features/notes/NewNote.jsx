@@ -1,6 +1,7 @@
 import { useState } from "react";
 // import { useCreateTaskMutation } from "./taskSlice";
 import { useCreateNoteMutation } from "../../store/Notes";
+import '../components/popup.css';
 
 /** Form for creating new tasks */
 export default function NewNote() {
@@ -22,7 +23,7 @@ export default function NewNote() {
         onChange={(e) => setNote(e.target.value)}
         required
       />
-      <button>Create</button>
+      <button className="create-btn">Create</button>
     </form>
     </>
   );

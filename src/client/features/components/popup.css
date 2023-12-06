@@ -16,11 +16,29 @@
     padding: 32px;
     width: 100%;
     max-width: 640px;
-    background-color: white;
+    background-color: #8FBC8F;
 }
 
 .popup-inner .close-btn {
     position: absolute;
     top: 16px;
     right: 16px;
+}
+
+.popup-inner .create-btn {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+}
+
+.popup-inner .save-btn {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+}
+
+.popup-inner .delete-btn {
+    position: absolute;
+    bottom: 16px;
+    right: 75px;
 }
