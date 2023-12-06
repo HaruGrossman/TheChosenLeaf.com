@@ -55,7 +55,7 @@ export default function Carousel() {
         <section id="intro">
           <p>Struggling to find the right plant for your home or garden? High light, low light, tall, small, low maintenance?  The Chosen Plant is here to help you find the plant that is just right for you!</p>
         </section>
-        {/* <br /> */}
+        <br />
         <p>Need some ideas check out our slideshow <span id="arrowdown">&#x290B; </span> or head over to the search page</p>
         <div className="glide">
           <div className="glide__track" data-glide-el="track">
@@ -65,12 +65,14 @@ export default function Carousel() {
                 data-url="http://localhost:3000/search/24" >
                 <img src="/plantImages/ChamaedoreaMetallica1.jpg" />
                 <caption>Hanging Plants</caption>
+                <p id="altText">Trellis well and grow lanky</p>
               </li>
               <li
                 className="glide__slide"
                 data-url="http://localhost:3000/search/16">
                 <img src="/plantImages/bougainvillea2.jpg" />
                 <caption>Flowering Plants</caption>
+                <p id="altText"></p>
               </li>
               <li
                 className="glide__slide"
