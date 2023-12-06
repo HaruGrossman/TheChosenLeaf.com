@@ -101,7 +101,7 @@ export default function Carousel() {
                 className="glide__slide"
                 data-url="http://localhost:3000/search/9">
                 <img src="/plantImages/MaidenhairFern2.jpg" />
-                <caption>Bormeliads</caption>
+                <caption>Bromeliads</caption>
               </li>
               <li
                 className="glide__slide"
@@ -127,7 +127,7 @@ export default function Carousel() {
           </div>
         </div>
         <p>
-          Our goal is to connect beginning and experienced plant owners to a wide range of plants, and where to find them. We're continuously work to bring you that "It's Perfect!" flower, succulent, or plant for your house and home. Weather you're looking or just need some advice on what that houseplant special care and needs, stop by and we can help you!
+          Our goal is to connect beginning and experienced plant owners to a wide range of plants, and where to find them. We're continuously work to bring you that "It's Perfect!" flower, succulent, or plant for your house and home. Whether you're looking or just need some advice on what that houseplant special care and needs, stop by and we can help you!
         </p>
       </body >
     </>
