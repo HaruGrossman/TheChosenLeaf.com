@@ -1,16 +1,16 @@
-// import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-// import { selectToken } from authslice
-import { useCreateFavoritePlantMutation, useDeleteFavoritePlantMutation, useGetPlantQuery } from "./plantSlice";
+import { useGetPlantQuery } from "./plantSlice";
 // import css
 import Reviews from "./Review";
 import Switch from "../components/FavoriteSwitch";
 import { useState } from 'react';
+import FavoritePlant from "../components/FavoritePlant";
+
 
 export default function Details(){
 
-    // validate login
-    // const token = useSelector(selectToken);
+    const [isToggled, setIsToggled] = useState(false);
+
 
     const navigate = useNavigate();
 
@@ -59,8 +59,11 @@ export default function Details(){
         <h2>Category:{plant.category} </h2>
         <button className="store-near-me" onClick={storeNavigate}>Stores Near Me</button>
         <br/><br/>
-        <Switch />
+        <Switch isToggled={isToggled} onToggle={() => setIsToggled(!isToggled)}>
+            <FavoritePlant />
+        </Switch>
+        <br/><br/>
         <Reviews />
         <button className="return-btn" onClick={returnNavigate}>Back to Search</button>
-    </main>)
+    </main>);
 }
