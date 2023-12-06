@@ -53,11 +53,10 @@ export default function Carousel() {
     <>
       <body className="homebody">
         <section id="intro">
-          <p>Struggling to find the right plant for your home or garden? High light, low light, tall, small, low maintenance?</p>
-          <p>The Chosen Plant is here to help you find the plant that is just right for you!</p>
+          <p>Struggling to find the right plant for your home or garden? High light, low light, tall, small, low maintenance?  The Chosen Plant is here to help you find the plant that is just right for you!</p>
         </section>
         {/* <br /> */}
-        <p>Need some ideas check out our slideshow <span id="arrowdown"> &#x21e3; </span> or head over to the search page</p>
+        <p>Need some ideas check out our slideshow <span id="arrowdown">&#x290B; </span> or head over to the search page</p>
         <div className="glide">
           <div className="glide__track" data-glide-el="track">
             <ul id="options-autoplay-input" className="glide__slides">
@@ -77,7 +76,7 @@ export default function Carousel() {
                 className="glide__slide"
                 data-url="http://localhost:3000/search/21">
                 <img src="/plantImages/ChamaedoreaElegans2.jpg" />
-                <caption>Infrequent watering, Low maintenance plants</caption>
+                <caption>Infrequent watering</caption>
               </li>
               <li
                 className="glide__slide"
@@ -113,20 +112,20 @@ export default function Carousel() {
           </div>
           <div className="glide__arrows" data-glide-el="controls">
             <button
-              className="glide__arrow glide__arrow--left arrow-left"
+              className="glide__arrow glide__arrow--left arrow-left grabbed-arrow-left"
               data-glide-dir="<"
             >
               &#60;
             </button>
             <button
-              className="glide__arrow glide__arrow--right arrow-right"
+              className="glide__arrow glide__arrow--right arrow-right grabbed-arrow-right"
               data-glide-dir=">"
             >
               &#62;
             </button>
           </div>
         </div>
-        <p>
+        <p id="moto">
           Our goal is to connect beginning and experienced plant owners to a wide range of plants, and where to find them. We're continuously work to bring you that "It's Perfect!" flower, succulent, or plant for your house and home. Whether you're looking or just need some advice on what that houseplant special care and needs, stop by and we can help you!
         </p>
       </body >
