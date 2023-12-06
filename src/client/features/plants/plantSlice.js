@@ -10,9 +10,28 @@ const plantsApi = api.injectEndpoints({
             query: (id) => `/${id}`,
             providesTags: ["Plant"],
         }),
-    })
-})
-export const { useGetAllPlantsQuery, useGetPlantQuery } = plantsApi
+        getFavoritePlants: builder.query({
+            query: () => "/account/favorite",
+            providesTags: ["FavoritePlants"],
+        }),
+        createFavoritePlant: builder.mutation({
+            query: (data) => ({
+                url: `/account/favorite`,
+                method: "POST",
+                body: data,
+            }),
+            invalidatesTags: ["FavoritePlants"],
+        }),
+        deleteFavoritePlant: builder.mutation({
+            query: (plantId) => ({
+                url:`account/favorite/${plantId}`, 
+            }),
+            invalidatesTags: ["FavoritePlant"]
+        })
+    }),
+});
+
+export const { useGetAllPlantsQuery, useGetPlantQuery, useGetFavoritePlantsQuery, useCreateFavoritePlantMutation, useDeleteFavoritePlantMutation } = plantsApi
 
 // import { createSlice } from '@reduxjs/toolkit'
 
@@ -48,11 +67,11 @@ export const { useGetAllPlantsQuery, useGetPlantQuery } = plantsApi
 //      /plants
 //      tags "plants"
 //   getPlant query
-//      /plants/${id}
+//      /plants/
 //      tags "plants"
 //   createReview mutation     
 // **this is creating a new review, but editing an existing plant by id
-//      /plants/${plant.id}
+//      /plants/
 //      method "PUT"
 //      body: review
 
