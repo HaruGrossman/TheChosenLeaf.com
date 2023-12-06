@@ -32,6 +32,7 @@ export default function Account(){
     if (!token) {
         return <div>Please log in or register to access your account.</div>
     }
+    console.log(token);
     
     //return the information and output to the webpage
     return isLoading ? (
