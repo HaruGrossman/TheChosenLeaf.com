@@ -11,12 +11,12 @@ const plantsApi = api.injectEndpoints({
             providesTags: ["Plant"],
         }),
         getFavoritePlants: builder.query({
-            query: () => "/account/favorite",
+            query: () => "/account/favoritePlant",
             providesTags: ["FavoritePlants"],
         }),
         createFavoritePlant: builder.mutation({
             query: (data) => ({
-                url: `/account/favorite`,
+                url: `/account/favoritePlant`,
                 method: "POST",
                 body: data,
             }),
@@ -24,7 +24,8 @@ const plantsApi = api.injectEndpoints({
         }),
         deleteFavoritePlant: builder.mutation({
             query: (plantId) => ({
-                url:`account/favorite/${plantId}`, 
+                url:`account/favoritePlant/${plantId}`, 
+                method: "DELETE",
             }),
             invalidatesTags: ["FavoritePlant"]
         })

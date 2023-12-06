@@ -24,21 +24,25 @@ CREATE TABLE "Plant" (
     "ideallight" TEXT NOT NULL,
     "toleratedlight" TEXT NOT NULL,
     "watering" TEXT NOT NULL,
-    "image" TEXT NOT NULL,
-    "favorite" BOOLEAN NOT NULL DEFAULT false
+    "image" TEXT NOT NULL
 );
 
 -- CreateTable
-CREATE TABLE "Favorite" (
+CREATE TABLE "FavoritePlant" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "myplant" TEXT NOT NULL,
-    "mystore" TEXT NOT NULL,
     "userId" INTEGER NOT NULL,
     "plantId" INTEGER NOT NULL,
+    CONSTRAINT "FavoritePlant_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT "FavoritePlant_plantId_fkey" FOREIGN KEY ("plantId") REFERENCES "Plant" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "FavoriteStore" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "userId" INTEGER NOT NULL,
     "storeId" INTEGER NOT NULL,
-    CONSTRAINT "Favorite_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT "Favorite_plantId_fkey" FOREIGN KEY ("plantId") REFERENCES "Plant" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT "Favorite_storeId_fkey" FOREIGN KEY ("storeId") REFERENCES "Store" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT "FavoriteStore_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT "FavoriteStore_storeId_fkey" FOREIGN KEY ("storeId") REFERENCES "Store" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- CreateTable
@@ -53,9 +57,7 @@ CREATE TABLE "Review" (
 CREATE TABLE "Store" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "store" TEXT NOT NULL,
-    "zip" TEXT NOT NULL,
-    "userId" INTEGER NOT NULL,
-    CONSTRAINT "Store_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+    "zip" TEXT NOT NULL
 );
 
 -- CreateIndex

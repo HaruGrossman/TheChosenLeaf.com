@@ -63,11 +63,11 @@ const validateFavorites = (user, favorite) => {
 };
 
 // sends all favorited plants
-router.get("/account/favorite", async (req, res, next) => {
+router.get("/account/favoritePlant", async (req, res, next) => {
   try {
     // finds many where user exists and favorite true exists
     // validates user is logged in
-    const plants = await prisma.favorite.findMany({
+    const plants = await prisma.favoritePlant.findMany({
       where: { userId: res.locals.user.id },
     });
     validateFavorites(res.locals.user, favorite);
@@ -78,16 +78,15 @@ router.get("/account/favorite", async (req, res, next) => {
 });
 
 // adds a plant to favorites
-router.post("/account/favorite", async (req, res, next) => {
+router.post("/account/favoritePlant", async (req, res, next) => {
   try {
     const { plantId, myplant } = req.body;
     if (!plantId) {
       throw new ServerError(400, "Plant info required.");
     }
-    const favoritePlant = await prisma.favorite.create({
+    const favoritePlant = await prisma.favoritePlant.create({
       data: {
         plantId,
-        myplant,
         user: { connect: { id: res.locals.user.id } },
       },
     });
@@ -98,7 +97,7 @@ router.post("/account/favorite", async (req, res, next) => {
 });
 
 // removes a plant from favorites
-router.delete("/account/favorite/:plantId", async (req, res, next) => {
+router.delete("/account/favoritePlant/:plantId", async (req, res, next) => {
   try {
     const plantId = +req.params.plantId;
 

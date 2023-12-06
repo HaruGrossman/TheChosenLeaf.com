@@ -31,6 +31,8 @@ export default function Details(){
     const { id } = useParams();
     const { data: plant, isLoading } = useGetPlantQuery(id);
 
+    console.log(plant)
+
     // unfavorite a favorited plant
     // const [unfavoritePlant, { isLoading: isUnfavoriting }] = useUnfavoritePlantMutation();
     // tryUnfavoritePlant = async (evt) => {
