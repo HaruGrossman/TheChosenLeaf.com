@@ -1,10 +1,11 @@
 // import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 // import { selectToken } from authslice
-import { useGetPlantQuery } from "./plantSlice";
+import { useCreateFavoritePlantMutation, useDeleteFavoritePlantMutation, useGetPlantQuery } from "./plantSlice";
 // import css
 import Reviews from "./Review";
-
+import Switch from "../components/FavoriteSwitch";
+import { useState } from 'react';
 
 export default function Details(){
 
@@ -30,13 +31,6 @@ export default function Details(){
     const { id } = useParams();
     const { data: plant, isLoading } = useGetPlantQuery(id);
 
-    // favorite a plant
-    // const [favoritePlant, { isLoading: isFavoriting }] = useFavoritePlantMutation();
-    // tryFavoritePlant = async (evt) => {
-    //     evt.preventDefault();
-    //     await favoritePlant(plant.id);
-    // };
-
     // unfavorite a favorited plant
     // const [unfavoritePlant, { isLoading: isUnfavoriting }] = useUnfavoritePlantMutation();
     // tryUnfavoritePlant = async (evt) => {
@@ -50,7 +44,6 @@ export default function Details(){
     //     evt.preventDefault();
     //     await reviewPlant(plant.id);
     // }
-console.log(plant);
 
     return isLoading ? (
     <p>Loading...</p>
@@ -65,20 +58,8 @@ console.log(plant);
         <h2>Temperature:{plant.tempmin}-{plant.tempmax}</h2>
         <h2>Category:{plant.category} </h2>
         <button className="store-near-me" onClick={storeNavigate}>Stores Near Me</button>
-        {/* { token &&
-            (book.favorite === false ? (
-                <form onSubmit={tryFavoritePlant}>
-                    <button>{isFavoriting ? "Hang tight..." : "❤️" }</button>
-                </form>
-            ) : (
-                <form onSubmit={tryUnfavoritePlant}>
-                    <button>{isUnfavoriting ? "Hang tight..." : "🤍" }</button>
-                </form>
-            ))
-        }; */}
-        {/* <form onSubmit={tryReviewPlant}> */}
-            {/* <button>{isReviewing ? "Hang tight..." : "Thank you!" }</button> */}
-        {/* </form> */}
+        <br/><br/>
+        <Switch />
         <Reviews />
         <button className="return-btn" onClick={returnNavigate}>Back to Search</button>
     </main>)
