@@ -2,8 +2,9 @@
 import Notes from "../notes/Notes";
 import { useMeQuery, selectToken } from "../auth/authSlice";
 import { useSelector } from "react-redux";
-import AccountFavoritePlant from "../components/AccountFavoritePlant";
-import FavoriteStore from "../components/FavoriteStores";
+import MyPlants from "../favorites/FavoritePlants";
+// import AccountFavoritePlant from "../components/AccountFavoritePlant";
+// import FavoriteStore from "../components/FavoriteStores";
 
 //error checking: isLoading return Loading...
 //error checking: isError return 'something went wrong'
@@ -41,13 +42,13 @@ export default function Account(){
     <div>
         <h1>{user?.username}'s Account Page</h1>
         <section className="myplants">
-            <AccountFavoritePlant />
+            {/* <MyPlants /> */}
         </section>
         <section className="mynotes">
             <Notes />
         </section>
         <section className="mystores">
-            <FavoriteStore />
+            {/* <FavoriteStore /> */}
         </section>
     </div>
     )

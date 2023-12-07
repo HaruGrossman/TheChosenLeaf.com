@@ -4,12 +4,13 @@ import './favoriteSwitch.css';
 const Switch = ({ isToggled, onToggle }) => {
 
     return(
+        <button>
         <label className="switch">
-            <input type="checkbox" checked={isToggled} onChange={onToggle} />
+            <input type="checkbox" onChange={onToggle} defaultChecked={isToggled}/>
             <span className="slider" />
         </label>
+        </button>
     )
-
 };
 
 export default Switch;

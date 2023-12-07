@@ -4,7 +4,8 @@ import { useGetPlantQuery } from "./plantSlice";
 import Reviews from "./Review";
 import Switch from "../components/FavoriteSwitch";
 import { useState } from 'react';
-import FavoritePlant from "../components/FavoritePlant";
+import FavoritePlant from "../favorites/NewFavoritePlant";
+import NewFavoritePlant from "../favorites/NewFavoritePlant";
 
 
 export default function Details(){
@@ -30,8 +31,6 @@ export default function Details(){
 
     const { id } = useParams();
     const { data: plant, isLoading } = useGetPlantQuery(id);
-
-    console.log(plant)
 
     // unfavorite a favorited plant
     // const [unfavoritePlant, { isLoading: isUnfavoriting }] = useUnfavoritePlantMutation();
@@ -61,9 +60,7 @@ export default function Details(){
         <h2>Category:{plant.category} </h2>
         <button className="store-near-me" onClick={storeNavigate}>Stores Near Me</button>
         <br/><br/>
-        <Switch isToggled={isToggled} onToggle={() => setIsToggled(!isToggled)}>
-            <FavoritePlant />
-        </Switch>
+        <NewFavoritePlant />
         <br/><br/>
         <Reviews />
         <button className="return-btn" onClick={returnNavigate}>Back to Search</button>

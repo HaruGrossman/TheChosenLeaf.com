@@ -11,7 +11,7 @@ const plantsApi = api.injectEndpoints({
             providesTags: ["Plant"],
         }),
         getFavoritePlants: builder.query({
-            query: () => "/account/favoritePlant",
+            query: () => "/account/favoriteplant",
             providesTags: ["FavoritePlants"],
         }),
         createFavoritePlant: builder.mutation({
