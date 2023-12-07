@@ -11,15 +11,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 110vh;
+    height: 100vh;
 
-    altText {
+    #altText {
         display: none;
     }
 }
 
 #intro {
-    padding: 10px 8px;
+    padding: 20px 10px;
     text-indent: 20px;
     margin-left: 2%;
     margin-right: 2%;
@@ -27,8 +27,8 @@
     border-radius: 2% 5% 5% 4%/ 1% 1% 2% 4%;
     background-color: #759E9D;
     position: relative;
-
     // https://freefrontend.com/css-border-examples/   check this out for later stying 
+
     &::before {
         content: '';
         border: 2px solid #353535;
@@ -48,7 +48,7 @@
     width: 90%;
     background: #759E9D;
     justify-content: center;
-    height: 400px;
+    height: 300px;
     border: 3px solid#1d4c4e;
     align-content: center;
     max-width: 860px;
@@ -60,6 +60,7 @@
         flex-direction: column;
         justify-content: center;
         align-content: center;
+        padding-bottom: 10px;
         width: 33%;
         grid: auto/ auto auto auto;
         height: auto;
@@ -92,9 +93,14 @@
     }
 }
 
-@media screen and (max-width: 700vw) {
-    .glide__track>.glide__slides>li>altText {
+@media screen and (max-width: 700px) {
+    .glide__track>.glide__slides>li>#altText {
         display: block;
+        justify-content: center;
+    }
+
+    .glide__slides>li {
+        padding: 20px 20px;
     }
 }
 
