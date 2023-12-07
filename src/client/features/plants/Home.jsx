@@ -72,43 +72,49 @@ export default function Carousel() {
                 data-url="http://localhost:3000/search/16">
                 <img src="/plantImages/bougainvillea2.jpg" />
                 <caption>Flowering Plants</caption>
-                <p id="altText"></p>
+                <p id="altText">Flowers everywhere!</p>
               </li>
               <li
                 className="glide__slide"
                 data-url="http://localhost:3000/search/21">
                 <img src="/plantImages/ChamaedoreaElegans2.jpg" />
                 <caption>Infrequent watering</caption>
+                <p id="altText">Little watering, great for travelers</p>
               </li>
               <li
                 className="glide__slide"
                 data-url="http://localhost:3000/search/29">
                 <img src="/plantImages/CryptanthusRoseElaine1.jpg" />
                 <caption>Ferns</caption>
+                <p id="altText">Nonflowering or seeding plant</p>
               </li>
               <li
                 className="glide__slide"
                 data-url="http://localhost:3000/search/11">
                 <img src="/plantImages/DidymochlaenaTruncatula1.jpg" />
                 <caption>Palm plants</caption>
+                <p id="altText">Evergreen leaves, from rainforests to deserts.</p>
               </li>
               <li
                 className="glide__slide"
                 data-url="http://localhost:3000/search/1">
                 <img src="/plantImages/Lipstick1.jpg" />
                 <caption>Cactus and Succulents</caption>
+                <p id="altText">Desert plants, low maintenance</p>
               </li>
               <li
                 className="glide__slide"
                 data-url="http://localhost:3000/search/9">
                 <img src="/plantImages/MaidenhairFern2.jpg" />
                 <caption>Bromeliads</caption>
+                <p id="altText">Similar to succulents, drought resistant some produce edible fruit</p>
               </li>
               <li
                 className="glide__slide"
                 data-url="http://localhost:3000/search/2">
                 <img src="/plantImages/bougainvillea3.jpg" />
                 <caption>Foliage Plants</caption>
+                <p id="altText"></p>
               </li>
             </ul>
           </div>
