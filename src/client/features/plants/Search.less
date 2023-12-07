@@ -1,0 +1,82 @@
+.searchMain {
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+    // grid-column-gap: 1px;
+    // grid-row-gap: 1px;
+}
+
+.title {
+    padding: 5px;
+    display: contents;
+}
+
+.sidenav {
+    width: fit-content;
+    height: 100vw;
+    background-color: #9EC1BE;
+}
+
+.applyChangesButton {
+    width: fit-content;
+    margin: 3px;
+}
+
+.resultSection {
+    display: grid;
+    gap: 1em;
+}
+
+.searchResult {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+    align-content: center;
+    border: 2px solid black;
+    border-radius: 0% 0% 0% 0%/ 0% 0% 0% 0%;
+    color: white;
+    position: relative;
+    box-shadow: 20px 20px rgba(0, 0, 0, .15);
+    background-color: green;
+    transition: 500ms linear;
+
+    img {
+        height: 150px;
+        width: 150px;
+        padding-bottom: 0;
+    }
+
+    h5 {
+        border-top: 2px solid black;
+        padding: 2px;
+    }
+}
+
+.searchResult:hover {
+    border-radius: 0% 0% 50% 50%/ 0% 0% 5% 5%;
+    box-shadow: 10px 10px rgba(0, 0, 0, .25);
+}
+
+
+
+
+
+
+
+//~~ rounded side borders for the plant cards
+// body {background-color: #ddd; margin: 3rem;}
+
+// #tv {
+//     position: relative;
+//     width: 350px;
+//     height: 250px;
+//     background: white;
+//     border-radius: 0% 0% 0% 0% / 0% 0% 0% 0% ;
+//     color: white;
+//     box-shadow: 20px 20px rgba(0,0,0,.15);
+//     transition: all .4s ease;
+//   }
+//   #tv:hover {
+//     border-radius: 0% 0% 50% 50% / 0% 0% 5% 5% ;
+//     box-shadow: 10px 10px rgba(0,0,0,.25);
+//   }
