@@ -12,9 +12,10 @@ import Carousel from "./features/plants/Home.jsx"; //for home page
 //import Footer from "./layout/Footer.jsx";
 import Search from "./features/plants/Search.jsx";
 import Account from "./features/plants/Account.jsx";
-import AuthForm from "../client/features/auth/AuthForm.jsx"
+import AuthForm from "../client/features/auth/AuthForm.jsx";
 import Maps from "./features/plants/Maps.jsx";
 import Details from "./features/plants/PlantDetails.jsx";
+import PlantType from "./features/plants/PlantType.jsx";
 import Root from "./layout/Root.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -29,7 +30,8 @@ const router = createBrowserRouter([
       { path: "/Account", element: <Account /> },
       { path: "/Login", element: <AuthForm /> },
       { path: "/Maps", element: <Maps /> },
-      { path: "/Search/:id", element: <Details /> }
+      { path: "/Search/:id", element: <Details /> },
+      { path: "/Search/plantType/:id", element: <PlantType /> },
     ],
   },
 ]);
