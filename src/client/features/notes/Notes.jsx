@@ -1,14 +1,16 @@
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 import NewNote from "./NewNote";
-import Note from "./Note";
 import { useGetNotesQuery } from "../../store/Notes";
+import Note from "./note";
+import Popup from "../components/Popup";
+import { useState } from 'react';
 
 export default function Notes(){
     const token = useSelector(selectToken);
     const { data: notes, isLoading } = useGetNotesQuery();
-    
-console.log(notes);
+
+    const [buttonPopup, setButtonPopup] = useState(false);
 
     if (!token) {
         return <p>You must be logged in to see your tasks.</p>;
@@ -17,9 +19,10 @@ console.log(notes);
         return (
         <div className="notes">
             <h2>My Plant Notes</h2>
-            <h3>Add A New Note</h3>
-            <NewNote />
-            <h3>Your Notes</h3>
+            <button onClick={() => setButtonPopup(true)}>Create Note</button>
+            <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+                <NewNote />
+            </Popup>
             {isLoading && <p>Loading notes...</p>}
             {notes && (
                 <ul className="notes-list">
