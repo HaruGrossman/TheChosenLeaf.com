@@ -1,16 +1,18 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import Glide from "@glidejs/glide";
 //import mandatory core css file for glide
 import "@glidejs/glide/dist/css/glide.core.min.css";
 //import optional theme css file for glide
 import "@glidejs/glide/dist/css/glide.theme.min.css";
-// import {userSelector} from "react-redux";
 import "@glidejs/glide/dist/glide.min.js";
 import "./plants.css";
-import Plants from "./Search";
 
 export default function Carousel() {
+  const [isImageClicked, setIsImageClicked] = useState(false);
+  const [plantCategory, setPlantCategory] = useState("");
+
   //config contains options for carousel
   const config = {
     type: "carousel",
@@ -27,22 +29,23 @@ export default function Carousel() {
     autoplay: 2000,
     hoverpause: true,
   };
+
+  function handleImageClick(selectedType) {
+    setIsImageClicked(true);
+    setPlantCategory(selectedType);
+  }
   //use useEffect to hold state from glide
   useEffect(() => {
     const glide = new Glide(".glide", config);
-    glide.mount();
-    //add event listener to the slides
     const plantImages = document.querySelectorAll(".glide__slide");
-    function handleImageClick(url) {
-      window.location.href = url;
-    }
     plantImages.forEach((plantImage) => {
-      const imgUrl = plantImage.getAttribute("data-url");
       plantImage.addEventListener("click", () => {
-        handleImageClick(imgUrl);
-        console.log(`Slide ${indexOf} clicked`);
+        const selectedType = plantImage.getAttribute("data-type");
+        handleImageClick(selectedType);
       });
     });
+
+    glide.mount();
     return () => {
       glide.destroy();
     };
@@ -56,50 +59,80 @@ export default function Carousel() {
             <li
               className="glide__slide"
               data-url="http://localhost:3000/search/24"
+              data-type="Anthurium"
             >
-              <img src="/plantImages/ChamaedoreaMetallica1.jpg" />
+              <Link to={`/Search/plantType/7`}>
+                <img src="/plantImages/Anthurium1.jpg" alt="Anthurium" />
+              </Link>
             </li>
             <li
               className="glide__slide"
               data-url="http://localhost:3000/search/16"
+              data-type="Cactus And Succulent"
             >
-              <img src="/plantImages/bougainvillea2.jpg" />
+              <Link to={`/Search/plantType/5`}>
+                <img
+                  src="/plantImages/Cactus1.jpg"
+                  alt="Cactus And Succulent"
+                />
+              </Link>
             </li>
             <li
               className="glide__slide"
               data-url="http://localhost:3000/search/21"
+              data-type="Palm"
             >
-              <img src="/plantImages/ChamaedoreaElegans2.jpg" />
+              <Link to={`/Search/plantType/4`}>
+                <img src="/plantImages/ChamaedoreaElegans2.jpg" alt="Palm" />
+              </Link>
             </li>
             <li
               className="glide__slide"
               data-url="http://localhost:3000/search/29"
+              data-type="Bromeliad"
             >
-              <img src="/plantImages/CryptanthusRoseElaine1.jpg" />
+              <Link to={`/Search/plantType/6`}>
+                <img
+                  src="/plantImages/CryptanthusRoseElaine1.jpg"
+                  alt="Bromeliad"
+                />
+              </Link>
             </li>
             <li
               className="glide__slide"
               data-url="http://localhost:3000/search/11"
+              data-type="Foliage plant"
             >
-              <img src="/plantImages/DidymochlaenaTruncatula1.jpg" />
+              <Link to={`/Search/plantType/8`}>
+                <img src="/plantImages/FoliagePlant1.jpg" alt="Foliage plant" />
+              </Link>
             </li>
             <li
               className="glide__slide"
               data-url="http://localhost:3000/search/1"
+              data-type="Hanging"
             >
-              <img src="/plantImages/Lipstick1.jpg" />
+              <Link to={`/Search/plantType/1`}>
+                <img src="/plantImages/Lipstick1.jpg" alt="Hanging" />
+              </Link>
             </li>
             <li
               className="glide__slide"
               data-url="http://localhost:3000/search/9"
+              data-type="Fern"
             >
-              <img src="/plantImages/MaidenhairFern2.jpg" />
+              <Link to={`/Search/plantType/2`}>
+                <img src="/plantImages/MaidenhairFern2.jpg" alt="Fern" />
+              </Link>
             </li>
             <li
               className="glide__slide"
               data-url="http://localhost:3000/search/2"
+              data-type="Flower"
             >
-              <img src="/plantImages/bougainvillea3.jpg" />
+              <Link to={`/Search/plantType/3`}>
+                <img src="/plantImages/bougainvillea3.jpg" alt="Flower" />
+              </Link>
             </li>
           </ul>
         </div>
