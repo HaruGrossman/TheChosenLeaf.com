@@ -154,16 +154,18 @@ export default function Plants() {
         </div>
         <div className="resultSection">
           <h1 className="title">Results:</h1>
-          {filteredPlants?.map((plant) => (
-            <li key={plant.id} className="searchResult">
-              <Link to={`/search/${plant.id}`}>
-                <img src={plant.image} />
-              </Link>
-              <h5 className="search-plantName">{plant.name}</h5>
-            </li>
-          ))}
+          <div className="resultCards">
+            {filteredPlants?.map((plant) => (
+              <li key={plant.id} className="searchResult">
+                <Link to={`/search/${plant.id}`}>
+                  <img src={plant.image} />
+                </Link>
+                <h5 className="search-plantName">{plant.name}</h5>
+              </li>
+            ))}
+          </div>
         </div>
-      </main>
+      </main >
     </>
   );
 }
