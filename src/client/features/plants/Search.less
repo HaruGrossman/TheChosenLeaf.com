@@ -1,8 +1,6 @@
 .searchMain {
     display: grid;
     grid-template-columns: 2fr 8fr;
-    // grid-column-gap: 1px;
-    // grid-row-gap: 1px;
 }
 
 .title {
@@ -23,22 +21,26 @@
 
 .resultSection {
     display: grid;
-    gap: 1em;
+    // gap: 1em;
+    background-color: #4B7A7B;
 }
 
 .searchResult {
     display: flex;
+    gap: 1em;
     flex-direction: column;
     width: fit-content;
     height: fit-content;
     align-content: center;
+    align-items: center;
     border: 2px solid black;
     border-radius: 0% 0% 0% 0%/ 0% 0% 0% 0%;
     color: white;
     position: relative;
-    box-shadow: 20px 20px rgba(0, 0, 0, .15);
-    background-color: green;
+    box-shadow: 10px 10px rgba(0, 0, 0, .15);
+    background-color: #759E9D;
     transition: 500ms linear;
+    -webkit-transition: 400ms linear;
 
     img {
         height: 150px;
@@ -53,8 +55,9 @@
 }
 
 .searchResult:hover {
-    border-radius: 0% 0% 50% 50%/ 0% 0% 5% 5%;
-    box-shadow: 10px 10px rgba(0, 0, 0, .25);
+    background: #9EC1BE;
+    border-radius: 20% 20% 20% 20% / 10% 10% 5% 5%;
+    box-shadow: 10px 10px rgba(black, .45);
 }
 
 
