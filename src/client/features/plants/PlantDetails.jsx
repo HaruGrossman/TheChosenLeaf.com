@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useGetPlantQuery } from "./plantSlice";
 // import css
 import Reviews from "./Review";
+import NewFavoritePlant from "../favorites/NewFavoritePlant";
 
 
 export default function Details(){
@@ -65,6 +66,7 @@ console.log(plant);
         <h2>Temperature:{plant.tempmin}-{plant.tempmax}</h2>
         <h2>Category:{plant.category} </h2>
         <button className="store-near-me" onClick={storeNavigate}>Stores Near Me</button>
+        <NewFavoritePlant />
         {/* { token &&
             (book.favorite === false ? (
                 <form onSubmit={tryFavoritePlant}>
