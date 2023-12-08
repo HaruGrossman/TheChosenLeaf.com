@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 import NewNote from "./NewNote";
 import { useGetNotesQuery } from "../../store/Notes";
-import Note from "./note";
+import Note from "./Note";
 import Popup from "../components/Popup";
 import { useState } from 'react';
 
