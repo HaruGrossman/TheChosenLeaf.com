@@ -14,39 +14,10 @@ const plantsApi = api.injectEndpoints({
       query: (id) => `/plantType/${id}`,
       providesTags: ["Plant"],
     }),
-    getFavoritePlants: builder.query({
-      query: () => `/favorite`,
-      providesTags: ["FavoritePlants"],
-    }),
-    getFavoritePlant: builder.query({
-      query: (id) => `/favorite/${id}`,
-      providesTags: ["FavoritePlant"],
-    }),
-    createFavoritePlant: builder.mutation({
-      query: (data) => ({
-        url: `/favorite`,
-        method: "POST",
-        body: data,
-      }),
-      invalidatesTags: ["FavoritePlants"],
-    }),
-    deleteFavoritePlant: builder.mutation({
-      query: (id) => ({
-        url: `/favorite/${id}`,
-        methd: "DELETE",
-      }),
-      invalidatesTags: ["FavoritePlant"],
-    })
   }),
 });
 export const { 
-  useGetAllPlantsQuery, 
-  useGetPlantQuery, 
-  useGetPlantTypeQuery, 
-  useGetFavoritePlantsQuery, 
-  useGetFavoritePlantQuery, 
-  useCreateFavoritePlantMutation, 
-  useDeleteFavoritePlantMutation } =
+  useGetAllPlantsQuery, useGetPlantQuery, useGetPlantTypeQuery, } =
   plantsApi;
 
 // import { createSlice } from '@reduxjs/toolkit'
