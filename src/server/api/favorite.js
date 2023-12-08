@@ -46,7 +46,7 @@ router.get("/", async (req, res, next) => {
       }
       const favoritePlant = await prisma.favoritePlant.create({
         data: {
-          plantId,
+          plantId : plantId,
           note,
           user: { connect: { id: res.locals.user.id } },
         },
