@@ -1,18 +1,23 @@
-import api from '../../store/api'
+import api from "../../store/api";
 
 const plantsApi = api.injectEndpoints({
-    endpoints: (builder) => ({
-        getAllPlants: builder.query({
-            query: () => "/",
-            providesTags: ["AllPlants"],
-        }),
-        getPlant: builder.query({
-            query: (id) => `/${id}`,
-            providesTags: ["Plant"],
-        }),
-    })
-})
-export const { useGetAllPlantsQuery, useGetPlantQuery } = plantsApi
+  endpoints: (builder) => ({
+    getAllPlants: builder.query({
+      query: () => "/",
+      providesTags: ["AllPlants"],
+    }),
+    getPlant: builder.query({
+      query: (id) => `/${id}`,
+      providesTags: ["Plant"],
+    }),
+    getPlantType: builder.query({
+      query: (id) => `/plantType/${id}`,
+      providesTags: ["Plant"],
+    }),
+  }),
+});
+export const { useGetAllPlantsQuery, useGetPlantQuery, useGetPlantTypeQuery } =
+  plantsApi;
 
 // import { createSlice } from '@reduxjs/toolkit'
 
@@ -39,7 +44,6 @@ export const { useGetAllPlantsQuery, useGetPlantQuery } = plantsApi
 // export const { allPlants, favoritePlantToggle } = plantsSlice.actions
 // export default plantsSlice.reducer
 
-
 // import api
 
 // set plantsApi as api.injectEndpoints
@@ -50,13 +54,13 @@ export const { useGetAllPlantsQuery, useGetPlantQuery } = plantsApi
 //   getPlant query
 //      /plants/${id}
 //      tags "plants"
-//   createReview mutation     
+//   createReview mutation
 // **this is creating a new review, but editing an existing plant by id
 //      /plants/${plant.id}
 //      method "PUT"
 //      body: review
 
-// export const 
+// export const
 // usegetPlantsQuery
 // useGetPlantQuery
 // useCreateReviewMutation

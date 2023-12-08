@@ -15,6 +15,32 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+// sends by plant category
+router.get("/plantType/:id", async (req, res, next) => {
+  try {
+    // assigned id to each category and paired up in the object
+    const id = req.params.id;
+    const idPairType = {
+      1: "Hanging",
+      2: "Fern",
+      3: "Flower",
+      4: "Palm",
+      5: "Cactus And Succulent",
+      6: "Bromeliad",
+      7: "Anthurium",
+      8: "Foliage Plant",
+    };
+
+    const plantType = idPairType[id];
+    const plants = await prisma.plant.findMany({
+      where: { category: plantType },
+    });
+    res.json(plants);
+  } catch (err) {
+    next(err);
+  }
+});
+
 // send a single plant
 router.get("/:id", async (req, res, next) => {
   try {
@@ -107,19 +133,17 @@ router.delete("/account/favorite/:plantId", async (req, res, next) => {
     });
     validateFavorites(res.locals.user, favoritePlant);
 
-        await prisma.task.delete({ where: { plantId }});
-        res.sendStatus(204);
-    } catch (err) {
-        next (err);
-    }
+    await prisma.task.delete({ where: { plantId } });
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
 });
-
-
 
 // // sends all notes
 // router.get("/account/mynotes", async (req, res, next) => {
 //     try {
-      
+
 //         const notes = await prisma.note.findMany({
 //             where: { userId: res.locals.user.id }
 //         });
@@ -142,7 +166,7 @@ router.delete("/account/favorite/:plantId", async (req, res, next) => {
 //         const newNote = await prisma.note.create({
 //             data: {
 //                 id,
-//                 description, 
+//                 description,
 //                 user: { connect: { id: res.locals.user.id }},
 //             },
 //         });
@@ -163,7 +187,7 @@ router.delete("/account/favorite/:plantId", async (req, res, next) => {
 //         validateNotes(res.locals.user, note);
 
 //         const updatedNote = await prisma.note.update({
-//             where: { id }, 
+//             where: { id },
 //             data: { note },
 //         });
 //         res.json(updatedNote);
