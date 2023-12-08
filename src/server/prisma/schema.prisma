@@ -17,16 +17,20 @@ model User {
   username String @unique
   password String
   notes    Note[]
-  stores   Store[]
-  favorites    Favorite[]
+  favoriteStores    FavoriteStore[]
+  favoritePlants    FavoritePlant[]
 }
 
 model Note {
   id       Int    @id @default(autoincrement())
   note     String
+  name     String?
 
   userId   Int
   user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  favoritePlantId   Int?
+  favoritePlant   FavoritePlant? @relation(fields: [favoritePlantId], references: [id])
 }
 
 model Plant {
@@ -42,23 +46,18 @@ model Plant {
   image           String
   favorite        Boolean @default(false)
   reviews         Review[]
-  favorites       Favorite[]
+  favoritePlants  FavoritePlant[]
 }
 
-model Favorite {
+model FavoritePlant {
   id        Int    @id @default(autoincrement())
-  myplant   String
-  mystore   String
-  
+  notes     Note[]
+
   userId    Int
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id])
 
   plantId   Int
-  plant     Plant   @relation(fields: [plantId], references: [id], onDelete: Cascade)
-
-  storeId   Int
-  store     Store   @relation(fields: [storeId], references: [id], onDelete: Cascade)
-
+  plant     Plant   @relation(fields: [plantId], references: [id])
 }
 
 model Review {
@@ -66,15 +65,26 @@ model Review {
   reviews   String
 
   plantId   Int
-  plant     Plant   @relation(fields: [plantId], references: [id], onDelete: Cascade)
+  plant     Plant   @relation(fields: [plantId], references: [id])
 }
 
 model Store {
-  id        Int    @id @default(autoincrement())
-  store     String
-  zip       String
-  favorites  Favorite[]
+  id               Int    @id @default(autoincrement())
+  storeinfo        String?
+  street           String
+  city             String
+  state            String
+  zip              String
+  favoriteStores   FavoriteStore[]
+}
 
-  userId  Int
-  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+model FavoriteStore {
+  id        Int    @id @default(autoincrement())
+  name      String
+
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+
+  storeId   Int
+  store     Store    @relation(fields: [storeId], references: [id])
 }
