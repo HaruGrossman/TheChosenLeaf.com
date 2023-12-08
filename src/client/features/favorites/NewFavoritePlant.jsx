@@ -1,4 +1,4 @@
-import { useCreateFavoritePlantMutation, useDeleteFavoritePlantMutation, useGetPlantQuery } from "../plants/plantSlice";
+import { useCreateFavoritePlantMutation, useDeleteFavoritePlantMutation } from "../../store/FavoriteSlice";
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import Switch from "../components/FavoriteSwitch";
