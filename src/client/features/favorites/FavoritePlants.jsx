@@ -4,7 +4,7 @@ import { selectToken } from "../auth/authSlice";
 import { useSelector } from "react-redux";
 // import NewFavoritePlant from "./NewFavoritePlant";
 import { useState } from 'react';
-import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function PlantCard({ plant }) {
     const { data: plants } = useGetFavoritePlantsQuery();
@@ -12,7 +12,9 @@ function PlantCard({ plant }) {
     return(
         <div className="fav-plant-card">
         <li>            
+            <Link to={`/search/${plant.plant.id}`}>
             <img src={plant.plant.image} className="fav-plant-img"/>
+            </Link>
             <h3>{plant.plant.name}</h3>
         </li>
         </div>
