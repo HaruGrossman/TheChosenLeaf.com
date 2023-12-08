@@ -11,6 +11,9 @@ router.get("/", async (req, res, next) => {
       // validates user is logged in
       const plants = await prisma.favoritePlant.findMany({
         where: { userId: res.locals.user.id },
+        include: { 
+          plant: true,
+          notes: true },
       });
       // validateFavorites(res.locals.user, favorite);
       res.json(plants);
@@ -29,6 +32,9 @@ router.get("/", async (req, res, next) => {
         where: { 
           userId: res.locals.user.id,
         id: id },
+        include: { 
+          plant: true,
+          notes: true },
       });
       // validateFavorites(res.locals.user, favorite);
       res.json(plant);
@@ -37,18 +43,22 @@ router.get("/", async (req, res, next) => {
     }
   });
   
-  // adds a plant to favorites
+  // adds a plant to favorites     still not working
   router.post("/", async (req, res, next) => {
     try {
-      const { plantId, note } = req.body;
-      if (!plantId) {
-        throw new ServerError(400, "Plant info required.");
-      }
+      const { note } = +req.body;
+      // if (!plantId) {
+      //   throw new ServerError(400, "Plant info required.");
+      // }
       const favoritePlant = await prisma.favoritePlant.create({
         data: {
-          plantId : plantId,
           note,
+          // notes: { connect: { id: noteId }},
           user: { connect: { id: res.locals.user.id } },
+          // plant: { connect: { id: plantId} },
+          include: { 
+            plant: true,
+            notes: true },
         },
       });
       res.json(favoritePlant);

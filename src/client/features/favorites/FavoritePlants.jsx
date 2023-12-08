@@ -4,20 +4,20 @@ import { selectToken } from "../auth/authSlice";
 import { useSelector } from "react-redux";
 // import NewFavoritePlant from "./NewFavoritePlant";
 import { useState } from 'react';
+import { useParams } from "react-router-dom";
 
 function PlantCard({ plant }) {
     const { data: plants } = useGetFavoritePlantsQuery();
-
-    console.log(plant);
+    
     return(
-        <li>
-            <h3>{plant.plantId}</h3>
-            <h3>{plant.note}</h3>
+        <div className="fav-plant-card">
+        <li>            
+            <img src={plant.plant.image} className="fav-plant-img"/>
+            <h3>{plant.plant.name}</h3>
         </li>
-
+        </div>
     )
 }
-
 
 export default function MyPlants () {
     const token = useSelector(selectToken);
@@ -34,7 +34,7 @@ export default function MyPlants () {
             {plants && (
                 <ul>
                     {plants.map((plant) => (
-                    <PlantCard key={plants.id} plant={plant} />
+                    <PlantCard key={plant.id} plant={plant} />
                     ))}
                     </ul>
             )}
