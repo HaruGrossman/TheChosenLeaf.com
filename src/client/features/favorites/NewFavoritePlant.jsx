@@ -1,18 +1,18 @@
-import { useCreateFavoritePlantMutation, useDeleteFavoritePlantMutation } from "../plants/plantSlice";
+import { useCreateFavoritePlantMutation, useDeleteFavoritePlantMutation, useGetPlantQuery } from "../plants/plantSlice";
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import Switch from "../components/FavoriteSwitch";
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 
-export default function NewFavoritePlant( { favoritePlant }){
+export default function NewFavoritePlant(){
     const token = useSelector(selectToken);
     const navigate = useNavigate();
 
-    const [favorite, setFavorite] = useState(false);
+    const [favorite, setFavorite] = useState("");
     const [createFavorite] = useCreateFavoritePlantMutation();
 
-    const [unfavorite, setUnfavorite] = useState(true);
+    const [unfavorite, setUnfavorite] = useState("");
     const [deleteFavorite] = useDeleteFavoritePlantMutation();
 
     const loginNavigate = () => {
@@ -22,7 +22,7 @@ export default function NewFavoritePlant( { favoritePlant }){
     //create a new favorite
     const createFav = async (evt) => {
         evt.preventDefault();
-        await createFavorite({ ...plantId, favorite });
+        await createFavorite({ plantId, favorite });
     };
 
     //delete an existing favorite

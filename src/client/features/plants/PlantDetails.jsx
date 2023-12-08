@@ -4,8 +4,53 @@ import { useGetPlantQuery } from "./plantSlice";
 import Reviews from "./Review";
 import Switch from "../components/FavoriteSwitch";
 import { useState } from 'react';
-import FavoritePlant from "../favorites/NewFavoritePlant";
-import NewFavoritePlant from "../favorites/NewFavoritePlant";
+const token = useSelector(selectToken);
+const navigate = useNavigate();
+
+function NewFavoritePlant(){
+
+    
+    const [favorite, setFavorite] = useState("");
+    const [createFavorite] = useCreateFavoritePlantMutation();
+
+    const [unfavorite, setUnfavorite] = useState("");
+    const [deleteFavorite] = useDeleteFavoritePlantMutation();
+
+    const loginNavigate = () => {
+        navigate("/login");
+    };
+
+    //create a new favorite
+    const createFav = async (evt) => {
+        evt.preventDefault();
+        await createFavorite({ plantId, favorite });
+    };
+
+    //delete an existing favorite
+    const deleteFav = async (evt) => {
+        evt.preventDefault();
+        deleteFavorite(favoritePlant.id);
+    };
+
+    if (!token) {
+        return <button onClick={loginNavigate}>Login to add to favorites</button>
+    };
+        return (
+         <div>
+            <Switch onToggle={createFav} isToggled={deleteFav}>
+                <button onClick={createFav}>
+                    <input
+                    type="checkbox"
+                    value={favorite}
+                    onChange={(e) => setFavorite(e.target.value)}
+                    />
+                </button>
+            </Switch>
+
+         </div>
+        )
+};
+
 
 
 export default function Details(){
@@ -32,6 +77,8 @@ export default function Details(){
     const { id } = useParams();
     const { data: plant, isLoading } = useGetPlantQuery(id);
 
+
+    
     // unfavorite a favorited plant
     // const [unfavoritePlant, { isLoading: isUnfavoriting }] = useUnfavoritePlantMutation();
     // tryUnfavoritePlant = async (evt) => {
@@ -45,6 +92,8 @@ export default function Details(){
     //     evt.preventDefault();
     //     await reviewPlant(plant.id);
     // }
+    console.log(plant.id);
+
 
     return isLoading ? (
     <p>Loading...</p>
