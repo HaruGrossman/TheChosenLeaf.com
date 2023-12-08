@@ -13,7 +13,7 @@ export default function Notes(){
     const [buttonPopup, setButtonPopup] = useState(false);
 
     if (!token) {
-        return <p>You must be logged in to see your tasks.</p>;
+        return <p>You must be logged in to see your notes.</p>;
     };
     
         return (
