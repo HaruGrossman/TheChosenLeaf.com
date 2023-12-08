@@ -13,6 +13,7 @@ export default function PlantType() {
     <main className="plantType-container">
       <div>
         <h1>Welcome!! </h1>
+
         {plant?.map((plant) => (
           <li key={plant.id} className="plantType-card">
             <Link to={`/search/${plant.id}`}>

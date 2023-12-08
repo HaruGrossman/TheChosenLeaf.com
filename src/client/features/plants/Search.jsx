@@ -84,7 +84,7 @@ export default function Plants() {
             <option value="Cactus And Succulent">Cactus And Succulent</option>
             <option value="Bromeliad">Bromeliad</option>
             <option value="Anthurium">Anthurium</option>
-            <option value="Foliage plant">Foliage Plant</option>
+            <option value="Foliage Plant">Foliage Plant</option>
           </select>
         </div>
         <div>
@@ -96,8 +96,8 @@ export default function Plants() {
             onChange={handleDropdown2Change}
           >
             <option value="all">All</option>
-            <option value="infrequent">Infrequent</option>
-            <option value="less frequent">Less Frequent</option>
+            <option value="Infrequent">Infrequent</option>
+            <option value="Less Frequent">Less Frequent</option>
             <option value="Frequent">Frequent</option>
             <option value="Average">Average</option>
           </select>
@@ -111,8 +111,8 @@ export default function Plants() {
             onChange={handleDropdown3Change}
           >
             <option value="all">All</option>
-            <option value="Direct sunlight">Direct Sunlight</option>
-            <option value="Partial shade">Partial Shade</option>
+            <option value="Direct Sunlight">Direct Sunlight</option>
+            <option value="Partial Shade">Partial Shade</option>
             <option value="Diffused">Diffused</option>
           </select>
         </div>
