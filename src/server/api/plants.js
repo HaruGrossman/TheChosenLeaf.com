@@ -28,7 +28,7 @@ router.get("/plantType/:id", async (req, res, next) => {
       5: "Cactus And Succulent",
       6: "Bromeliad",
       7: "Anthurium",
-      8: "Foliage plant",
+      8: "Foliage Plant",
     };
 
     const plantType = idPairType[id];

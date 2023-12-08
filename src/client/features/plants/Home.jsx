@@ -56,11 +56,20 @@ export default function Carousel() {
     <>
       <body className="homebody">
         <section id="intro">
-          <p>Struggling to find the right plant for your home or garden? High light, low light, tall, small, low maintenance?</p>
-          <p>The Chosen Plant is here to help you find the plant that is just right for you!</p>
+          <p>
+            Struggling to find the right plant for your home or garden? High
+            light, low light, tall, small, low maintenance?
+          </p>
+          <p>
+            The Chosen Plant is here to help you find the plant that is just
+            right for you!
+          </p>
         </section>
         {/* <br /> */}
-        <p>Need some ideas check out our slideshow <span id="arrowdown"> &#x21e3; </span> or head over to the search page</p>
+        <p>
+          Need some ideas check out our slideshow{" "}
+          <span id="arrowdown"> &#x21e3; </span> or head over to the search page
+        </p>
         <div className="glide">
           <div className="glide__track" data-glide-el="track">
             <ul id="options-autoplay-input" className="glide__slides">
@@ -79,9 +88,9 @@ export default function Carousel() {
                 data-url="http://localhost:3000/search/16"
                 data-type="Flower"
               >
-              <Link to={`/Search/plantType/3`}>
-                <img src="/plantImages/bougainvillea3.jpg" alt="Flower" />
-              </Link>
+                <Link to={`/Search/plantType/3`}>
+                  <img src="/plantImages/bougainvillea3.jpg" alt="Flower" />
+                </Link>
                 <caption>Flowering Plants</caption>
               </li>
               <li
@@ -92,7 +101,9 @@ export default function Carousel() {
                 <Link to={`/Search/plantType/4`}>
                   <img src="/plantImages/ChamaedoreaElegans2.jpg" alt="Palm" />
                 </Link>
-                <caption>Palms, Infrequent watering, Low maintenance plants</caption>
+                <caption>
+                  Palms, Infrequent watering, Low maintenance plants
+                </caption>
               </li>
               <li
                 className="glide__slide"
@@ -101,10 +112,10 @@ export default function Carousel() {
               >
                 <Link to={`/Search/plantType/6`}>
                   <img
-                  src="/plantImages/CryptanthusRoseElaine1.jpg"
-                  alt="Bromeliad"
-                />
-              </Link>
+                    src="/plantImages/CryptanthusRoseElaine1.jpg"
+                    alt="Bromeliad"
+                  />
+                </Link>
                 <caption>Bromeliads</caption>
               </li>
               <li
@@ -133,20 +144,23 @@ export default function Carousel() {
                 data-type="Cactus And Succulent"
               >
                 <Link to={`/Search/plantType/5`}>
-                <img
-                  src="/plantImages/Cactus1.jpg"
-                  alt="Cactus And Succulent"
-                />
-              </Link>
+                  <img
+                    src="/plantImages/Cactus1.jpg"
+                    alt="Cactus And Succulent"
+                  />
+                </Link>
                 <caption>Cactus And Succulent</caption>
               </li>
               <li
                 className="glide__slide"
                 data-url="http://localhost:3000/search/2"
-                data-type="Foliage plant"
+                data-type="Foliage Plant"
               >
                 <Link to={`/Search/plantType/8`}>
-                  <img src="/plantImages/FoliagePlant1.jpg" alt="Foliage plant" />
+                  <img
+                    src="/plantImages/FoliagePlant1.jpg"
+                    alt="Foliage Plant"
+                  />
                 </Link>
                 <caption>Foliage Plants</caption>
               </li>
@@ -168,9 +182,14 @@ export default function Carousel() {
           </div>
         </div>
         <p>
-          Our goal is to connect beginning and experienced plant owners to a wide range of plants, and where to find them. We're continuously work to bring you that "It's Perfect!" flower, succulent, or plant for your house and home. Whether you're looking or just need some advice on what that houseplant special care and needs, stop by and we can help you!
+          Our goal is to connect beginning and experienced plant owners to a
+          wide range of plants, and where to find them. We're continuously work
+          to bring you that "It's Perfect!" flower, succulent, or plant for your
+          house and home. Whether you're looking or just need some advice on
+          what that houseplant special care and needs, stop by and we can help
+          you!
         </p>
-      </body >
+      </body>
     </>
   );
 }
