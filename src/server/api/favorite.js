@@ -5,7 +5,7 @@ const router = require("express").Router();
 module.exports = router;
 
 // sends all favorited plants
-router.get("/favorite", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
     try {
       // finds many where user exists and favorite true exists
       // validates user is logged in
@@ -20,7 +20,7 @@ router.get("/favorite", async (req, res, next) => {
   });
   
   // sends one favorited plant
-  router.get(`/favorite/:id`, async (req, res, next) => {
+  router.get(`/:id`, async (req, res, next) => {
     try {
       const id = +req.params.id;
       // finds many where user exists and favorite true exists
@@ -38,7 +38,7 @@ router.get("/favorite", async (req, res, next) => {
   });
   
   // adds a plant to favorites
-  router.post("/favorite", async (req, res, next) => {
+  router.post("/", async (req, res, next) => {
     try {
       const { plantId, note } = req.body;
       if (!plantId) {
@@ -58,7 +58,7 @@ router.get("/favorite", async (req, res, next) => {
   });
   
   // removes a plant from favorites
-  router.delete("/favorite/:id", async (req, res, next) => {
+  router.delete("/:id", async (req, res, next) => {
     try {
       const id = +req.params.id;
   
