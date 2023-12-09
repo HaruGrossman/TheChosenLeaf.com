@@ -163,7 +163,9 @@ export default function Plants() {
               </li>
             ))}
           </div>
+          </div>
+        </div>  
       </main>
     </>
   );
-}
+};
