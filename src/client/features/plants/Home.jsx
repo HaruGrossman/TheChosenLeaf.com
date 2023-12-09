@@ -56,6 +56,7 @@ export default function Carousel() {
     <>
       <body className="homebody">
         <section id="intro">
+
           <p>
             Struggling to find the right plant for your home or garden? High
             light, low light, tall, small, low maintenance?
@@ -65,7 +66,7 @@ export default function Carousel() {
             right for you!
           </p>
         </section>
-        {/* <br /> */}
+       <br />
         <p>
           Need some ideas check out our slideshow{" "}
           <span id="arrowdown"> &#x21e3; </span> or head over to the search page
@@ -82,6 +83,7 @@ export default function Carousel() {
                   <img src="/plantImages/Anthurium1.jpg" alt="Anthurium" />
                 </Link>
                 <caption>Anthurium Plants</caption>
+                <p id="altText">Trellis well and grow lanky</p>
               </li>
               <li
                 className="glide__slide"
@@ -92,9 +94,15 @@ export default function Carousel() {
                   <img src="/plantImages/bougainvillea3.jpg" alt="Flower" />
                 </Link>
                 <caption>Flowering Plants</caption>
+                <p id="altText">Flowers everywhere!</p>
               </li>
               <li
                 className="glide__slide"
+                data-url="http://localhost:3000/search/1">
+                <img src="/plantImages/Lipstick1.jpg" />
+                <caption>Cactus and Succulents</caption>
+                <p id="altText">Desert plants, low maintenance</p>
+              </li>
                 data-url="http://localhost:3000/search/21"
                 data-type="Palm"
               >
@@ -104,6 +112,7 @@ export default function Carousel() {
                 <caption>
                   Palms, Infrequent watering, Low maintenance plants
                 </caption>
+                <p id="altText">Great for travelers</p>
               </li>
               <li
                 className="glide__slide"
@@ -117,6 +126,7 @@ export default function Carousel() {
                   />
                 </Link>
                 <caption>Bromeliads</caption>
+                <p id="altText">Drought resistant, similar to succlents</p>
               </li>
               <li
                 className="glide__slide"
@@ -127,6 +137,7 @@ export default function Carousel() {
                   <img src="/plantImages/MaidenhairFern2.jpg" alt="Fern" />
                 </Link>
                 <caption>Ferns</caption>
+                <p id="altText">Nonflowering or seeding plant</p>
               </li>
               <li
                 className="glide__slide"
@@ -137,6 +148,7 @@ export default function Carousel() {
                   <img src="/plantImages/Lipstick1.jpg" alt="Hanging" />
                 </Link>
                 <caption>Hanging Plants</caption>
+                <p id="altText">Hand from the wall or from the ceiling</p>
               </li>
               <li
                 className="glide__slide"
@@ -150,6 +162,7 @@ export default function Carousel() {
                   />
                 </Link>
                 <caption>Cactus And Succulent</caption>
+                <p id="altText">Desert plants, low maintenance</p>
               </li>
               <li
                 className="glide__slide"
@@ -163,25 +176,26 @@ export default function Carousel() {
                   />
                 </Link>
                 <caption>Foliage Plants</caption>
+                <p id="altText"></p>
               </li>
             </ul>
           </div>
           <div className="glide__arrows" data-glide-el="controls">
             <button
-              className="glide__arrow glide__arrow--left arrow-left"
+              className="glide__arrow glide__arrow--left arrow-left grabbed-arrow-left"
               data-glide-dir="<"
             >
               &#60;
             </button>
             <button
-              className="glide__arrow glide__arrow--right arrow-right"
+              className="glide__arrow glide__arrow--right arrow-right grabbed-arrow-right"
               data-glide-dir=">"
             >
               &#62;
             </button>
           </div>
         </div>
-        <p>
+        <p id="moto">
           Our goal is to connect beginning and experienced plant owners to a
           wide range of plants, and where to find them. We're continuously work
           to bring you that "It's Perfect!" flower, succulent, or plant for your
