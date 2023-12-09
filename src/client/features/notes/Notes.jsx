@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
 import NewNote from "./NewNote";
 import { useGetNotesQuery } from "../../store/Notes";
-import Note from "./note";
+import Note from "./Note";
 import Popup from "../components/Popup";
 import { useState } from 'react';
 
@@ -13,7 +13,7 @@ export default function Notes(){
     const [buttonPopup, setButtonPopup] = useState(false);
 
     if (!token) {
-        return <p>You must be logged in to see your tasks.</p>;
+        return <p>You must be logged in to see your notes.</p>;
     };
     
         return (

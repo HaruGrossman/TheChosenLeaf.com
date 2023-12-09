@@ -103,6 +103,8 @@ export default function Carousel() {
                 <caption>Cactus and Succulents</caption>
                 <p id="altText">Desert plants, low maintenance</p>
               </li>
+              <li
+                className="glide__slide"
                 data-url="http://localhost:3000/search/21"
                 data-type="Palm"
               >

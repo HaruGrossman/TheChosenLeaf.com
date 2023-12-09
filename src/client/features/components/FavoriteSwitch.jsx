@@ -1,5 +1,5 @@
 import React from "react";
-import './favoriteSwitch.css';
+import "./favoriteSwitch.css";
 
 const Switch = ({ isToggled, onToggle }) => {
 
