@@ -2,11 +2,13 @@
   box-sizing: border-box;
   text-decoration: none;
 }
+
 li {
   display: flex;
   display: inline-block;
   flex-wrap: wrap;
 }
+
 img {
   width: 30vw;
   height: 45vh;
@@ -21,13 +23,14 @@ img {
   justify-content: center;
   align-items: center;
   padding: 5px;
-  margin-left: 2em;
 }
-.glide__arrow {
+
+/* .glide__arrow {
   background-color: antiquewhite;
   color: darkolivegreen;
   font-size: 22px;
-}
+} */
+
 .search-plantName {
   font-size: 22px;
   text-align: center;

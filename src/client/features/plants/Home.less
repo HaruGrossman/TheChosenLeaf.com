@@ -1,15 +1,46 @@
 .homebody {
     background: #9EC1BE;
-    padding: 5px 10px;
+    padding-top: 0px;
     margin-top: 0px;
-    margin-bottom: 33px;
     margin-right: 10%;
     margin-left: 10%;
     border-right: 5px solid #1d4c4e;
     border-left: 5px solid #1d4c4e;
+    border-bottom: 5px solid #1d4c4e;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    #altText {
+        display: none;
+    }
+}
+
+#intro {
+    padding: 20px 10px;
+    text-indent: 20px;
+    margin-left: 2%;
+    margin-right: 2%;
+    border: 3px solid #353535;
+    border-radius: 2% 5% 5% 4%/ 1% 1% 2% 4%;
+    background-color: #759E9D;
+    position: relative;
+    // https://freefrontend.com/css-border-examples/   check this out for later stying 
+
+    &::before {
+        content: '';
+        border: 2px solid #353535;
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+        border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
+    }
 }
 
 .glide--swipeable {
@@ -17,34 +48,88 @@
     width: 90%;
     background: #759E9D;
     justify-content: center;
-    padding: 0;
-    height: 250px;
-    align-items: flex-start;
+    height: 300px;
     border: 3px solid#1d4c4e;
-    align-items: center;
+    align-content: center;
+    max-width: 860px;
+    margin-bottom: 4%;
 
-    .glide__slide {
+
+    .glide__slides>li {
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        width: 200px;
-        height: 250px;
+        align-content: center;
+        padding-bottom: 10px;
+        width: 33%;
+        grid: auto/ auto auto auto;
+        height: auto;
+        margin-block: 5px;
+        border: 2px solid #9EC1BE;
     }
 
-    .glide__arrows {
-        align-content: space-between;
+    .glide__slides>li>img {
+        border-bottom: 5px solid #1d4c4e;
+        height: 200px;
+        width: 200px;
     }
 
     .glide__arrows button:hover {
         background-color: #21575A;
     }
+
+    .grabbed-arrow-left {
+        background-color: antiquewhite;
+        color: darkolivegreen;
+        font-size: 22px;
+        left: 0;
+    }
+
+    .grabbed-arrow-right {
+        background-color: antiquewhite;
+        color: darkolivegreen;
+        font-size: 22px;
+        right: 0;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .glide__track>.glide__slides>li>#altText {
+        display: block;
+        justify-content: center;
+    }
+
+    .glide__slides>li {
+        padding: 20px 20px;
+    }
 }
 
 #arrowdown {
-    font: 35px;
+    font-size: 25px;
 }
 
-// .glide__arrows button {
-//     display: flex;
-//     justify-content: space-between;
-//     margin: 0;
-// }
+#moto {
+    margin-bottom: 40px;
+    padding: 4px 8px;
+    text-indent: 20px;
+    margin-left: 2%;
+    margin-right: 2%;
+    border: 3px solid #353535;
+    border-radius: 2% 5% 5% 4%/ 1% 1% 2% 4%;
+    background-color: #759E9D;
+    position: relative;
+
+    // https://freefrontend.com/css-border-examples/   check this out for later stying 
+    &::before {
+        content: '';
+        border: 2px solid #353535;
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+        border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
+    }
+}
