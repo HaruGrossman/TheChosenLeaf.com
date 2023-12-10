@@ -69,89 +69,90 @@ export default function Plants() {
     <>
       <main className="searchMain">
         <div className="sidenav">
-        <h1 className="title">Search Plants</h1>
-        <div>
-          <label htmlFor="dropdown1">Type</label>
-          <select
-            className="selectOption"
-            id="dropdown1"
-            value={dropdown1Value}
-            onChange={handleDropdown1Change}
-          >
-            <option value="all">All</option>
-            <option value="Hanging">Hanging</option>
-            <option value="Fern">Fern</option>
-            <option value="Flower">Flower</option>
-            <option value="Palm">Palm</option>
-            <option value="Cactus And Succulent">Cactus And Succulent</option>
-            <option value="Bromeliad">Bromeliad</option>
-            <option value="Anthurium">Anthurium</option>
-            <option value="Foliage Plant">Foliage Plant</option>
-          </select>
+          <h1 className="title">Search Plants</h1>
+          <div>
+            <label htmlFor="dropdown1">Type</label>
+            <select
+              className="selectOption"
+              id="dropdown1"
+              value={dropdown1Value}
+              onChange={handleDropdown1Change}
+            >
+              <option value="all">All</option>
+              <option value="Hanging">Hanging</option>
+              <option value="Fern">Fern</option>
+              <option value="Flower">Flower</option>
+              <option value="Palm">Palm</option>
+              <option value="Cactus And Succulent">Cactus And Succulent</option>
+              <option value="Bromeliad">Bromeliad</option>
+              <option value="Anthurium">Anthurium</option>
+              <option value="Foliage Plant">Foliage Plant</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="dropdown2">Watering</label>
+            <select
+              className="selectOption"
+              id="dropdown2"
+              value={dropdown2Value}
+              onChange={handleDropdown2Change}
+            >
+              <option value="all">All</option>
+              <option value="Infrequent">Infrequent</option>
+              <option value="Less Frequent">Less Frequent</option>
+              <option value="Frequent">Frequent</option>
+              <option value="Average">Average</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="dropdown3">Sunlight</label>
+            <select
+              className="selectOption"
+              id="dropdown3"
+              value={dropdown3Value}
+              onChange={handleDropdown3Change}
+            >
+              <option value="all">All</option>
+              <option value="Direct Sunlight">Direct Sunlight</option>
+              <option value="Partial Shade">Partial Shade</option>
+              <option value="Diffused">Diffused</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="dropdown4">Max Temp</label>
+            <select
+              className="selectOption"
+              id="dropdown4"
+              value={dropdown4Value}
+              onChange={handleDropdown4Change}
+            >
+              <option value="all">All</option>
+              <option value="100">100℉</option>
+              <option value="90">90℉</option>
+              <option value="80">80℉</option>
+              <option value="70">70℉</option>
+              <option value="60">60℉</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="dropdown5">Min Temp</label>
+            <select
+              className="selectOption"
+              id="dropdown5"
+              value={dropdown5Value}
+              onChange={handleDropdown5Change}
+            >
+              <option value="all">All</option>
+              <option value="20">20℉</option>
+              <option value="30">30℉</option>
+              <option value="40">40℉</option>
+              <option value="50">50℉</option>
+            </select>
+            <br />
+            <button className="applyChangesButton" onClick={handleSubmit}>Apply Changes</button>
+          </div>
         </div>
-        <div>
-          <label htmlFor="dropdown2">Watering</label>
-          <select
-            className="selectOption"
-            id="dropdown2"
-            value={dropdown2Value}
-            onChange={handleDropdown2Change}
-          >
-            <option value="all">All</option>
-            <option value="Infrequent">Infrequent</option>
-            <option value="Less Frequent">Less Frequent</option>
-            <option value="Frequent">Frequent</option>
-            <option value="Average">Average</option>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="dropdown3">Sunlight</label>
-          <select
-            className="selectOption"
-            id="dropdown3"
-            value={dropdown3Value}
-            onChange={handleDropdown3Change}
-          >
-            <option value="all">All</option>
-            <option value="Direct Sunlight">Direct Sunlight</option>
-            <option value="Partial Shade">Partial Shade</option>
-            <option value="Diffused">Diffused</option>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="dropdown4">Max Temp</label>
-          <select
-            className="selectOption"
-            id="dropdown4"
-            value={dropdown4Value}
-            onChange={handleDropdown4Change}
-          >
-            <option value="all">All</option>
-            <option value="100">100℉</option>
-            <option value="90">90℉</option>
-            <option value="80">80℉</option>
-            <option value="70">70℉</option>
-            <option value="60">60℉</option>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="dropdown5">Min Temp</label>
-          <select
-            className="selectOption"
-            id="dropdown5"
-            value={dropdown5Value}
-            onChange={handleDropdown5Change}
-          >
-            <option value="all">All</option>
-            <option value="20">20℉</option>
-            <option value="30">30℉</option>
-            <option value="40">40℉</option>
-            <option value="50">50℉</option>
-          </select>
-          <br />
-          <button className="applyChangesButton" onClick={handleSubmit}>Apply Changes</button>
-        </div>
-          <div className="resultSection">
+        <div className="resultSection">
           <h1 className="title">Results:</h1>
           <div className="resultCards">
             {filteredPlants?.map((plant) => (
@@ -163,8 +164,7 @@ export default function Plants() {
               </li>
             ))}
           </div>
-          </div>
-        </div>  
+        </div>
       </main>
     </>
   );
