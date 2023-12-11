@@ -4,7 +4,7 @@ const prisma = require("../prisma");
 const router = require("express").Router();
 module.exports = router;
 
-//the routes is used as follows:
+//the routes are used as follows:
 // /reviews/id -- displays reviews for specified id (this id is plantID)
 // /reviews/review/id - displays review for specified review id (this id is review id)
 
@@ -42,8 +42,6 @@ router.put("/review/:id", async (req, res, next) => {
   try {
     const id = +req.params.id;
     const reviewContent = req.body;
-    console.log("reviewContent");
-    console.log(reviewContent);
     if (!reviewContent) {
       throw new ServerError(400, "Review content required.");
     }
@@ -93,17 +91,3 @@ router.delete("/review/:id", async (req, res, next) => {
     next(err);
   }
 });
-
-// validates if review exist and assigned to user
-// const validateReviews = (user, review) => {
-//   if (!review) {
-//     throw new ServerError(404, "Reviews not found.");
-//   }
-
-//   if (review.plantId !== plant.id) {
-//     throw new ServerError(
-//       403,
-//       "No reviews for this plant yet. Would you like to be the first one?"
-//     );
-//   }
-// };
