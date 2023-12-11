@@ -3,13 +3,19 @@ const plantData = require("./plantData");
 
 const seed = async () => {
   //can be commented after initial seed since username is unique cannot be created again
-  await prisma.user.create({
+  await prisma.user.upsert({
+    where:{
+      username: "foo",
+    },
+    update:{},
+    create:{
     data: {
       username: "panda",
       password: "123",
       notes: {
         create: [{ note: "note 1" }, { note: "note 2" }],
       },
+    },
     },
   });
 
