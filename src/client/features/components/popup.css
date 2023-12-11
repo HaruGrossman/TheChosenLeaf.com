@@ -1,4 +1,4 @@
-.popup {
+.popup-overlay {
     display: flex;
     flex-direction: column;
     margin: 4vw 8vw;
@@ -25,10 +25,12 @@
 }
 
 .popup-inner {
-    position: relative;
+    width: 60%;
+    left: 20%;
+    /* position: relative;
     padding: 32px;
     width: 100%;
-    max-width: 640px;
+    max-width: 640px; */
 }
 
 .popup-inner .close-btn {

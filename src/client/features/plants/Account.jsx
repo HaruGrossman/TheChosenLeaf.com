@@ -39,7 +39,7 @@ export default function Account() {
         <p>Loading...</p>
     ) : (
         <main id="accountBody">
-            {/* <h1>{user?.username}'s Account Page</h1> */}
+            <section><h1>Welcome, {user?.username}!</h1></section>
             <section className="myplants">
                 <MyPlants />
             </section>
