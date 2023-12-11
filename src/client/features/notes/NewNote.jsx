@@ -19,6 +19,8 @@ export default function NewNote() {
       <form onSubmit={create}>
         <input
           type="text"
+          rows="4"
+          cols="1"
           value={note}
           onChange={(e) => setNote(e.target.value)}
           required
