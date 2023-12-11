@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useGetAllPlantsQuery } from "./plantSlice";
 import { Link } from "react-router-dom";
-import "./plants.css";
+// import "./plants.css";
+import "./Search.less"
 
 export default function Plants() {
   const { data, isLoading } = useGetAllPlantsQuery();
@@ -66,8 +67,9 @@ export default function Plants() {
     <p>Loading...</p>
   ) : (
     <>
-      <main>
-        <h1>Search Plants</h1>
+      <main className="searchMain">
+        <div className="sidenav">
+        <h1 className="title">Search Plants</h1>
         <div>
           <label htmlFor="dropdown1">Type</label>
           <select
@@ -146,21 +148,24 @@ export default function Plants() {
             <option value="40">40℉</option>
             <option value="50">50℉</option>
           </select>
+          <br />
+          <button className="applyChangesButton" onClick={handleSubmit}>Apply Changes</button>
         </div>
-        <button onClick={handleSubmit}>Apply Changes</button>
-
-        <div>
-          <h1>Search Results</h1>
-          {filteredPlants?.map((plant) => (
-            <li key={plant.id} className="searchResult">
-              <Link to={`/search/${plant.id}`}>
-                <img src={plant.image} />
-              </Link>
-              <h5 className="search-plantName">{plant.name}</h5>
-            </li>
-          ))}
-        </div>
+          <div className="resultSection">
+          <h1 className="title">Results:</h1>
+          <div className="resultCards">
+            {filteredPlants?.map((plant) => (
+              <li key={plant.id} className="searchResult">
+                <Link to={`/search/${plant.id}`}>
+                  <img src={plant.image} />
+                </Link>
+                <h5 className="search-plantName">{plant.name}</h5>
+              </li>
+            ))}
+          </div>
+          </div>
+        </div>  
       </main>
     </>
   );
-}
+};

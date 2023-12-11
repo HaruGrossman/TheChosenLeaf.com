@@ -30,6 +30,16 @@ export default function Note ({ note }) {
             <button onClick={() => setButtonPopup(true)}>Edit Note</button>
             <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
                 <h4>Edit existing note: {note.note} </h4>
+                <h4>Attach to a favorite plant? {note.plantId} </h4>
+                <form>
+                <input 
+                        type="text" 
+                        value={editedNote}
+                        onChange={(e) => setEditedNote(e.target.value)}
+                        required
+                    />
+                </form>
+                <h4>Note: </h4>
                 <form>
                     <input 
                         type="text" 

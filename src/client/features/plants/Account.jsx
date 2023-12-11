@@ -2,7 +2,7 @@
 import Notes from "../notes/Notes";
 import { useMeQuery, selectToken } from "../auth/authSlice";
 import { useSelector } from "react-redux";
-import FavoritePlant from "../components/FavoritePlant";
+import MyPlants from "../favorites/FavoritePlants";
 import FavoriteStore from "../components/FavoriteStores";
 
 //error checking: isLoading return Loading...
@@ -40,7 +40,7 @@ export default function Account(){
     <div>
         <h1>{user?.username}'s Account Page</h1>
         <section className="myplants">
-            <FavoritePlant />
+            <MyPlants />
         </section>
         <section className="mynotes">
             <Notes />

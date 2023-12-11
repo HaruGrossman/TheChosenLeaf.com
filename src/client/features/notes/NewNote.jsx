@@ -1,9 +1,8 @@
 import { useState } from "react";
-// import { useCreateTaskMutation } from "./taskSlice";
 import { useCreateNoteMutation } from "../../store/Notes";
 import '../components/popup.css';
 
-/** Form for creating new tasks */
+/** Form for creating new notes */
 export default function NewNote() {
   const [note, setNote] = useState("");
   const [createNote] = useCreateNoteMutation();

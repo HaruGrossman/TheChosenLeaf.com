@@ -16,7 +16,8 @@ const plantsApi = api.injectEndpoints({
     }),
   }),
 });
-export const { useGetAllPlantsQuery, useGetPlantQuery, useGetPlantTypeQuery } =
+export const { 
+  useGetAllPlantsQuery, useGetPlantQuery, useGetPlantTypeQuery, } =
   plantsApi;
 
 // import { createSlice } from '@reduxjs/toolkit'

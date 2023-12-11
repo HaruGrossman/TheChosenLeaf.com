@@ -3,7 +3,11 @@ import { useNavigate, useParams } from "react-router-dom";
 // import { selectToken } from authslice
 import { useGetPlantQuery } from "./plantSlice";
 // import css
+
 import Review from "./Review";
+
+import NewFavoritePlant from "../favorites/NewFavoritePlant";
+
 
 export default function Details() {
   // validate login
@@ -65,6 +69,7 @@ export default function Details() {
           Temperature:{plant.tempmin}-{plant.tempmax}
         </h2>
         <h2>Category:{plant.category} </h2>
+
       </section>
       <section className="reviews">
         <Review plantId={id} />
@@ -79,6 +84,11 @@ export default function Details() {
       </section>
 
       {/* { token &&
+
+        <button className="store-near-me" onClick={storeNavigate}>Stores Near Me</button>
+        <NewFavoritePlant />
+        {/* { token &&
+
             (book.favorite === false ? (
                 <form onSubmit={tryFavoritePlant}>
                     <button>{isFavoriting ? "Hang tight..." : "❤️" }</button>
