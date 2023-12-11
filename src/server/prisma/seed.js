@@ -5,7 +5,7 @@ const seed = async () => {
   //can be commented after initial seed since username is unique cannot be created again
   await prisma.user.upsert({
     where:{
-      username: "foo",
+      username: "panda",
     },
     update:{},
     create:{
