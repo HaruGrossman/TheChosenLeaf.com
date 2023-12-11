@@ -29,15 +29,22 @@ router.get("/", async (req, res, next) => {
 /** Creates new note and sends it */
 router.post("/create", async (req, res, next) => {
   try {
-    const { note } = req.body;
-    if (!note) {
+    const noteContent = req.body;
+    if (!noteContent) {
       throw new ServerError(400, "Note required.");
     }
+
+    const { data: content } = noteContent;
+    const name = content.name;
+    const note = content.note;
+    const favoritePlant = 1 * content.favoritePlant;
 
     const newNote = await prisma.note.create({
       data: {
         note,
+        name,
         user: { connect: { id: res.locals.user.id } },
+        favoritePlant: { connect: { id : favoritePlant }}
       },
     });
     res.json(newNote);
@@ -75,28 +82,30 @@ router.get("/:id", async (req, res, next) => {
 router.put("/:id", async (req, res, next) => {
   try {
     //identify params
-    const noteId = +req.params.id;
-
-    // identify post exists for user
-    const findNote = await prisma.note.findUnique({ where: { id : noteId } });
-    validateNotes(res.locals.user, findNote);
+    const id = +req.params.id;
+    const noteContent = req.body;
+    console.log(noteContent);
 
     //error handling if it does not exist
-      if (!findNote) {
+      if (!noteContent) {
         return next({
             status: 404, 
-            message: `No note ${id} exists for the signed in user.`,
+            message: `Note required to update.`,
         });
     }
 
-    // identify req.body
-    const { id, note } = req.body;
+    const {data: content } = noteContent;
+    const note = content.note;
+    const favoritePlant = 1 * content.favoritePlant;
+    const noteName = content.noteName;
 
     // update note
     const updatedNote = await prisma.note.update({
       where: { userId : res.locals.user.id, id : id },
       data: { 
-        note: note, },
+        note: note, 
+        name: noteName, 
+        favoritePlant},
     });
     res.json(updatedNote);
   } catch (err) {

@@ -5,10 +5,11 @@ import Popup from "../components/Popup";
 //  function for rendering our createNoteForm  // window to pop up on screen
 export default function Note ({ note }) {
 
-    const [editNote] = useEditNoteMutation();
+    const [editNote, editPlant] = useEditNoteMutation();
     const [deleteNote] = useDeleteNoteMutation();
     
     const [editedNote, setEditedNote] = useState(note.editedNote);
+    const [editedPlant, setEditedPlant] = useState(note.editedPlant);
     const [buttonPopup, setButtonPopup] = useState(false);
 
     // save edited note
@@ -16,7 +17,10 @@ export default function Note ({ note }) {
         id = note.id;
         evt.preventDefault();
         editNote({ ...id, editedNote });
+        editPlant({ ...id, editedPlant});
     }
+
+console.log(note);
 
     // delete note
     const onDelete = async (evt) => {
@@ -29,24 +33,23 @@ export default function Note ({ note }) {
             <h3>{note.note}</h3>
             <button onClick={() => setButtonPopup(true)}>Edit Note</button>
             <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-                <h4>Edit existing note: {note.note} </h4>
-                <h4>Attach to a favorite plant? {note.plantId} </h4>
+                <h4>Note : {note.note} </h4>
+                <h4>Favorite Plant : {note.favoritePlantId} </h4>
                 <form>
-                <input 
-                        type="text" 
-                        value={editedNote}
-                        onChange={(e) => setEditedNote(e.target.value)}
-                        required
-                    />
-                </form>
-                <h4>Note: </h4>
-                <form>
+                    <label> Edit existing note:
                     <input 
                         type="text" 
                         value={editedNote}
                         onChange={(e) => setEditedNote(e.target.value)}
-                        required
                     />
+                    </label>
+                    <label> Attach to favorite plant:
+                    <input
+                        type="text"
+                        value={editedPlant}
+                        onChange={(e) => setEditedPlant(e.target.value)}
+                    />
+                    </label>
                     <button className="save-btn" onClick={save}>Save</button>
                     <button className="delete-btn" onClick={onDelete}>Delete</button>
                 </form>
