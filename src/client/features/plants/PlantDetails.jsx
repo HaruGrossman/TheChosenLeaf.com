@@ -3,69 +3,82 @@ import { useNavigate, useParams } from "react-router-dom";
 // import { selectToken } from authslice
 import { useGetPlantQuery } from "./plantSlice";
 // import css
-import Reviews from "./Review";
+import Review from "./Review";
 
+export default function Details() {
+  // validate login
+  // const token = useSelector(selectToken);
 
-export default function Details(){
+  const navigate = useNavigate();
 
-    // validate login
-    // const token = useSelector(selectToken);
+  // // arrow function returnNavigate returns to search list
+  const returnNavigate = () => {
+    navigate("/search");
+  };
 
-    const navigate = useNavigate();
+  // arrow function createReview returns a popup window to create a review
+  // ***Q will this need to be added to the plant API to save the review under each plant?
 
-    // // arrow function returnNavigate returns to search list
-    const returnNavigate = () => {
-        navigate("/search");
-    };
+  // arrow function storeNavigate takes user to maps/nearme page
+  const storeNavigate = () => {
+    navigate("/maps");
+  };
+  // ***STRETCHGOAL will this onClick need to store params to be exported to the maps page?
 
-    // arrow function createReview returns a popup window to create a review
-    // ***Q will this need to be added to the plant API to save the review under each plant? 
+  const { id } = useParams();
+  const { data: plant, isLoading } = useGetPlantQuery(id);
 
-    // arrow function storeNavigate takes user to maps/nearme page
-    const storeNavigate = () =>{
-        navigate("/maps");
-    };
-    // ***STRETCHGOAL will this onClick need to store params to be exported to the maps page?
+  // favorite a plant
+  // const [favoritePlant, { isLoading: isFavoriting }] = useFavoritePlantMutation();
+  // tryFavoritePlant = async (evt) => {
+  //     evt.preventDefault();
+  //     await favoritePlant(plant.id);
+  // };
 
-    const { id } = useParams();
-    const { data: plant, isLoading } = useGetPlantQuery(id);
+  // unfavorite a favorited plant
+  // const [unfavoritePlant, { isLoading: isUnfavoriting }] = useUnfavoritePlantMutation();
+  // tryUnfavoritePlant = async (evt) => {
+  //     evt.preventDefault();
+  //     await unfavoritePlant(plant.id);
+  // }
 
-    // favorite a plant
-    // const [favoritePlant, { isLoading: isFavoriting }] = useFavoritePlantMutation();
-    // tryFavoritePlant = async (evt) => {
-    //     evt.preventDefault();
-    //     await favoritePlant(plant.id);
-    // };
+  // review a plant
+  // const [reviewPlant, { isLoading: isReviewing }] = usePlantReviewMutation();
+  // tryReviewPlant = async (evt) => {
+  //     evt.preventDefault();
+  //     await reviewPlant(plant.id);
+  // }
+  //console.log(plant);
 
-    // unfavorite a favorited plant
-    // const [unfavoritePlant, { isLoading: isUnfavoriting }] = useUnfavoritePlantMutation();
-    // tryUnfavoritePlant = async (evt) => {
-    //     evt.preventDefault();
-    //     await unfavoritePlant(plant.id);
-    // }
-
-    // review a plant
-    // const [reviewPlant, { isLoading: isReviewing }] = usePlantReviewMutation();
-    // tryReviewPlant = async (evt) => {
-    //     evt.preventDefault();
-    //     await reviewPlant(plant.id);
-    // }
-console.log(plant);
-
-    return isLoading ? (
+  return isLoading ? (
     <p>Loading...</p>
-    ) : (
+  ) : (
     <main className="plant-details">
-        <img src={plant.image} />
+      <img src={plant.image} />
+      <section className="plantDetail-description">
         <h1>Common Name: {plant.name}</h1>
         <h2>Latin Name:{plant.latin}</h2>
         <h2>Ideal Light:{plant.ideallight}</h2>
         <h2>Tolerated Light:{plant.toleratedlight}</h2>
         <h2>Watering:{plant.watering}</h2>
-        <h2>Temperature:{plant.tempmin}-{plant.tempmax}</h2>
+        <h2>
+          Temperature:{plant.tempmin}-{plant.tempmax}
+        </h2>
         <h2>Category:{plant.category} </h2>
-        <button className="store-near-me" onClick={storeNavigate}>Stores Near Me</button>
-        {/* { token &&
+      </section>
+      <section className="reviews">
+        <Review plantId={id} />
+      </section>
+      <section className="plantDetail-buttons">
+        <button className="store-near-me" onClick={storeNavigate}>
+          Stores Near Me
+        </button>
+        <button className="return-btn" onClick={returnNavigate}>
+          Back to Search
+        </button>
+      </section>
+
+      {/* { token &&
             (book.favorite === false ? (
                 <form onSubmit={tryFavoritePlant}>
                     <button>{isFavoriting ? "Hang tight..." : "❤️" }</button>
@@ -76,10 +89,9 @@ console.log(plant);
                 </form>
             ))
         }; */}
-        {/* <form onSubmit={tryReviewPlant}> */}
-            {/* <button>{isReviewing ? "Hang tight..." : "Thank you!" }</button> */}
-        {/* </form> */}
-        <Reviews />
-        <button className="return-btn" onClick={returnNavigate}>Back to Search</button>
-    </main>)
+      {/* <form onSubmit={tryReviewPlant}> */}
+      {/* <button>{isReviewing ? "Hang tight..." : "Thank you!" }</button> */}
+      {/* </form> */}
+    </main>
+  );
 }
