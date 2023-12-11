@@ -30,4 +30,5 @@ router.use("/auth", require("./auth"));
 router.use("/stores", require("./stores"));
 router.use("/favorite", require("./favorite"));
 router.use("/notes", require("./notes"));
+router.use("/reviews", require("./reviews"));
 router.use("/", require("./plants"));

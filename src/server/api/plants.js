@@ -15,7 +15,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-// sends by plant category
+// returns array by plant category
 router.get("/plantType/:id", async (req, res, next) => {
   try {
     // assigned id to each category and paired up in the object
@@ -30,7 +30,6 @@ router.get("/plantType/:id", async (req, res, next) => {
       7: "Anthurium",
       8: "Foliage Plant",
     };
-
     const plantType = idPairType[id];
     const plants = await prisma.plant.findMany({
       where: { category: plantType },
@@ -60,22 +59,6 @@ router.use((req, res, next) => {
     return next(new ServerError(401, "Please log in to proceed."));
   }
   next();
-});
-
-// puts a new review within a plant and sends it
-router.post("/review", async (req, res, next) => {
-  try {
-    // modifies a plant based on id to add the review
-    const id = +req.params.plantId;
-    const { review } = req.body;
-    const addReview = await prisma.review.create({
-      where: { plantId: id },
-      data: { review },
-    });
-    res.json(addReview);
-  } catch (err) {
-    next(err);
-  }
 });
 
 // validates if favorites exist and assigned to user
