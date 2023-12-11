@@ -4,6 +4,7 @@ import { useMeQuery, selectToken } from "../auth/authSlice";
 import { useSelector } from "react-redux";
 import MyPlants from "../favorites/FavoritePlants";
 import FavoriteStore from "../components/FavoriteStores";
+import "./Account.less";
 
 //error checking: isLoading return Loading...
 //error checking: isError return 'something went wrong'
@@ -22,33 +23,33 @@ import FavoriteStore from "../components/FavoriteStores";
 //--display 'Delete' button to the left of the Stores
 
 //write a component function for account profile
-export default function Account(){
+export default function Account() {
     //define variable 'token' and assign selectToken(from useSelector) to it
     const token = useSelector(selectToken);
 
     //deconstruct data, isLoading, isError from userXXXprofileQuery for later use
-    const { data: user, isLoading, isError} = useMeQuery();
-    
+    const { data: user, isLoading, isError } = useMeQuery();
+
     if (!token) {
         return <div>Please log in or register to access your account.</div>
     }
-    
+
     //return the information and output to the webpage
     return isLoading ? (
         <p>Loading...</p>
     ) : (
-    <div>
-        <h1>{user?.username}'s Account Page</h1>
-        <section className="myplants">
-            <MyPlants />
-        </section>
-        <section className="mynotes">
-            <Notes />
-        </section>
-        <section className="mystores">
-            <FavoriteStore />
-        </section>
-    </div>
+        <main id="accountBody">
+            {/* <h1>{user?.username}'s Account Page</h1> */}
+            <section className="myplants">
+                <MyPlants />
+            </section>
+            <section className="mynotes">
+                <Notes />
+            </section>
+            <section className="mystores">
+                <FavoriteStore />
+            </section>
+        </main>
     )
 
 };

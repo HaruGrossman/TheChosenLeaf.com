@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useGetAllPlantsQuery } from "./plantSlice";
 import { Link } from "react-router-dom";
 // import "./plants.css";
-import "./Search.less"
+import "./Search.less";
 
 export default function Plants() {
   const { data, isLoading } = useGetAllPlantsQuery();
