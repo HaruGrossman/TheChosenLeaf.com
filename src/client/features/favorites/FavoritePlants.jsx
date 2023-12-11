@@ -7,8 +7,11 @@ import { useState } from 'react';
 import { Link } from "react-router-dom";
 
 function PlantCard({ plant }) {
-    const { data: plants } = useGetFavoritePlantsQuery();
-    
+    const note = plant.notes[0];
+
+    console.log(note);
+    console.log(note.note);
+
     return(
         <div className="fav-plant-card">
         <li>            
@@ -16,6 +19,8 @@ function PlantCard({ plant }) {
             <img src={plant.plant.image} className="fav-plant-img"/>
             </Link>
             <h3>{plant.plant.name}</h3>
+            <h4>{note.note}</h4>
+            
         </li>
         </div>
     )
