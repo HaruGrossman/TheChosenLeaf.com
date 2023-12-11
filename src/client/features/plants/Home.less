@@ -1,6 +1,7 @@
 .homebody {
     background: #9EC1BE;
-    padding-top: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     margin-top: 0px;
     margin-right: 10%;
     margin-left: 10%;
@@ -11,7 +12,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 
     #altText {
         display: none;
@@ -48,7 +48,7 @@
     width: 90%;
     background: #759E9D;
     justify-content: center;
-    height: 300px;
+    height: 350px;
     border: 3px solid#1d4c4e;
     align-content: center;
     max-width: 860px;
@@ -68,7 +68,7 @@
         border: 2px solid #9EC1BE;
     }
 
-    .glide__slides>li>img {
+    .glide__slides img {
         border-bottom: 5px solid #1d4c4e;
         height: 200px;
         width: 200px;
@@ -94,15 +94,31 @@
 }
 
 @media screen and (max-width: 700px) {
-    .glide__track>.glide__slides>li>#altText {
-        display: block;
+    .glide__track .glide__slides li #altText {
+        display: flex;
         justify-content: center;
+        align-self: center;
     }
 
     .glide__slides>li {
         padding: 20px 20px;
     }
+
+    .glide--swipeable {
+        height: 150px;
+    }
 }
+
+@media screen and (max-width:337px) {
+    .glide__slides li caption {
+        display: none;
+    }
+
+    .glide__slides li {
+        display: none;
+    }
+}
+
 
 #arrowdown {
     font-size: 25px;
