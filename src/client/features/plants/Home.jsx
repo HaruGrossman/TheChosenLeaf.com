@@ -111,9 +111,9 @@ export default function Carousel() {
                   <img src="/plantImages/ChamaedoreaElegans2.jpg" alt="Palm" />
                 </Link>
                 <caption>
-                  Palms, Infrequent watering, Low maintenance plants
+                  Palms
                 </caption>
-                <p id="altText">Great for travelers</p>
+                <p id="altText">Infrequent watering, Low maintenance plants</p>
               </li>
               <li
                 className="glide__slide"
