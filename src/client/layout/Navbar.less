@@ -46,6 +46,7 @@
     background-color: #21575A;
     color: #6acdbb;
     align-items: center;
+    padding-left: 0%;
   }
 
   .menubutton {
@@ -67,7 +68,7 @@
     right: 0;
     background-color: #C8E4DF;
     color: black;
-    min-width: 30px;
+    // min-width: 30px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
   }
@@ -83,6 +84,9 @@
   .menubutton:focus+.navbarmenu {
     display: flex;
     flex-direction: column;
+    padding-left: 0;
+    width: fit-content;
+    align-items: end;
   }
 
   .menubutton:hover {

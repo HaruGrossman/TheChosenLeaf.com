@@ -31,12 +31,12 @@ export default function Navbar() {
       </button>
       <menu class="navbarmenu">
         <li>
-          <NavLink to="/">Home</NavLink>
-        </li>
-        <li>
           <NavLink to="/search" input type="text" placeholder="Search">
             🔍 <input type="text" placeholder="Search Plants" />
           </NavLink>
+        </li>
+        <li>
+          <NavLink to="/">Home</NavLink>
         </li>
         {token ? (
           <>
