@@ -2,17 +2,13 @@
 import { useNavigate, useParams } from "react-router-dom";
 // import { selectToken } from authslice
 import { useGetPlantQuery } from "./plantSlice";
-
 import Reviews from "./Review";
 import NewFavoritePlant from "../favorites/NewFavoritePlant";
 import "./plantDetails.css";
 
-
 export default function Details() {
-
     // validate login
     // const token = useSelector(selectToken);
-
     const navigate = useNavigate();
 
     // // arrow function returnNavigate returns to search list
@@ -59,7 +55,7 @@ export default function Details() {
     ) : (
         <main className="plant-details">
             <section className="mainDetails">
-                <img src={plant.image} />
+                <img id="plantimage" src={plant.image} />
                 <section className="right-sideList">
                     <h1>Common Name: {plant.name}</h1>
                     <h2>Latin Name:{plant.latin}</h2>
