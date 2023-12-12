@@ -4,8 +4,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useGetPlantQuery } from "./plantSlice";
 
 import Review from "./Review";
-// import css
-import Review from "./Review";
 
 import NewFavoritePlant from "../favorites/NewFavoritePlant";
 export default function Details() {
@@ -43,35 +41,41 @@ export default function Details() {
   //     evt.preventDefault();
   //     await unfavoritePlant(plant.id);
   // }
-    // review a plant
-    // const [reviewPlant, { isLoading: isReviewing }] = usePlantReviewMutation();
-    // tryReviewPlant = async (evt) => {
-    //     evt.preventDefault();
-    //     await reviewPlant(plant.id);
-    // }
-    console.log(plant);
+  // review a plant
+  // const [reviewPlant, { isLoading: isReviewing }] = usePlantReviewMutation();
+  // tryReviewPlant = async (evt) => {
+  //     evt.preventDefault();
+  //     await reviewPlant(plant.id);
+  // }
+  console.log(plant);
 
-    return isLoading ? (
-        <p>Loading...</p>
-    ) : (
-        <main className="plant-details">
-            <section className="mainDetails">
-                <img id="plantimage" src={plant.image} />
-                <section className="right-sideList">
-                    <h1>Common Name: {plant.name}</h1>
-                    <h2>Latin Name:{plant.latin}</h2>
-                    <h2>Ideal Light:{plant.ideallight}</h2>
-                    <h2>Tolerated Light:{plant.toleratedlight}</h2>
-                    <h2>Watering:{plant.watering}</h2>
-                    <h2>Temperature:{plant.tempmin}-{plant.tempmax}</h2>
-                    <h2>Category:{plant.category} </h2>
-                </section>
-            </section>
-            <section className="buttonSelection">
-                <button className="store-near-me" onClick={storeNavigate}>Stores Near Me</button>
-                <button className="return-btn" onClick={returnNavigate}>Back to Search</button>
-                <NewFavoritePlant />
-                {/* { token &&
+  return isLoading ? (
+    <p>Loading...</p>
+  ) : (
+    <main className="plant-details">
+      <section className="mainDetails">
+        <img id="plantimage" src={plant.image} />
+        <section className="right-sideList">
+          <h1>Common Name: {plant.name}</h1>
+          <h2>Latin Name:{plant.latin}</h2>
+          <h2>Ideal Light:{plant.ideallight}</h2>
+          <h2>Tolerated Light:{plant.toleratedlight}</h2>
+          <h2>Watering:{plant.watering}</h2>
+          <h2>
+            Temperature:{plant.tempmin}-{plant.tempmax}
+          </h2>
+          <h2>Category:{plant.category} </h2>
+        </section>
+      </section>
+      <section className="buttonSelection">
+        <button className="store-near-me" onClick={storeNavigate}>
+          Stores Near Me
+        </button>
+        <button className="return-btn" onClick={returnNavigate}>
+          Back to Search
+        </button>
+        <NewFavoritePlant />
+        {/* { token &&
             (book.favorite === false ? (
                 <form onSubmit={tryFavoritePlant}>
                     <button>{isFavoriting ? "Hang tight..." : "❤️" }</button>
@@ -82,12 +86,13 @@ export default function Details() {
                 </form>
             ))
         }; */}
-                {/* <form onSubmit={tryReviewPlant}> */}
-                {/* <button>{isReviewing ? "Hang tight..." : "Thank you!" }</button> */}
-                {/* </form> */}
-            </section>
-            <section className="reviewSection">
-                <Reviews />
-            </section>
-        </main>)
+        {/* <form onSubmit={tryReviewPlant}> */}
+        {/* <button>{isReviewing ? "Hang tight..." : "Thank you!" }</button> */}
+        {/* </form> */}
+      </section>
+      <section className="reviewSection">
+        <Review plantId={id} />
+      </section>
+    </main>
+  );
 }
