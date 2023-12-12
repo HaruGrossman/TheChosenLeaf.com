@@ -45,6 +45,7 @@ export default function Note({ note }) {
                         value={editedNote}
                         onChange={(e) => setEditedNote(e.target.value)}
                     />
+                    </label>
                 </form>
                 <h4>Note: </h4>
                 <form>
