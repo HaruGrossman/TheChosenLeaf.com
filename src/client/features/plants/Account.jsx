@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import MyPlants from "../favorites/FavoritePlants";
 import FavoriteStore from "../components/FavoriteStores";
 import "./Account.less";
+import "../notes/Note.less";
 
 //error checking: isLoading return Loading...
 //error checking: isError return 'something went wrong'
@@ -39,11 +40,13 @@ export default function Account() {
         <p>Loading...</p>
     ) : (
         <main id="accountBody">
-            <section><h1>Welcome, {user?.username}!</h1></section>
+            <section className="welcome">
+                <h1>Welcome, {user?.username}!</h1>
+            </section>
             <section className="myplants">
                 <MyPlants />
             </section>
-            <section className="mynotes">
+            <section>
                 <Notes />
             </section>
             <section className="mystores">

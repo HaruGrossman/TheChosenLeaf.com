@@ -3,11 +3,11 @@ import { useDeleteNoteMutation, useEditNoteMutation } from "../../store/Notes";
 import Popup from "../components/Popup";
 
 //  function for rendering our createNoteForm  // window to pop up on screen
-export default function Note ({ note }) {
+export default function Note({ note }) {
 
     const [editNote] = useEditNoteMutation();
     const [deleteNote] = useDeleteNoteMutation();
-    
+
     const [editedNote, setEditedNote] = useState(note.editedNote);
     const [buttonPopup, setButtonPopup] = useState(false);
 
@@ -25,15 +25,21 @@ export default function Note ({ note }) {
     };
 
     return (
-        <li>
-            <h3>{note.note}</h3>
-            <button onClick={() => setButtonPopup(true)}>Edit Note</button>
+        <li className="individualNote">
+            <section className="individualNoteButtons">
+                <button onClick={() => setButtonPopup(true)}>Edit Note</button>
+                <button className="delete-btn" onClick={onDelete}>Delete</button>
+            </section>
+            <section>
+                <h3>{note.id}:</h3> {/*need to be able to grab the note as it is attached to the plant */}
+                <h4>{note.note}</h4> {/* reflect the note */}
+            </section>
             <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
                 <h4>Edit existing note: {note.note} </h4>
                 <h4>Attach to a favorite plant? {note.plantId} </h4>
                 <form>
-                <input 
-                        type="text" 
+                    <input
+                        type="text"
                         value={editedNote}
                         onChange={(e) => setEditedNote(e.target.value)}
                         required
@@ -41,17 +47,16 @@ export default function Note ({ note }) {
                 </form>
                 <h4>Note: </h4>
                 <form>
-                    <input 
-                        type="text" 
+                    <button className="save-btn" onClick={save}>Save</button>
+                    <input
+                        type="text"
                         value={editedNote}
                         onChange={(e) => setEditedNote(e.target.value)}
                         required
                     />
-                    <button className="save-btn" onClick={save}>Save</button>
-                    <button className="delete-btn" onClick={onDelete}>Delete</button>
                 </form>
             </Popup>
-    </li>
+        </li >
 
     )
 }

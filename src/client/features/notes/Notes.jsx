@@ -22,10 +22,10 @@ export default function Notes() {
             <section className="myPlantNotesHeader">
                 <h2>My Plant Notes:</h2>
                 <button onClick={() => setButtonPopup(true)}>Create Note</button>
-                <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-                    <NewNote />
-                </Popup>
             </section>
+            <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+                <NewNote />
+            </Popup>
             {isLoading && <p>Loading notes...</p>}
             {notes && (
                 <ul className="notes-list">
