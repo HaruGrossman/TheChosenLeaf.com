@@ -1,51 +1,75 @@
 import { useCreateFavoritePlantMutation, useDeleteFavoritePlantMutation } from "../../store/FavoriteSlice";
+import { useGetPlantQuery } from "../plants/plantSlice";
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Switch from "../components/FavoriteSwitch";
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
+import { createAction } from "@reduxjs/toolkit";
 
-export default function NewFavoritePlant(){
+export default function NewFavoritePlant( plant ){
     const token = useSelector(selectToken);
     const navigate = useNavigate();
+    const { id } = useParams();
+    const { data } = useGetPlantQuery(id);
+    const plantId = data.id;
 
     const [favorite, setFavorite] = useState("");
     const [createFavorite] = useCreateFavoritePlantMutation();
-
-    const [unfavorite, setUnfavorite] = useState("");
-    const [deleteFavorite] = useDeleteFavoritePlantMutation();
 
     const loginNavigate = () => {
         navigate("/login");
     };
 
+    console.log(data)
     //create a new favorite
     const createFav = async (evt) => {
         evt.preventDefault();
-        await createFavorite({ plantId, favorite });
+        await createFavorite({ id: plantId });
     };
 
-    //delete an existing favorite
+    const [unfavorite, setUnfavorite] = useState("");
+    const [deleteFavorite] = useDeleteFavoritePlantMutation();
+
+    // delete an existing favorite
     const deleteFav = async (evt) => {
         evt.preventDefault();
-        deleteFavorite(favoritePlant.id);
+        deleteFavorite(plant.id);
     };
 
     if (!token) {
         return <button onClick={loginNavigate}>Login to add to favorites</button>
     };
+        
+    if (!favorite) {
         return (
          <div>
-            <Switch onToggle={createFav} isToggled={deleteFav}>
-                <button onClick={createFav}>
+            
+                <button onClick={createFav}>♡
                     <input
-                    type="checkbox"
+                    type="hidden"
                     value={favorite}
                     onChange={(e) => setFavorite(e.target.value)}
                     />
                 </button>
-            </Switch>
 
          </div>
         )
+        };
+
+    return (
+        <div>
+            
+        <button onClick={deleteFav}>❤️
+            <input
+            type="button"
+            value={unfavorite}
+            onChange={(e) => setUnfavorite(e.target.value)}
+            />
+        </button>
+
+        </div>
+    )
 };
+
+

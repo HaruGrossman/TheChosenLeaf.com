@@ -17,9 +17,7 @@ export default function Note ({ note }) {
         evt.preventDefault();
         const id = note.id;
         editNote({ id: id, data: { note: editedNote, favoritePlantId: editedPlant } });
-    }
-
-console.log(note);
+    };
 
     // delete note
     const onDelete = async (evt) => {

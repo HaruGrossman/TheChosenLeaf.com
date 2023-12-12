@@ -45,22 +45,16 @@ router.get("/", async (req, res, next) => {
   });
   
   // adds a plant to favorites     still not working
-  router.post("/", async (req, res, next) => {
+  router.post("/:id", async (req, res, next) => {
     try {
-      const { note, plantId } = +req.body;
-      // if (!plantId) {
-      //   throw new ServerError(400, "Plant info required.");
-      // }
+      // const content = +req.body;
+      const id = +req.params.id;
+
       const favoritePlant = await prisma.favoritePlant.create({
         data: {
-          note: note,
-          plant: plantId,
-          notes: [{ connect: { id: prisma.favoritePlant.note }}],
+          plant: id,
           user: { connect: { id: res.locals.user.id }},
-          plant: { connect: { id: prisma.favoritePlant.plant }},
-          include: { 
-            plant: true,
-            notes: true },
+          plant: { connect: { id: id }},
         },
       });
       res.json(favoritePlant);
