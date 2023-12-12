@@ -21,8 +21,8 @@ const noteApi = api.injectEndpoints({
             invalidatesTags: ["Notes"],
         }),
         editNote: builder.mutation({
-            query: (data) => ({
-                url: `/notes/${note.id}`,
+            query: ({ id, data }) => ({
+                url: `/notes/${id}`,
                 method: "PUT",
                 body: data,
             }),

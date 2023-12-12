@@ -11,8 +11,8 @@ const favoritePlantApi = api.injectEndpoints({
             providesTags: ["FavoritePlant"],
           }),
           createFavoritePlant: builder.mutation({
-            query: (data) => ({
-              url: `/favorite`,
+            query: ({data, id}) => ({
+              url: `/favorite/${id}`,
               method: "POST",
               body: data,
             }),

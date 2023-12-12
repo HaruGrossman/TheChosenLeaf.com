@@ -7,7 +7,7 @@ import "./plantDetails.less"
 
 import NewFavoritePlant from "../favorites/NewFavoritePlant";
 export default function Details() {
-  // validate login
+//   // validate login
   // const token = useSelector(selectToken);
 
   const navigate = useNavigate();
@@ -28,26 +28,12 @@ export default function Details() {
   const { id } = useParams();
   const { data: plant, isLoading } = useGetPlantQuery(id);
 
-  // favorite a plant
-  // const [favoritePlant, { isLoading: isFavoriting }] = useFavoritePlantMutation();
-  // tryFavoritePlant = async (evt) => {
-  //     evt.preventDefault();
-  //     await favoritePlant(plant.id);
-  // };
-
-  // unfavorite a favorited plant
-  // const [unfavoritePlant, { isLoading: isUnfavoriting }] = useUnfavoritePlantMutation();
-  // tryUnfavoritePlant = async (evt) => {
-  //     evt.preventDefault();
-  //     await unfavoritePlant(plant.id);
-  // }
   // review a plant
   // const [reviewPlant, { isLoading: isReviewing }] = usePlantReviewMutation();
   // tryReviewPlant = async (evt) => {
   //     evt.preventDefault();
   //     await reviewPlant(plant.id);
   // }
-  console.log(plant);
 
   return isLoading ? (
     <p>Loading...</p>
@@ -67,7 +53,10 @@ export default function Details() {
           <h2>Category: {plant.category} </h2>
         </section>
       </section>
-      <section className="buttonSelection">
+      <section className="favorite">
+      <NewFavoritePlant />
+      </section>
+      <section className="plantDetail-buttons">
         <button className="store-near-me" onClick={storeNavigate}>
           Stores Near Me
         </button>

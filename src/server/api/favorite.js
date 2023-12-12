@@ -13,7 +13,8 @@ router.get("/", async (req, res, next) => {
         where: { userId: res.locals.user.id },
         include: { 
           plant: true,
-          notes: true },
+          notes: true, 
+        },
       });
       // validateFavorites(res.locals.user, favorite);
       res.json(plants);
@@ -44,21 +45,16 @@ router.get("/", async (req, res, next) => {
   });
   
   // adds a plant to favorites     still not working
-  router.post("/", async (req, res, next) => {
+  router.post("/:id", async (req, res, next) => {
     try {
-      const { note } = +req.body;
-      // if (!plantId) {
-      //   throw new ServerError(400, "Plant info required.");
-      // }
+      // const content = +req.body;
+      const id = +req.params.id;
+
       const favoritePlant = await prisma.favoritePlant.create({
         data: {
-          note,
-          // notes: { connect: { id: noteId }},
-          user: { connect: { id: res.locals.user.id } },
-          // plant: { connect: { id: plantId} },
-          include: { 
-            plant: true,
-            notes: true },
+          plant: id,
+          user: { connect: { id: res.locals.user.id }},
+          plant: { connect: { id: id }},
         },
       });
       res.json(favoritePlant);
@@ -77,7 +73,7 @@ router.get("/", async (req, res, next) => {
       });
       // validateFavorites(res.locals.user, favoritePlant);
   
-      await prisma.task.delete({ where: { id } });
+      await prisma.favoritePlant.delete({ where: { id: id } });
       res.sendStatus(204);
     } catch (err) {
       next(err);
