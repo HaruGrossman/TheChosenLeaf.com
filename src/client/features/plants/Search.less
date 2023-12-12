@@ -1,7 +1,6 @@
 // need to add styling at small screen break at 750width
 .searchMain {
     display: flex;
-    gap: 1em;
     justify-content: baseline;
     align-items: baseline;
 }
@@ -69,6 +68,8 @@
     background-color: #4B7A7B;
     margin-right: 5%;
     margin-left: 2%;
+    box-sizing: content-box;
+    width: 100%;
 }
 
 .searchResult {
@@ -116,8 +117,41 @@
 .resultCards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: baseline;
-    gap: 1em;
+    column-gap: 1em;
+    row-gap: 1em;
     padding-bottom: 50px;
     margin-left: 1%;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+@media screen and (max-width: 700px) {
+
+    .resultCards {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .searchResult {
+        width: fit-content;
+
+        h5 {
+            border: none;
+            padding: none;
+        }
+
+        a {
+            display: none;
+        }
+    }
+
+    .sidenav {
+        width: fit-content;
+        height: 100%;
+        padding-bottom: 10px;
+        background-color: #9EC1BE;
+        position: sticky;
+        top: 0;
+    }
 }

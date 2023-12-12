@@ -3,7 +3,7 @@ import { useDeleteNoteMutation, useEditNoteMutation } from "../../store/Notes";
 import Popup from "../components/Popup";
 
 //  function for rendering our createNoteForm  // window to pop up on screen
-export default function Note ({ note }) {
+export default function Note({ note }) {
 
     const [editNote] = useEditNoteMutation();
     const [deleteNote] = useDeleteNoteMutation();
@@ -26,9 +26,15 @@ export default function Note ({ note }) {
     };
 
     return (
-        <li>
-            <h3>{note.note}</h3>
-            <button onClick={() => setButtonPopup(true)}>Edit Note</button>
+        <li className="individualNote">
+            <section className="individualNoteButtons">
+                <button onClick={() => setButtonPopup(true)}>Edit Note</button>
+                <button className="delete-btn" onClick={onDelete}>Delete</button>
+            </section>
+            <section className="noteIdComment">
+                <h3>{note.id}:</h3> {/*need to be able to grab the note as it is attached to the plant */}
+                <h4>{note.note}</h4> {/* reflect the note */}
+            </section>
             <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
                 <h4>Note : {note.note} </h4>
                 <h4>Favorite Plant : {note.favoritePlantId} </h4>
@@ -51,7 +57,7 @@ export default function Note ({ note }) {
                     <button className="delete-btn" onClick={onDelete}>Delete</button>
                 </form>
             </Popup>
-    </li>
+        </li >
 
     )
 }

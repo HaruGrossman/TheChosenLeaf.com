@@ -2,13 +2,10 @@
 import { useNavigate, useParams } from "react-router-dom";
 // import { selectToken } from authslice
 import { useGetPlantQuery } from "./plantSlice";
-// import css
 
 import Review from "./Review";
 
 import NewFavoritePlant from "../favorites/NewFavoritePlant";
-
-
 export default function Details() {
 //   // validate login
   // const token = useSelector(selectToken);
@@ -22,7 +19,6 @@ export default function Details() {
 
   // arrow function createReview returns a popup window to create a review
   // ***Q will this need to be added to the plant API to save the review under each plant?
-
   // arrow function storeNavigate takes user to maps/nearme page
   const storeNavigate = () => {
     navigate("/maps");
@@ -43,21 +39,19 @@ export default function Details() {
     <p>Loading...</p>
   ) : (
     <main className="plant-details">
-      <img src={plant.image} />
-      <section className="plantDetail-description">
-        <h1>Common Name: {plant.name}</h1>
-        <h2>Latin Name:{plant.latin}</h2>
-        <h2>Ideal Light:{plant.ideallight}</h2>
-        <h2>Tolerated Light:{plant.toleratedlight}</h2>
-        <h2>Watering:{plant.watering}</h2>
-        <h2>
-          Temperature:{plant.tempmin}-{plant.tempmax}
-        </h2>
-        <h2>Category:{plant.category} </h2>
-
-      </section>
-      <section className="reviews">
-        <Review plantId={id} />
+      <section className="mainDetails">
+        <img id="plantimage" src={plant.image} />
+        <section className="right-sideList">
+          <h1>Common Name: {plant.name}</h1>
+          <h2>Latin Name:{plant.latin}</h2>
+          <h2>Ideal Light:{plant.ideallight}</h2>
+          <h2>Tolerated Light:{plant.toleratedlight}</h2>
+          <h2>Watering:{plant.watering}</h2>
+          <h2>
+            Temperature:{plant.tempmin}-{plant.tempmax}
+          </h2>
+          <h2>Category:{plant.category} </h2>
+        </section>
       </section>
       <section className="favorite">
       <NewFavoritePlant />
@@ -69,6 +63,24 @@ export default function Details() {
         <button className="return-btn" onClick={returnNavigate}>
           Back to Search
         </button>
+        <NewFavoritePlant />
+        {/* { token &&
+            (book.favorite === false ? (
+                <form onSubmit={tryFavoritePlant}>
+                    <button>{isFavoriting ? "Hang tight..." : "❤️" }</button>
+                </form>
+            ) : (
+                <form onSubmit={tryUnfavoritePlant}>
+                    <button>{isUnfavoriting ? "Hang tight..." : "🤍" }</button>
+                </form>
+            ))
+        }; */}
+        {/* <form onSubmit={tryReviewPlant}> */}
+        {/* <button>{isReviewing ? "Hang tight..." : "Thank you!" }</button> */}
+        {/* </form> */}
+      </section>
+      <section className="reviewSection">
+        <Review plantId={id} />
       </section>
     </main>
   );

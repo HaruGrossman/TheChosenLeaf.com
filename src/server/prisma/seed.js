@@ -1,8 +1,7 @@
 const prisma = require("../prisma");
 const plantData = require("./plantData");
-
+ //can be commented after initial seed since username is unique cannot be created again
 const seed = async () => {
-  //can be commented after initial seed since username is unique cannot be created again
   await prisma.user.create({
     data: {
       username: "panda",
@@ -10,6 +9,7 @@ const seed = async () => {
       notes: {
         create: [{ note: "note 1" }, { note: "note 2" }],
       },
+    },
     },
   });
 
@@ -42,5 +42,5 @@ seed()
   .catch(async (err) => {
     console.error(err);
     await prisma.$disconnect();
-    process.exit(1);
+    // process.exit(1);
   });

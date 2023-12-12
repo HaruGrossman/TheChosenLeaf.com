@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useCreateNoteMutation } from "../../store/Notes";
 import '../components/popup.css';
+import "./Note.less"
 
 /** Form for creating new notes */
 export default function NewNote() {

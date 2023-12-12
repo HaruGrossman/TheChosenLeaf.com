@@ -56,7 +56,6 @@ export default function Carousel() {
     <>
       <body className="homebody">
         <section id="intro">
-
           <p>
             Struggling to find the right plant for your home or garden? High
             light, low light, tall, small, low maintenance?
@@ -66,7 +65,7 @@ export default function Carousel() {
             right for you!
           </p>
         </section>
-       <br />
+        <br />
         <p>
           Need some ideas check out our slideshow{" "}
           <span id="arrowdown"> &#x21e3; </span> or head over to the search page
@@ -123,8 +122,7 @@ export default function Carousel() {
               >
                 <Link to={`/Search/plantType/6`}>
                   <img
-                    src="/plantImages/CryptanthusRoseElaine1.jpg"
-                    alt="Bromeliad"
+                    src="/plantImages/CryptanthusRoseElaine1.jpg" alt="Bromeliad"
                   />
                 </Link>
                 <caption>Bromeliads</caption>
