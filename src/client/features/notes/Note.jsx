@@ -30,12 +30,13 @@ export default function Note({ note }) {
                 <button onClick={() => setButtonPopup(true)}>Edit Note</button>
                 <button className="delete-btn" onClick={onDelete}>Delete</button>
             </section>
-            <section>
+            <section className="noteIdComment">
                 <h3>{note.id}:</h3> {/*need to be able to grab the note as it is attached to the plant */}
                 <h4>{note.note}</h4> {/* reflect the note */}
             </section>
             <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
                 <h4>Edit existing note: {note.note} </h4>
+                <br />
                 <h4>Attach to a favorite plant? {note.plantId} </h4>
                 <form>
                     <input
