@@ -1,19 +1,15 @@
 const prisma = require("../prisma");
 const plantData = require("./plantData");
-
-//can be commented after initial seed since username is unique cannot be created again
+ //can be commented after initial seed since username is unique cannot be created again
 const seed = async () => {
-  await prisma.user.upsert({
-    where: {
-      username: "foo",
-    },
-    update: {},
+  await prisma.user.create({
     data: {
       username: "panda",
       password: "123",
       notes: {
         create: [{ note: "note 1" }, { note: "note 2" }],
       },
+    },
     },
   });
 

@@ -1,30 +1,40 @@
-import { createSlice } from "@reduxjs/toolkit"
+import api from "./api";
 
-export const chosenPlantApi = createApi({
-    reducerPath: 'plants',
-    baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:3000/api'
+const reviewApi = api.injectEndpoints({
+  endpoints: (builder) => ({
+    getReviews: builder.query({
+      query: (plantId) => `/reviews/${plantId}`,
+      providesTags: ["Reviews"],
     }),
-    endpoints: (builder) => ({
-        getAllPlants: builder.query({
-            query: () => "/plants",
-            providesTags: ["Plants"]
-        }),
-        //RTK query mutation for favorite plants
-        favoritePlant: builder.mutation({
-            query: (plantId) => ({
-                url: `/plants/toggle/${plantId}`,
-                method: 'PUT'
-            })
-            //invalidatesTags: ["FavoritePlant"]
-        }),
-        //RTK query mutation for favorite stores
-        getFavoriteStore: builder.query({
-            query: () => "/favoriteStore",
-            providesTags: ["FavoriteStore"]
-        }),
-        //RTK query mutation for 
-        //   getNotes: builder.query({}),
-        //   getReviews: builder.query({}),
-    })
-})
+    editReview: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/reviews/review/${id}`,
+        method: "PUT",
+        body: { data },
+      }),
+      invalidatesTags: ["Reviews"],
+    }),
+    createReview: builder.mutation({
+      query: (data) => ({
+        url: `/reviews/review/create`,
+        method: "POST",
+        body: { data },
+      }),
+      invalidatesTags: ["Reviews"],
+    }),
+    deleteReview: builder.mutation({
+      query: (id) => ({
+        url: `/reviews/review/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Reviews"],
+    }),
+  }),
+});
+
+export const {
+  useGetReviewsQuery,
+  useCreateReviewMutation,
+  useEditReviewMutation,
+  useDeleteReviewMutation,
+} = reviewApi;

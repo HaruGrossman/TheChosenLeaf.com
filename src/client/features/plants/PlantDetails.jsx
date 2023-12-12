@@ -5,46 +5,44 @@ import { useGetPlantQuery } from "./plantSlice";
 
 import Review from "./Review";
 // import css
+import Review from "./Review";
+
 import NewFavoritePlant from "../favorites/NewFavoritePlant";
-
-
 export default function Details() {
-    // validate login
-    // const token = useSelector(selectToken);
+  // validate login
+  // const token = useSelector(selectToken);
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    // // arrow function returnNavigate returns to search list
-    const returnNavigate = () => {
-        navigate("/search");
-    };
+  // // arrow function returnNavigate returns to search list
+  const returnNavigate = () => {
+    navigate("/search");
+  };
 
-    // arrow function createReview returns a popup window to create a review
-    // ***Q will this need to be added to the plant API to save the review under each plant? 
+  // arrow function createReview returns a popup window to create a review
+  // ***Q will this need to be added to the plant API to save the review under each plant?
+  // arrow function storeNavigate takes user to maps/nearme page
+  const storeNavigate = () => {
+    navigate("/maps");
+  };
+  // ***STRETCHGOAL will this onClick need to store params to be exported to the maps page?
 
-    // arrow function storeNavigate takes user to maps/nearme page
-    const storeNavigate = () => {
-        navigate("/maps");
-    };
-    // ***STRETCHGOAL will this onClick need to store params to be exported to the maps page?
+  const { id } = useParams();
+  const { data: plant, isLoading } = useGetPlantQuery(id);
 
-    const { id } = useParams();
-    const { data: plant, isLoading } = useGetPlantQuery(id);
+  // favorite a plant
+  // const [favoritePlant, { isLoading: isFavoriting }] = useFavoritePlantMutation();
+  // tryFavoritePlant = async (evt) => {
+  //     evt.preventDefault();
+  //     await favoritePlant(plant.id);
+  // };
 
-    // favorite a plant
-    // const [favoritePlant, { isLoading: isFavoriting }] = useFavoritePlantMutation();
-    // tryFavoritePlant = async (evt) => {
-    //     evt.preventDefault();
-    //     await favoritePlant(plant.id);
-    // };
-
-    // unfavorite a favorited plant
-    // const [unfavoritePlant, { isLoading: isUnfavoriting }] = useUnfavoritePlantMutation();
-    // tryUnfavoritePlant = async (evt) => {
-    //     evt.preventDefault();
-    //     await unfavoritePlant(plant.id);
-    // }
-
+  // unfavorite a favorited plant
+  // const [unfavoritePlant, { isLoading: isUnfavoriting }] = useUnfavoritePlantMutation();
+  // tryUnfavoritePlant = async (evt) => {
+  //     evt.preventDefault();
+  //     await unfavoritePlant(plant.id);
+  // }
     // review a plant
     // const [reviewPlant, { isLoading: isReviewing }] = usePlantReviewMutation();
     // tryReviewPlant = async (evt) => {
