@@ -21,7 +21,7 @@ export default function Navbar() {
 
   return (
     <nav className="top">
-      <img src="../../../public/LogoFiles/OriginalonTransparent.png" alt="The Chosen Plant" />
+      <img src="../../../../public/LogoFiles/OriginalonTransparent.png" alt="The Chosen Plant" />
       <h1 class="AltName">The Chosen Plant</h1>
       <h3 class="slogan">Find your perfect plant!</h3>
       <button class="menubutton">
@@ -31,12 +31,12 @@ export default function Navbar() {
       </button>
       <menu class="navbarmenu">
         <li>
-          <NavLink to="/">Home</NavLink>
-        </li>
-        <li>
           <NavLink to="/search" input type="text" placeholder="Search">
             🔍 <input type="text" placeholder="Search Plants" />
           </NavLink>
+        </li>
+        <li>
+          <NavLink to="/">Home</NavLink>
         </li>
         {token ? (
           <>
