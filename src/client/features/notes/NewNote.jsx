@@ -7,12 +7,11 @@ export default function NewNote() {
   const [note, setNote] = useState("");
   const [favoritePlant, setFavoritePlant] = useState("");
   const [noteName, setNoteName] = useState("");
-  const [data] = useCreateNoteMutation();
+  const [createNote] = useCreateNoteMutation();
 
   const create = async (evt) => {
     evt.preventDefault();
-    const createNote = { note, favoritePlant, name}
-    await data(createNote).json;
+    createNote({ note: note, favoritePlant: favoritePlant, name: noteName })
   };
 
   console.log(note);

@@ -29,15 +29,14 @@ router.get("/", async (req, res, next) => {
 /** Creates new note and sends it */
 router.post("/create", async (req, res, next) => {
   try {
-    const noteContent = req.body;
-    if (!noteContent) {
+    const content = req.body;
+    if (!content) {
       throw new ServerError(400, "Note required.");
     }
 
-    const { data: content } = noteContent;
     const name = content.name;
     const note = content.note;
-    const favoritePlant = 1 * content.favoritePlant;
+    const favoritePlant = +content.favoritePlant;
 
     const newNote = await prisma.note.create({
       data: {
@@ -94,9 +93,9 @@ router.put("/:id", async (req, res, next) => {
         });
     }
 
-    const {data: content } = noteContent;
+    const content = noteContent;
     const note = content.note;
-    const favoritePlant = 1 * content.favoritePlant;
+    const favoritePlantId = +content.favoritePlant;
     const noteName = content.noteName;
 
     // update note
@@ -105,7 +104,7 @@ router.put("/:id", async (req, res, next) => {
       data: { 
         note: note, 
         name: noteName, 
-        favoritePlant},
+        favoritePlantId},
     });
     res.json(updatedNote);
   } catch (err) {

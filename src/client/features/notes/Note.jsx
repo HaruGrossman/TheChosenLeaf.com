@@ -5,19 +5,18 @@ import Popup from "../components/Popup";
 //  function for rendering our createNoteForm  // window to pop up on screen
 export default function Note ({ note }) {
 
-    const [editNote, editPlant] = useEditNoteMutation();
+    const [editNote] = useEditNoteMutation();
     const [deleteNote] = useDeleteNoteMutation();
     
-    const [editedNote, setEditedNote] = useState(note.editedNote);
-    const [editedPlant, setEditedPlant] = useState(note.editedPlant);
+    const [editedNote, setEditedNote] = useState(note.note);
+    const [editedPlant, setEditedPlant] = useState(note.favoritePlantId);
     const [buttonPopup, setButtonPopup] = useState(false);
 
     // save edited note
     const save = async (evt) => {
-        id = note.id;
         evt.preventDefault();
-        editNote({ ...id, editedNote });
-        editPlant({ ...id, editedPlant});
+        const id = note.id;
+        editNote({ id: id, data: { note: editedNote, favoritePlantId: editedPlant } });
     }
 
 console.log(note);
