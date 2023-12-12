@@ -57,14 +57,14 @@ export default function Details() {
         <img id="plantimage" src={plant.image} />
         <section className="right-sideList">
           <h1>Common Name: {plant.name}</h1>
-          <h2>Latin Name:{plant.latin}</h2>
-          <h2>Ideal Light:{plant.ideallight}</h2>
-          <h2>Tolerated Light:{plant.toleratedlight}</h2>
-          <h2>Watering:{plant.watering}</h2>
+          <h2>Latin Name: {plant.latin}</h2>
+          <h2>Ideal Light: {plant.ideallight}</h2>
+          <h2>Tolerated Light: {plant.toleratedlight}</h2>
+          <h2>Watering: {plant.watering}</h2>
           <h2>
-            Temperature:{plant.tempmin}-{plant.tempmax}
+            Temperature: {plant.tempmin}-{plant.tempmax}
           </h2>
-          <h2>Category:{plant.category} </h2>
+          <h2>Category: {plant.category} </h2>
         </section>
       </section>
       <section className="buttonSelection">
