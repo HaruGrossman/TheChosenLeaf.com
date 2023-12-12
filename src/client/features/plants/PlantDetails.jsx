@@ -2,8 +2,8 @@
 import { useNavigate, useParams } from "react-router-dom";
 // import { selectToken } from authslice
 import { useGetPlantQuery } from "./plantSlice";
-
 import Review from "./Review";
+import "./plantDetails.less"
 
 import NewFavoritePlant from "../favorites/NewFavoritePlant";
 export default function Details() {
@@ -43,14 +43,14 @@ export default function Details() {
         <img id="plantimage" src={plant.image} />
         <section className="right-sideList">
           <h1>Common Name: {plant.name}</h1>
-          <h2>Latin Name:{plant.latin}</h2>
-          <h2>Ideal Light:{plant.ideallight}</h2>
-          <h2>Tolerated Light:{plant.toleratedlight}</h2>
-          <h2>Watering:{plant.watering}</h2>
+          <h2>Latin Name: {plant.latin}</h2>
+          <h2>Ideal Light: {plant.ideallight}</h2>
+          <h2>Tolerated Light: {plant.toleratedlight}</h2>
+          <h2>Watering: {plant.watering}</h2>
           <h2>
-            Temperature:{plant.tempmin}-{plant.tempmax}
+            Temperature: {plant.tempmin}-{plant.tempmax}
           </h2>
-          <h2>Category:{plant.category} </h2>
+          <h2>Category: {plant.category} </h2>
         </section>
       </section>
       <section className="favorite">

@@ -45,16 +45,16 @@ export default function Note({ note }) {
                         value={editedNote}
                         onChange={(e) => setEditedNote(e.target.value)}
                     />
-                    </label>
-                    <label> Attach to favorite plant:
+                </form>
+                <h4>Note: </h4>
+                <form>
                     <input
                         type="text"
                         value={editedPlant}
                         onChange={(e) => setEditedPlant(e.target.value)}
                     />
-                    </label>
                     <button className="save-btn" onClick={save}>Save</button>
-                    <button className="delete-btn" onClick={onDelete}>Delete</button>
+
                 </form>
             </Popup>
         </li >
