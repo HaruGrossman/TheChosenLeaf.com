@@ -2,8 +2,8 @@
 import { useNavigate, useParams } from "react-router-dom";
 // import { selectToken } from authslice
 import { useGetPlantQuery } from "./plantSlice";
-
 import Review from "./Review";
+import "./plantDetails.less"
 
 import NewFavoritePlant from "../favorites/NewFavoritePlant";
 export default function Details() {
