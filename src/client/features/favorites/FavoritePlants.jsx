@@ -1,11 +1,9 @@
 import { useGetFavoritePlantsQuery, useDeleteFavoritePlantMutation } from "../../store/FavoriteSlice";
-// import { useGetPlantQuery } from "../plants/plantSlice";
 import { selectToken } from "../auth/authSlice";
 import { useSelector } from "react-redux";
-// import NewFavoritePlant from "./NewFavoritePlant";
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Link } from "react-router-dom";
-// import DeleteFavPlant from "./DeleteFavoritePlant";
+import './favorite.css';
 
 function PlantCard({ plant }) {
 
@@ -27,7 +25,7 @@ function PlantCard({ plant }) {
                 </Link>
                 <h3>{plant.plant.name}</h3>
                 <h3>Favorite Plant Id: {plant.id}</h3>
-                <button onClick={deleteFav} 
+                <button onClick={deleteFav} className="delete-btn"
                 >
                 ❤️
                 <input
