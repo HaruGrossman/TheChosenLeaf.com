@@ -2,12 +2,13 @@
 import { useNavigate, useParams } from "react-router-dom";
 // import { selectToken } from authslice
 import { useGetPlantQuery } from "./plantSlice";
-// import css
+
 import Reviews from "./Review";
 import NewFavoritePlant from "../favorites/NewFavoritePlant";
+import "./plantDetails.css";
 
 
-export default function Details(){
+export default function Details() {
 
     // validate login
     // const token = useSelector(selectToken);
@@ -23,7 +24,7 @@ export default function Details(){
     // ***Q will this need to be added to the plant API to save the review under each plant? 
 
     // arrow function storeNavigate takes user to maps/nearme page
-    const storeNavigate = () =>{
+    const storeNavigate = () => {
         navigate("/maps");
     };
     // ***STRETCHGOAL will this onClick need to store params to be exported to the maps page?
@@ -51,23 +52,29 @@ export default function Details(){
     //     evt.preventDefault();
     //     await reviewPlant(plant.id);
     // }
-console.log(plant);
+    console.log(plant);
 
     return isLoading ? (
-    <p>Loading...</p>
+        <p>Loading...</p>
     ) : (
-    <main className="plant-details">
-        <img src={plant.image} />
-        <h1>Common Name: {plant.name}</h1>
-        <h2>Latin Name:{plant.latin}</h2>
-        <h2>Ideal Light:{plant.ideallight}</h2>
-        <h2>Tolerated Light:{plant.toleratedlight}</h2>
-        <h2>Watering:{plant.watering}</h2>
-        <h2>Temperature:{plant.tempmin}-{plant.tempmax}</h2>
-        <h2>Category:{plant.category} </h2>
-        <button className="store-near-me" onClick={storeNavigate}>Stores Near Me</button>
-        <NewFavoritePlant />
-        {/* { token &&
+        <main className="plant-details">
+            <section className="mainDetails">
+                <img src={plant.image} />
+                <section className="right-sideList">
+                    <h1>Common Name: {plant.name}</h1>
+                    <h2>Latin Name:{plant.latin}</h2>
+                    <h2>Ideal Light:{plant.ideallight}</h2>
+                    <h2>Tolerated Light:{plant.toleratedlight}</h2>
+                    <h2>Watering:{plant.watering}</h2>
+                    <h2>Temperature:{plant.tempmin}-{plant.tempmax}</h2>
+                    <h2>Category:{plant.category} </h2>
+                </section>
+            </section>
+            <section className="buttonSelection">
+                <button className="store-near-me" onClick={storeNavigate}>Stores Near Me</button>
+                <button className="return-btn" onClick={returnNavigate}>Back to Search</button>
+                <NewFavoritePlant />
+                {/* { token &&
             (book.favorite === false ? (
                 <form onSubmit={tryFavoritePlant}>
                     <button>{isFavoriting ? "Hang tight..." : "❤️" }</button>
@@ -78,10 +85,12 @@ console.log(plant);
                 </form>
             ))
         }; */}
-        {/* <form onSubmit={tryReviewPlant}> */}
-            {/* <button>{isReviewing ? "Hang tight..." : "Thank you!" }</button> */}
-        {/* </form> */}
-        <Reviews />
-        <button className="return-btn" onClick={returnNavigate}>Back to Search</button>
-    </main>)
+                {/* <form onSubmit={tryReviewPlant}> */}
+                {/* <button>{isReviewing ? "Hang tight..." : "Thank you!" }</button> */}
+                {/* </form> */}
+            </section>
+            <section className="reviewSection">
+                <Reviews />
+            </section>
+        </main>)
 }
