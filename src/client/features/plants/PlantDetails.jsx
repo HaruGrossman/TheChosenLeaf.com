@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useGetPlantQuery } from "./plantSlice";
 
 import Review from "./Review";
-
+// import css
 import NewFavoritePlant from "../favorites/NewFavoritePlant";
 
 
