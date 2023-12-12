@@ -4,8 +4,8 @@ export default function Footer() {
       <a href="www.instagram.com/thechosenplant">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
+          width="22"
+          height="22"
           fill="currentColor"
           class="bi bi-instagram"
           viewBox="0 0 16 16"
@@ -17,8 +17,8 @@ export default function Footer() {
       <a href="www.facebook.com/thechosenplant">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
+          width="22"
+          height="22"
           fill="currentColor"
           class="bi bi-facebook"
           viewBox="0 0 16 16"
@@ -30,8 +30,8 @@ export default function Footer() {
       <a href="www.twitter.com/thechosenplant">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
+          width="22"
+          height="22"
           fill="currentColor"
           class="bi bi-twitter"
           viewBox="0 0 16 16"
