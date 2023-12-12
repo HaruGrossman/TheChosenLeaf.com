@@ -48,13 +48,13 @@ export default function Note({ note }) {
                 </form>
                 <h4>Note: </h4>
                 <form>
-                    <button className="save-btn" onClick={save}>Save</button>
                     <input
                         type="text"
                         value={editedNote}
                         onChange={(e) => setEditedNote(e.target.value)}
                         required
                     />
+                    <button className="save-btn" onClick={save}>Save</button>
                 </form>
             </Popup>
         </li >
