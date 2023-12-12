@@ -2,13 +2,16 @@
 import { useNavigate, useParams } from "react-router-dom";
 // import { selectToken } from authslice
 import { useGetPlantQuery } from "./plantSlice";
-import Reviews from "./Review";
+
+import Review from "./Review";
+
 import NewFavoritePlant from "../favorites/NewFavoritePlant";
-import "./plantDetails.less";
+
 
 export default function Details() {
     // validate login
     // const token = useSelector(selectToken);
+
     const navigate = useNavigate();
 
     // // arrow function returnNavigate returns to search list
