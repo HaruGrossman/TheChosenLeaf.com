@@ -1,14 +1,10 @@
-// import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-// import { selectToken } from authslice
 import { useGetPlantQuery } from "./plantSlice";
 
 import Review from "./Review";
 
 import NewFavoritePlant from "../favorites/NewFavoritePlant";
 export default function Details() {
-//   // validate login
-  // const token = useSelector(selectToken);
 
   const navigate = useNavigate();
 
@@ -27,13 +23,6 @@ export default function Details() {
 
   const { id } = useParams();
   const { data: plant, isLoading } = useGetPlantQuery(id);
-
-  // review a plant
-  // const [reviewPlant, { isLoading: isReviewing }] = usePlantReviewMutation();
-  // tryReviewPlant = async (evt) => {
-  //     evt.preventDefault();
-  //     await reviewPlant(plant.id);
-  // }
 
   return isLoading ? (
     <p>Loading...</p>
@@ -63,21 +52,6 @@ export default function Details() {
         <button className="return-btn" onClick={returnNavigate}>
           Back to Search
         </button>
-        <NewFavoritePlant />
-        {/* { token &&
-            (book.favorite === false ? (
-                <form onSubmit={tryFavoritePlant}>
-                    <button>{isFavoriting ? "Hang tight..." : "❤️" }</button>
-                </form>
-            ) : (
-                <form onSubmit={tryUnfavoritePlant}>
-                    <button>{isUnfavoriting ? "Hang tight..." : "🤍" }</button>
-                </form>
-            ))
-        }; */}
-        {/* <form onSubmit={tryReviewPlant}> */}
-        {/* <button>{isReviewing ? "Hang tight..." : "Thank you!" }</button> */}
-        {/* </form> */}
       </section>
       <section className="reviewSection">
         <Review plantId={id} />
