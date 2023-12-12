@@ -18,7 +18,6 @@ export default function ReviewPop({ review }) {
     const plantId = review.plantId;
     const reviews = editedReview;
     const eReview = { reviews, id, plantId };
-
     try {
       await data({ id: id, data: eReview });
     } catch (err) {
