@@ -26,7 +26,7 @@ export default function Note({ note }) {
     };
 
 
-    console.log(note.favoritePlantId);
+    console.log(note);
     return (
         <li className="individualNote">
             <section className="individualNoteButtons">
@@ -34,7 +34,8 @@ export default function Note({ note }) {
                 <button className="delete-btn" onClick={onDelete}>Delete</button>
             </section>
             <section className="noteIdComment">
-                <h3>Note ID: {note.id}</h3> {/*need to be able to grab the note as it is attached to the plant */}
+                <h3>Plant Name: {note.name}</h3> 
+                <h3>Note ID: {note.id} </h3>{/*need to be able to grab the note as it is attached to the plant */}
                 <h4>Favorite Plant: {note.favoritePlantId}</h4> {/* shows if a plant is attached to the note */}
                 <h4>{note.note}</h4> {/* reflect the note */}
             </section>
