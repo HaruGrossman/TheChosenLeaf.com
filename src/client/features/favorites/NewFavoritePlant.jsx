@@ -17,8 +17,12 @@ export default function NewFavoritePlant( ){
     const [createFavorite] = useCreateFavoritePlantMutation();
 
     const loginNavigate = () => {
+        const location = useLocation();
+        console.log(location);
         navigate("/login");
     };
+    console.log(location);
+
 
     //create a new favorite
     const createFav = async (evt) => {
