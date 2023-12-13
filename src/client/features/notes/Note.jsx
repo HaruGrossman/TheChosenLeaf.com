@@ -8,15 +8,16 @@ export default function Note({ note }) {
     const [editNote] = useEditNoteMutation();
     const [deleteNote] = useDeleteNoteMutation();
     
+    const [editedPlantName, setEditedPlantName] = useState(note.name);
     const [editedNote, setEditedNote] = useState(note.note);
-    const [editedPlant, setEditedPlant] = useState(note.favoritePlantId);
+    const [editedPlantId, setEditedPlantId] = useState(note.favoritePlantId);
     const [buttonPopup, setButtonPopup] = useState(false);
 
     // save edited note
     const save = async (evt) => {
         evt.preventDefault();
         const id = note.id;
-        editNote({ id: id, data: { note: editedNote, favoritePlantId: editedPlant } });
+        editNote({ id: id, data: { note: editedNote, favoritePlantId: editedPlantId, name: editedPlantName } });
     };
 
     // delete note
@@ -34,35 +35,40 @@ export default function Note({ note }) {
                 <button className="delete-btn" onClick={onDelete}>Delete</button>
             </section>
             <section className="noteIdComment">
-                <h3>Plant Name: {note.name}</h3> 
+                <h3>My Plant Name: {note.name}</h3> 
                 <h3>Note ID: {note.id} </h3>{/*need to be able to grab the note as it is attached to the plant */}
                 <h4>Favorite Plant: {note.favoritePlantId}</h4> {/* shows if a plant is attached to the note */}
                 <h4>{note.note}</h4> {/* reflect the note */}
             </section>
             <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-                <h4>Note : {note.note} </h4>
-                <h4>Favorite Plant : {note.favoritePlantId} </h4>
+                <h4>My Plant Name : </h4>
+                <h4>Current Note : {note.note} </h4>
+                <h4>Current Plant ID: {note.favoritePlantId} </h4>
                 <form>
-                    <label> Edit existing note:
-                    <input 
-                        type="text" 
-                        value={editedNote}
-                        onChange={(e) => setEditedNote(e.target.value)}
-                    />
+                    <label> New Plant Name:
+                        <input 
+                            type="text" 
+                            value={editedPlantName}
+                            onChange={(e) => setEditedPlantName(e.target.value)}
+                        />
                     </label>
-                </form>
-                <h4>Note: </h4>
-                <form>
-                    <input
-                        type="text"
-                        value={editedPlant}
-                        onChange={(e) => setEditedPlant(e.target.value)}
-                    />
+                    <label> New Note:
+                        <input 
+                            type="text" 
+                            value={editedNote}
+                            onChange={(e) => setEditedNote(e.target.value)}
+                        />
+                    </label>
+                    <label> New Plant ID:
+                        <input
+                            type="text"
+                            value={editedPlantId}
+                            onChange={(e) => setEditedPlantId(e.target.value)}
+                        />
+                    </label>
                     <button className="save-btn" onClick={save}>Save</button>
-
                 </form>
             </Popup>
         </li >
-
     )
 }
