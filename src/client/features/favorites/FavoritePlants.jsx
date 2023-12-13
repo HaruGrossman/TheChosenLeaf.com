@@ -26,6 +26,7 @@ function PlantCard({ plant }) {
                 </Link>
                 <h3>{plant.plant.name}</h3>
                 <h3>My Plant Name: {plantNotes?.name}</h3>
+                <h3>Favorite Plant ID: {plant.id}</h3>
                 <h3>Plant Notes: {plantNotes?.note}</h3>
                 <button onClick={deleteFav} className="delete-btn"
                 >

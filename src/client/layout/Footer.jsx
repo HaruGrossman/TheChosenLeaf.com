@@ -27,7 +27,7 @@ export default function Footer() {
         </svg>
         {/* <img border="0" alt="Facebook" src="https://1000logos.net/wp-content/uploads/2017/02/Facebook-Logosu.png" width="125" height="75" /> */}
       </a>
-      <a href="www.twitter.com/thechosenplant">
+      <a href="https://www.twitter.com/thechosenplant">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="22"
