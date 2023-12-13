@@ -25,7 +25,7 @@ export default function ReviewPop({ review }) {
     }
   };
 
-  // delete note
+  // delete review
   const onDelete = async (e) => {
     e.preventDefault();
     deleteReview(review.id);
