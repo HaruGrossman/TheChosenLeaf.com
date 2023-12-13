@@ -1,13 +1,14 @@
 import { useGetFavoritePlantsQuery, useDeleteFavoritePlantMutation } from "../../store/FavoriteSlice";
 import { selectToken } from "../auth/authSlice";
 import { useSelector } from "react-redux";
-// import { useState } from 'react';
 import { Link } from "react-router-dom";
 import './favorite.css';
 
 function PlantCard({ plant }) {
 
     const [deleteFavorite] = useDeleteFavoritePlantMutation();
+    const plantNotes = plant.notes[0];
+
     
     // delete an existing favorite
     const deleteFav = async (evt) => {
@@ -15,8 +16,7 @@ function PlantCard({ plant }) {
         deleteFavorite(plant.id);
     };
 
-    console.log(plant.notes[0]);
-    const plantNotes = plant.notes[0];
+    console.log(plant);
 
     return(
         <div className="fav-plant-card">
@@ -25,13 +25,13 @@ function PlantCard({ plant }) {
                     <img src={plant.plant.image} className="fav-plant-img" />
                 </Link>
                 <h3>{plant.plant.name}</h3>
-                <h3>Favorite Plant Id: {plant.id}</h3>
+                <h3>My Plant Name: {plantNotes?.name}</h3>
                 <h3>Plant Notes: {plantNotes?.note}</h3>
                 <button onClick={deleteFav} className="delete-btn"
                 >
-                ❤️
+                Unfavorite
                 <input
-                type="hidden"
+                type="checkbox" typeof="hidden" id="checkbox" defaultChecked="checked"
                 />
                 </button>
             </li>
