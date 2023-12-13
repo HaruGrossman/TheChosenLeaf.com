@@ -19,8 +19,8 @@ const favoritePlantApi = api.injectEndpoints({
             invalidatesTags: ["FavoritePlants"],
           }),
           deleteFavoritePlant: builder.mutation({
-            query: (plantId) => ({
-              url: `/favorite/plant/${plantId}`,
+            query: (id) => ({
+              url: `/favorite/plant/${id}`,
               method: "DELETE",
             }),
             invalidatesTags: ["FavoritePlant"],

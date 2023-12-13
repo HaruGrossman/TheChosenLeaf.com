@@ -25,8 +25,6 @@ export default function Note({ note }) {
         deleteNote(note.id);
     };
 
-
-    console.log(note);
     return (
         <li className="individualNote">
             <section className="individualNoteButtons">

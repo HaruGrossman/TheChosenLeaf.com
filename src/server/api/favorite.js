@@ -69,7 +69,6 @@ router.get("/", async (req, res, next) => {
   router.delete("/plant/:id", async (req, res, next) => {
     try {
       const id = +req.params.id;
-      const plantId = id
   
       // const favoritePlant = await prisma.favoritePlant.findUnique({
       //   where: { 
@@ -80,7 +79,7 @@ router.get("/", async (req, res, next) => {
       // validateFavorites(res.locals.user, favoritePlant);
   
       await prisma.favoritePlant.delete({ where: { 
-        id: plantId},
+        id: id},
       });
 
       res.sendStatus(204);
