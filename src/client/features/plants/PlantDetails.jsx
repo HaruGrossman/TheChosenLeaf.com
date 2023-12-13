@@ -40,10 +40,10 @@ export default function Details() {
             Temperature: {plant.tempmin}-{plant.tempmax}
           </h2>
           <h2>Category: {plant.category} </h2>
+          <section className="favorite">
+            <NewFavoritePlant />
+          </section>
         </section>
-      </section>
-      <section className="favorite">
-      <NewFavoritePlant />
       </section>
       <section className="plantDetail-buttons">
         <button className="store-near-me" onClick={storeNavigate}>
@@ -52,6 +52,7 @@ export default function Details() {
         <button className="return-btn" onClick={returnNavigate}>
           Back to Search
         </button>
+
       </section>
       <section className="reviewSection">
         <Review plantId={id} />
