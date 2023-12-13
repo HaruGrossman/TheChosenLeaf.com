@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useGetAllPlantsQuery } from "./plantSlice";
 import { Link } from "react-router-dom";
-// import "./plants.css";
 import "./Search.less";
 
 export default function Plants() {
@@ -35,10 +34,8 @@ export default function Plants() {
   };
 
   const handleSubmit = async (e) => {
-    //this is for making sure we are getting the right value from user selection
     e.preventDefault();
     const searchPlants = [];
-
     for (const plant of data) {
       if (
         (dropdown1Value === "all" ||
@@ -149,7 +146,9 @@ export default function Plants() {
               <option value="50">50℉</option>
             </select>
             <br />
-            <button className="applyChangesButton" onClick={handleSubmit}>Apply Changes</button>
+            <button className="applyChangesButton" onClick={handleSubmit}>
+              Apply Changes
+            </button>
           </div>
         </div>
         <div className="resultSection">
@@ -168,4 +167,4 @@ export default function Plants() {
       </main>
     </>
   );
-};
+}

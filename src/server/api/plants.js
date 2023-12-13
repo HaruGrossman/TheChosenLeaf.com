@@ -61,17 +61,6 @@ router.use((req, res, next) => {
   next();
 });
 
-// validates if favorites exist and assigned to user
-// const validateFavorites = (user, favorite) => {
-//   if (!favorite) {
-//     throw new ServerError(404, "Favorites not found.");
-//   }
-//   if (favorite.userId !== user.id) {
-//     throw new ServerError(403, "No favorites for this user. ");
-//   }
-// };
-
-
 // sends all stores
 router.get("/stores", async (req, res, next) => {
   try {
