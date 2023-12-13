@@ -97,13 +97,6 @@ export default function Carousel() {
               </li>
               <li
                 className="glide__slide"
-                data-url="http://localhost:3000/search/1">
-                <img src="/plantImages/Lipstick1.jpg" />
-                <caption>Cactus and Succulents</caption>
-                <p id="altText">Desert plants, low maintenance</p>
-              </li>
-              <li
-                className="glide__slide"
                 data-url="http://localhost:3000/search/21"
                 data-type="Palm"
               >
