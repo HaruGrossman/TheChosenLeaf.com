@@ -27,12 +27,14 @@ router.get("/", async (req, res, next) => {
   router.get(`/:id`, async (req, res, next) => {
     try {
       const id = +req.params.id;
+      const plantId = id
+
       // finds many where user exists and favorite true exists
       // validates user is logged in
       const plant = await prisma.favoritePlant.findUnique({
         where: { 
           userId: res.locals.user.id,
-        id: id },
+        plantId: plantId },
         include: { 
           plant: true,
           notes: true },
@@ -64,16 +66,23 @@ router.get("/", async (req, res, next) => {
   });
   
   // removes a plant from favorites
-  router.delete("/:id", async (req, res, next) => {
+  router.delete("/plant/:id", async (req, res, next) => {
     try {
       const id = +req.params.id;
+      const plantId = id
   
-      const favoritePlant = await prisma.favoritePlant.findUnique({
-        where: { id },
-      });
+      // const favoritePlant = await prisma.favoritePlant.findUnique({
+      //   where: { 
+      //     plant: {
+      //     id: plantId },
+      // }
+      // });
       // validateFavorites(res.locals.user, favoritePlant);
   
-      await prisma.favoritePlant.delete({ where: { id: id } });
+      await prisma.favoritePlant.delete({ where: { 
+        id: plantId},
+      });
+
       res.sendStatus(204);
     } catch (err) {
       next(err);

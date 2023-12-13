@@ -1,0 +1,11 @@
+/* .delete-btn::before {
+    content: '';
+    inset: 0px 50px;
+    transition: inset 350ms ease;
+}
+
+.delte-btn::after {
+    content: '';
+    inset: 3px;
+    border-radius: 10px;
+} */
