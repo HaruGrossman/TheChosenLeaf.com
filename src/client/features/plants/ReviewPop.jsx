@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Popup from "../components/Popup";
+import Popup from "../components/Popup.jsx";
 import {
   useDeleteReviewMutation,
   useEditReviewMutation,
@@ -35,7 +35,7 @@ export default function ReviewPop({ review }) {
     <li>
       <h3>{review.reviews}</h3>
       <button onClick={() => setButtonPopup(true)}>Edit Review</button>
-      <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+      <Popup trigger={buttonPopup} setTrigger={setButtonPopup} >
         <h4>Edit existing review: {review.reviews} </h4>
         <form>
           <input
@@ -44,13 +44,13 @@ export default function ReviewPop({ review }) {
             onChange={(e) => setEditedReview(e.target.value)}
             required
           />
-          <button className="save-btn" onClick={onClickSave}>
-            Save
-          </button>
-          <button className="delete-btn" onClick={onDelete}>
-            Delete
-          </button>
         </form>
+        <button className="save-btn" onClick={onClickSave}>
+          Save
+        </button>
+        <button className="delete-btn" onClick={onDelete}>
+          Delete
+        </button>
       </Popup>
     </li>
   );
