@@ -15,7 +15,8 @@ function PlantCard({ plant }) {
         deleteFavorite(plant.id);
     };
 
-    console.log(plant)
+    console.log(plant.notes[0]);
+    const plantNotes = plant.notes[0];
 
     return(
         <div className="fav-plant-card">
@@ -25,6 +26,7 @@ function PlantCard({ plant }) {
                 </Link>
                 <h3>{plant.plant.name}</h3>
                 <h3>Favorite Plant Id: {plant.id}</h3>
+                <h3>Plant Notes: {plantNotes?.note}</h3>
                 <button onClick={deleteFav} className="delete-btn"
                 >
                 ❤️
