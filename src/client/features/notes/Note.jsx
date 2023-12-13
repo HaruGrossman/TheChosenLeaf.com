@@ -35,7 +35,7 @@ export default function Note({ note }) {
             </section>
             <section className="noteIdComment">
                 <h3>Note ID: {note.id}</h3> {/*need to be able to grab the note as it is attached to the plant */}
-                <h4>Favorite Plant: {note.favoritePlantId}</h4>
+                <h4>Favorite Plant: {note.favoritePlantId}</h4> {/* shows if a plant is attached to the note */}
                 <h4>{note.note}</h4> {/* reflect the note */}
             </section>
             <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
