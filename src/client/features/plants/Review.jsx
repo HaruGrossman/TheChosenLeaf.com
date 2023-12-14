@@ -1,4 +1,4 @@
-import { useGetReviewsQuery } from "../../store/reviewSlice";
+import { useGetReviewsQuery } from "../../store/ReviewSlice";
 import { useState } from "react";
 import ReviewPop from "./ReviewPop";
 import ReviewNew from "./ReviewNew";
