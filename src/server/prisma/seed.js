@@ -10,8 +10,7 @@ const seed = async () => {
         create: [{ note: "note 1" }, { note: "note 2" }],
       },
     },
-    },
-  },
+    }
 );
 
   const createPlantData = async () => {
