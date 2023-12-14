@@ -28,7 +28,7 @@ const seed = async () => {
         image: data1[i].image,
         favorite: false,
       };
-      await prisma.plant.create({
+      await prisma.plant.upsert({
         data,
       });
     }
