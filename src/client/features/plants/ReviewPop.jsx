@@ -3,7 +3,7 @@ import Popup from "../components/Popup.jsx";
 import {
   useDeleteReviewMutation,
   useEditReviewMutation,
-} from "../../store/reviewSlice";
+} from "../../store/ReviewSlice";
 
 export default function ReviewPop({ review }) {
   const [data] = useEditReviewMutation(review.id);
