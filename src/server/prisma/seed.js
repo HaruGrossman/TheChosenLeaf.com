@@ -11,7 +11,8 @@ const seed = async () => {
       },
     },
     },
-  });
+  },
+);
 
   const createPlantData = async () => {
     const data1 = plantData.data;
