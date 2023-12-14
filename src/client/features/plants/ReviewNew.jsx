@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useCreateReviewMutation } from "../../store/reviewSlice";
+import { useCreateReviewMutation } from "../../store/ReviewSlice";
 import "../components/popup.css";
 
 export default function ReviewNew(plantID) {
