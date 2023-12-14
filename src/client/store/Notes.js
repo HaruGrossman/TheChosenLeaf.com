@@ -18,7 +18,7 @@ const noteApi = api.injectEndpoints({
                 method: "POST",
                 body: data,
             }),
-            invalidatesTags: ["Notes"],
+            invalidatesTags: ["Notes", "FavoritePlants"],
         }),
         editNote: builder.mutation({
             query: ({ id, data }) => ({
@@ -26,14 +26,14 @@ const noteApi = api.injectEndpoints({
                 method: "PUT",
                 body: data,
             }),
-            invalidatesTags: ["Note"],
+            invalidatesTags: ["Note", "Notes", "FavoritePlants"],
         }),
         deleteNote: builder.mutation({
             query: (id) => ({
                 url: `/notes/${id}`,
                 method: "DELETE",
             }),
-            invalidatesTags: ["Note"]
+            invalidatesTags: ["Note", "Notes", "FavoritePlants"]
         }),
     }),
 });
