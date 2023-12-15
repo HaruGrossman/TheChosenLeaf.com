@@ -23,7 +23,7 @@ const favoritePlantApi = api.injectEndpoints({
               url: `/favorite/plant/${plantId}`,
               method: "DELETE",
             }),
-            invalidatesTags: ["FavoritePlant"],
+            invalidatesTags: ["FavoritePlant", "FavoritePlants"],
           })
     }),
 });
