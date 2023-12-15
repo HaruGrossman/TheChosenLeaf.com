@@ -21,7 +21,7 @@ export default function Navbar() {
 
   return (
     <nav className="top">
-      <img src="../../../../public/LogoFiles/OriginalonTransparent.png" alt="The Chosen Plant" />
+      <img src="../../../../LogoFiles/OriginalonTransparent.png" alt="The Chosen Plant" />
       <h1 class="AltName">The Chosen Plant</h1>
       <h3 class="slogan">Find your perfect plant!</h3>
       <button class="menubutton">
