@@ -21,35 +21,35 @@ export default function NewNote() {
 
   return (
     <>
-    <form onSubmit={create}>
-    <label>
-        Note Name
-      <input
-        type="text"
-        value={noteName}
-        onChange={(e) => setNoteName(e.target.value)}
-      />
-      </label>
-      <label>
-        New Plant Note
-      <input
-        type="text"
-        value={note}
-        onChange={(e) => setNote(e.target.value)}
-        required
-      />
-      </label>
-      <br/><br/>
-      <label>
-        Attach to Favorite Plant By Id
-        <input
-        type="text"
-        value={favoritePlant}
-        onChange={(e) => setFavoritePlant(e.target.value)}
-        />
-      </label>
+      <form onSubmit={create} id="newNote">
+        <label>
+          Note Name
+          <input
+            type="text"
+            value={noteName}
+            onChange={(e) => setNoteName(e.target.value)}
+          />
+        </label>
+        <label>
+          New Plant Note
+          <input
+            type="text"
+            value={note}
+            onChange={(e) => setNote(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          Attach to Favorite Plant By Id
+          <input
+            type="text"
+            value={favoritePlant}
+            onChange={(e) => setFavoritePlant(e.target.value)}
+          />
+        </label>
+
+      </form>
       <button className="create-btn">Create</button>
-    </form>
     </>
   );
 }
