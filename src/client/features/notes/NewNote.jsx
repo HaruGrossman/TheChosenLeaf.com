@@ -30,6 +30,7 @@ export default function NewNote() {
             onChange={(e) => setNoteName(e.target.value)}
           />
         </label>
+
         <label>
           New Plant Note
           <input
@@ -39,6 +40,7 @@ export default function NewNote() {
             required
           />
         </label>
+        
         <label>
           Attach to Favorite Plant By Id
           <input
@@ -49,7 +51,7 @@ export default function NewNote() {
         </label>
 
       </form>
-      <button className="create-btn">Create</button>
+      <button className="create-btn" onClick={create}>Create</button>
     </>
   );
 }

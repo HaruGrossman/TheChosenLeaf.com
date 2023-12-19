@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, Link } from "react-router-dom";
 import { logout, selectToken } from "../features/auth/authSlice";
 
 import "./Navbar.less";
@@ -44,7 +44,7 @@ export default function Navbar() {
               <NavLink to="/account">Account</NavLink>
             </li>
             <li>
-              <a onClick={handleLogout}>Log Out</a>
+              <Link to="/" onClick={handleLogout}>Log Out</Link>
             </li>
           </>
         ) : (
