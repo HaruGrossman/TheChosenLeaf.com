@@ -46,9 +46,9 @@ export default function Details() {
         </section>
       </section>
       <section className="plantDetail-buttons">
-        <button className="store-near-me" onClick={storeNavigate}>
+        {/* <button className="store-near-me" onClick={storeNavigate}>
           Stores Near Me
-        </button>
+        </button> */}
         <button className="return-btn" onClick={returnNavigate}>
           Back to Search
         </button>
