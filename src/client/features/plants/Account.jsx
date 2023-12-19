@@ -49,9 +49,9 @@ export default function Account() {
             <section>
                 <Notes />
             </section>
-            <section className="mystores">
+            {/* <section className="mystores">
                 <FavoriteStore />
-            </section>
+            </section> */}
         </main>
     )
 
